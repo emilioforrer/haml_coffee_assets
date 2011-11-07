@@ -3,7 +3,7 @@
 HamlCoffeeAssets compiles [Haml CoffeeScript](https://github.com/9elements/haml-coffee) templates in the Rails 3.1 asset
 pipeline, so you can use them as JavaScript Template in your JavaScript heavy application.
 
-Tested on MRI Ruby 1.8.7, 1.9.2, REE and the latest version of JRuby.
+Tested on MRI Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest version of JRuby.
 
 ## HamlCoffee
 
