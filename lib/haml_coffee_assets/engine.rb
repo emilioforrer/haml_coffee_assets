@@ -9,7 +9,7 @@ module HamlCoffeeAssets
     config.hamlcoffee = ActiveSupport::OrderedOptions.new
 
     DEFAULT_CONFIG = {
-        :namespace => 'HAML',
+        :namespace => 'JST',
         :escape    => 'HAML.escape',
         :context   => 'HAML.context'
     }
