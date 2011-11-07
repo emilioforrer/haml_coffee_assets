@@ -1,14 +1,14 @@
 # HamlCoffeeAssets [![Build Status](https://secure.travis-ci.org/netzpirat/haml_coffee_assets.png)](http://travis-ci.org/netzpirat/haml_coffee_assets)
 
 HamlCoffeeAssets compiles [Haml CoffeeScript](https://github.com/9elements/haml-coffee) templates in the Rails 3.1 asset
-pipeline.
+pipeline, so you can use them as JavaScript Template in your JavaScript heavy application.
 
-Tested on MRI Ruby 1.8.7, 1.9.2, REE and the latest versions of JRuby.
+Tested on MRI Ruby 1.8.7, 1.9.2, REE and the latest version of JRuby.
 
 ## HamlCoffee
 
 HamlCoffee allows you to write inline [CoffeeScript](http://jashkenas.github.com/coffee-script/) in your
-[HAML](http://haml-lang.com/) template:
+[HAML](http://haml-lang.com/) JavaScript templates:
 
 ```haml
 #cart
@@ -27,7 +27,7 @@ HamlCoffee allows you to write inline [CoffeeScript](http://jashkenas.github.com
 
 ## Installation
 
-The simplest way to install Guard is to use [Bundler](http://gembundler.com/).
+The simplest way to install HamlCoffeeAssets is to use [Bundler](http://gembundler.com/).
 Add `haml_coffee_assets` and `execjs` to your `Gemfile`:
 
 ```ruby
@@ -37,7 +37,7 @@ group :assets do
 end
 ```
 
-And require the `hamlcoffee.js` in your `application.js.coffee`
+And require the `hamlcoffee.js` in your `application.js.coffee`, so you get the escaping and global context functionality.
 
 ```coffeescript
 #= require hamlcoffee
@@ -174,11 +174,17 @@ or disable escaping completely:
 config.hamlcoffee.escape = false
 ```
 
-Your custom escape function must take the unescaped text as parameter and returns the escape function.
-The following example implements only ampersand escaping:
+Your custom escape function must take the unescaped text as parameter and returns the escaped text.
+The following default implementation comes with `hamlcoffee.js`:
 
 ```coffeescript
-App.myEscape = (text) -> text.replace(/&/g, '&amp;')
+App.myEscape = (text) -> 
+  ('' + text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
 ```
 
 ### Global Context
@@ -186,7 +192,7 @@ App.myEscape = (text) -> text.replace(/&/g, '&amp;')
 HamlCoffeeAssets allows you to configure a global context function that gets merged into the local template context for
 each template.
 
-There is a example implementation provided in the `haml_coffee_assets.js` that uses the `extend` function
+There is a example implementation provided in the `hamlcoffee.js` that uses the `extend` function
 from these frameworks:
 
 * jQuery
