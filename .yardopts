@@ -1,0 +1,10 @@
+--title 'Haml CoffeeScript Assets Documentation'
+--readme README.md
+--markup markdown
+--markup-provider redcarpet
+--private
+--protected
+--output-dir ./doc
+lib/**/*.rb
+-
+LICENSE
