@@ -1,7 +1,7 @@
 # HamlCoffeeAssets [![Build Status](https://secure.travis-ci.org/netzpirat/haml_coffee_assets.png)](http://travis-ci.org/netzpirat/haml_coffee_assets)
 
 HamlCoffeeAssets compiles [Haml CoffeeScript](https://github.com/9elements/haml-coffee) templates in the Rails 3.1 asset
-pipeline, so you can use them as JavaScript Template in your JavaScript heavy application.
+pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application.
 
 Tested on MRI Ruby 1.8.7, 1.9.2, REE and the latest version of JRuby.
 
@@ -37,11 +37,14 @@ group :assets do
 end
 ```
 
-And require the `hamlcoffee.js` in your `application.js.coffee`, so you get the escaping and global context functionality.
+And require the `hamlcoffee.js` in your `app/assets/javascripts/application.js.coffee`:
 
 ```coffeescript
 #= require hamlcoffee
 ```
+
+This provides the default escaping and the global context functions. Read more about it in the configuration section
+below.
 
 ### JavaScript runtimes
 
@@ -117,8 +120,8 @@ Windows operating systems.
 
 ## Usage
 
-You should place all your HamlCoffee templates in the `app/assets/templates` directory and include all templates in
-your `application.js.coffee`:
+You should place all your HamlCoffee templates in the `app/assets/templates` directory and include all templates from
+your `app/assets/javascripts/application.js.coffee`:
 
 ```coffeescript
 #= require_tree ../templates
@@ -136,22 +139,23 @@ processor by using `.jst.hamlc` as extension, and if you do, the HamlCoffee temp
 
 By default all HamlCoffee templates are registered under the `JST` namespace.
 
-Example:
+**Example:**
 
-A template located in `app/assets/templates/header.hamlc` with the given content:
+A template `app/assets/templates/header.hamlc` with the given content:
 
 ```haml
 %header
   %h2= title
 ```
 
-will be accessible in your browser as `JST.header`. You can now render the precompiled template with:
+will be accessible in your browser as `JST.header`. You can now render the precompiled template and pass the data
+to be rendered:
 
 ```javascript
 JST.header.render({ title: 'Hello HamlCoffee' })
 ```
 
-If you prefer another namespace, you can set it in your `application.rb`:
+If you prefer another namespace, you can set it in your `config/application.rb`:
 
 ```ruby
 config.hamlcoffee.namespace = 'HAML'
@@ -162,7 +166,7 @@ config.hamlcoffee.namespace = 'HAML'
 By default your code block in your HamlCoffee template will be escaped through the `HAML.escape` function that is
 provided in the `hamlcoffee.js` script.
 
-You can set another escaping function in your `application.rb`:
+You can set another escaping function in your `config/application.rb`:
 
 ```ruby
 config.hamlcoffee.escape = 'App.myEscape'
@@ -187,13 +191,13 @@ App.myEscape = (text) ->
     .replace(/'/g, '&apos;')
 ```
 
-### Global Context
+### Global context
 
 HamlCoffeeAssets allows you to configure a global context function that gets merged into the local template context for
 each template.
 
-There is a example implementation provided in the `hamlcoffee.js` that uses the `extend` function
-from these frameworks:
+There is a example implementation provided in the `hamlcoffee.js` that can use the `extend` like functions
+from the listed frameworks to merge the global and the local conext data:
 
 * jQuery
 * Underscore.js
@@ -201,7 +205,7 @@ from these frameworks:
 * MooTools
 * Zepto.js
 
-If you use one of these, than you can simply override `HAML.globals` and return the global HAML context object:
+If you use one of these, than you can simply override `HAML.globals` and return the global context data:
 
 ```coffeescript
 HAML.globals = ->
@@ -222,7 +226,7 @@ Now you can use the properties from the global context in every template:
     %p= I18n.t('js.app.notfound.login')
 ```
 
-If you like to use your own implementation, simply configure your context function in your `application.rb`:
+If you like to use your own implementation, simply configure your context function in your `config/application.rb`:
 
 ```ruby
 config.hamlcoffee.context = 'App.globalTemplateContext'
@@ -234,9 +238,9 @@ or disable the global context completely:
 config.hamlcoffee.context = false
 ```
 
-Your custom context function must take the local context as parameter and returns the merged context function.
-The following example implementation used the _.underscore extend function to merge an inline defined global
-context:
+Your custom context function must take the local context as parameter and returns the merged context data.
+The following example uses the _.underscore `extend` function to merge the global context data with the
+passed local context data:
 
 ```coffeescript
 App.globalTemplateContext = (locals) -> _.extend({}, {
