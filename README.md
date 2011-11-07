@@ -37,10 +37,10 @@ group :assets do
 end
 ```
 
-And require the `haml_coffee_assets.js` in your `application.js.coffee`
+And require the `hamlcoffee.js` in your `application.js.coffee`
 
 ```coffeescript
-#= require haml_coffee_assets
+#= require hamlcoffee
 ```
 
 ### JavaScript runtimes
