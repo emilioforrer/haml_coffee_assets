@@ -160,7 +160,7 @@ config.hamlcoffee.namespace = 'HAML'
 ### Escaping
 
 By default your code block in your HamlCoffee template will be escaped through the `HAML.escape` function that is
-provided in the `haml_coffee_assets.js`.
+provided in the `hamlcoffee.js` script.
 
 You can set another escaping function in your `application.rb`:
 
