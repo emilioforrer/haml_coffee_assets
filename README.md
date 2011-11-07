@@ -208,7 +208,7 @@ HAML.globals = ->
 If you like to use your own implementation, simply configure your context function in your `application.rb`:
 
 ```ruby
-config.hamlcoffee.context = `App.globalTemplateContext`
+config.hamlcoffee.context = 'App.globalTemplateContext'
 ```
 
 or disable the global context completely:
