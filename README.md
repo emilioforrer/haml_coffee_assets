@@ -200,9 +200,20 @@ If you use one of these, than you can simply override `HAML.globals` and return 
 ```coffeescript
 HAML.globals = ->
   {
-    authenticated: App.isAuthenticated()
+    isAuthenticated: App.isAuthenticated()
     isAdmin: App.currentUser.hasRole('admin')
   }
+```
+
+Now you can use the properties from the global context in every template:
+
+```haml
+.not-found-error
+  %h1= I18n.t('js.app.notfound.error', { route: @route })
+  - if @isAuthenticated
+    %p= I18n.t('js.app.notfound.homepage')
+  - else
+    %p= I18n.t('js.app.notfound.login')
 ```
 
 If you like to use your own implementation, simply configure your context function in your `application.rb`:
