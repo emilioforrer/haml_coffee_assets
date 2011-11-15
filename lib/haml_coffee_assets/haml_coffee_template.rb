@@ -32,7 +32,7 @@ module HamlCoffeeAssets
     # Compile the template.
     #
     def evaluate(scope, locals = { }, &block)
-      @output ||= HamlCoffee.compile(name, data)
+      @output ||= HamlCoffee.compile(scope.logical_path, data)
     end
 
   end
