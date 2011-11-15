@@ -182,7 +182,7 @@ The name under which the template can be addressed in the namespace depends not 
 the directory name.
 
 A template name `login.hamlc` that is placed directly at the `app/assets/templates` directory can be instantiated
-through `JST.login`, whereas a template `edit.hamlc` in the directory `app/assets/templates/users` is can be
+through `JST.login`, whereas a template `edit.hamlc` in the directory `app/assets/templates/users` can be
 instantiated through `JST.users.edit`.
 
 ### Escaping
