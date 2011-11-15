@@ -163,11 +163,11 @@ A template `app/assets/templates/header.hamlc` with the given content:
   %h2= title
 ```
 
-will be accessible in your browser as `JST.header`. You can now render the precompiled template and pass the data
+will be accessible in your browser as `JST['header']`. You can now render the precompiled template and pass the data
 to be rendered:
 
 ```javascript
-JST.header.render({ title: 'Hello Haml Coffee' })
+JST['header'].render({ title: 'Hello Haml Coffee' })
 ```
 
 If you prefer another namespace, you can set it in your `config/application.rb`:
@@ -181,9 +181,12 @@ config.hamlcoffee.namespace = 'window.HAML'
 The name under which the template can be addressed in the namespace depends not only from the filename, but also on
 the directory name.
 
-A template name `login.hamlc` that is placed directly at the `app/assets/templates` directory can be instantiated
-through `JST.login`, whereas a template `edit.hamlc` in the directory `app/assets/templates/users` can be
-instantiated through `JST.users.edit`.
+The following examples assumes a configured namespace `window.JST` and the asset template directory
+`app/assets/templates`:
+
+* `app/assets/templates/login.hamlc` will become `JST['login']`
+* `app/assets/templates/users/new.hamlc` will become `JST['users/new']`
+* `app/assets/templates/shared/form/address.hamlc` will become `JST['shared/form/address']`
 
 ### Escaping
 

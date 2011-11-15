@@ -20,7 +20,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.template_name = function(context) {
+  window.HAML['template_name'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -44,7 +44,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.script = function(context) {
+  window.HAML['script'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -69,7 +69,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.script = function(context) {
+  window.HAML['script'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -94,7 +94,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.script = function(context) {
+  window.HAML['script'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -122,7 +122,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.header = function(context) {
+  window.HAML['header'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -145,7 +145,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.JST) == null) {
     window.JST = {};
   }
-  window.JST.header = function(context) {
+  window.JST['header'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -169,7 +169,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.title = function(context) {
+  window.HAML['title'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -192,7 +192,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.title = function(context) {
+  window.HAML['title'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -216,7 +216,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.attributes = function(context) {
+  window.HAML['attributes'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -239,7 +239,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.attributes = function(context) {
+  window.HAML['attributes'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -263,7 +263,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.htmlE = function(context) {
+  window.HAML['htmlE'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -286,7 +286,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.htmlE = function(context) {
+  window.HAML['htmlE'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -310,7 +310,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.link = function(context) {
+  window.HAML['link'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -333,7 +333,7 @@ describe HamlCoffeeAssets::HamlCoffee do
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.link = function(context) {
+  window.HAML['link'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
