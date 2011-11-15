@@ -5,6 +5,9 @@ asset pipeline, so you can use them as JavaScript templates in your JavaScript h
 
 Tested on MRI Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest version of JRuby.
 
+**Please note that I'm using haml-coffee from my fork until
+[my pull request](https://github.com/9elements/haml-coffee/pull/7) is merged.**
+
 ## Haml Coffee
 
 Haml Coffee allows you to write inline [CoffeeScript](http://jashkenas.github.com/coffee-script/) in your
