@@ -143,7 +143,7 @@ processor by using `.jst.hamlc` as extension, and if you do, the Haml Coffee tem
 By default all Haml Coffee templates are rendered to a HTML5 document. You can choose between the following output
 formats:
 
-* html
+* html5
 * html4
 * xhtml
 
