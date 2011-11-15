@@ -3,14 +3,18 @@ require 'spec_helper'
 describe HamlCoffeeAssets::HamlCoffee do
 
   before do
-    subject.escape    = nil
-    subject.namespace = nil
-    subject.context   = nil
+    subject.format           = nil
+    subject.namespace        = nil
+    subject.escapeHtml       = nil
+    subject.escapeAttributes = nil
+    subject.customHtmlEscape = nil
+    subject.context          = nil
   end
 
   describe "#compile" do
-    it 'uses the provided template name' do
-      subject.compile('template_name', '%h2').should eql <<-TEMPLATE
+    context 'template name' do
+      it 'uses the provided template name' do
+        subject.compile('template_name', '%h2').should eql <<-TEMPLATE
 (function() {
   var _ref;
   if ((_ref = window.HAML) == null) {
@@ -19,16 +23,95 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.HAML.template_name = function(context) {
     var fn;
     fn = function(context) {
-      var o;
+      var e, o;
       o = [];
-      o.push("<h2>");
-      o.push("</h2>");
-      return o.join("\\n");
+      e = window.HAML.escape;
+      o.push(\"<h2></h2>\");
+      return o.join(\"\\n\");
     };
     return fn.call(context);
   };
 }).call(this);
-      TEMPLATE
+        TEMPLATE
+      end
+    end
+
+    context 'format configuration' do
+      it 'uses HTML5 as the default format' do
+        subject.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.HAML) == null) {
+    window.HAML = {};
+  }
+  window.HAML.script = function(context) {
+    var fn;
+    fn = function(context) {
+      var e, o;
+      o = [];
+      e = window.HAML.escape;
+      o.push("<script>");
+      o.push("  var i = 1;");
+      o.push("</script>");
+      return o.join(\"\\n\");
+    };
+    return fn.call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'generates HTML4 documents when configured' do
+        subject.format = 'html4'
+        subject.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.HAML) == null) {
+    window.HAML = {};
+  }
+  window.HAML.script = function(context) {
+    var fn;
+    fn = function(context) {
+      var e, o;
+      o = [];
+      e = window.HAML.escape;
+      o.push("<script type='text/javascript'>");
+      o.push("  var i = 1;");
+      o.push("</script>");
+      return o.join(\"\\n\");
+    };
+    return fn.call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'generates XHTML documents when configured' do
+        subject.format = 'xhtml'
+        subject.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.HAML) == null) {
+    window.HAML = {};
+  }
+  window.HAML.script = function(context) {
+    var fn;
+    fn = function(context) {
+      var e, o;
+      o = [];
+      e = window.HAML.escape;
+      o.push("<script type='text/javascript'>");
+      o.push("  //<![CDATA[");
+      o.push("    var i = 1;");
+      o.push("  //]]>");
+      o.push("</script>");
+      return o.join(\"\\n\");
+    };
+    return fn.call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
     end
 
     context 'namespace configuration' do
@@ -42,11 +125,11 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.HAML.header = function(context) {
     var fn;
     fn = function(context) {
-      var o;
+      var e, o;
       o = [];
-      o.push("<h2>");
-      o.push("</h2>");
-      return o.join("\\n");
+      e = window.HAML.escape;
+      o.push(\"<h2></h2>\");
+      return o.join(\"\\n\");
     };
     return fn.call(context);
   };
@@ -55,7 +138,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses a configured namespace' do
-        subject.namespace = 'JST'
+        subject.namespace = 'window.JST'
         subject.compile('header', '%h2').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -65,11 +148,11 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST.header = function(context) {
     var fn;
     fn = function(context) {
-      var o;
+      var e, o;
       o = [];
-      o.push("<h2>");
-      o.push("</h2>");
-      return o.join("\\n");
+      e = window.HAML.escape;
+      o.push(\"<h2></h2>\");
+      return o.join(\"\\n\");
     };
     return fn.call(context);
   };
@@ -78,8 +161,8 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
     end
 
-    context 'escape configuration' do
-      it 'omits escaping when no escape function is provided' do
+    context 'escape function configuration' do
+      it 'uses the default escape function when no custom function is provided' do
         subject.compile('title', '%h2= title').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -89,11 +172,11 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.HAML.title = function(context) {
     var fn;
     fn = function(context) {
-      var o;
+      var e, o;
       o = [];
-      o.push("<h2>" + title);
-      o.push("</h2>");
-      return o.join("\\n");
+      e = window.HAML.escape;
+      o.push(\"<h2>\" + (e(title)) + \"</h2>\");
+      return o.join(\"\\n\");
     };
     return fn.call(context);
   };
@@ -102,7 +185,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses a configured escape function' do
-        subject.escape = 'SomeWhere.escape'
+        subject.customHtmlEscape = 'SomeWhere.escape'
         subject.compile('title', '%h2= title').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -115,9 +198,32 @@ describe HamlCoffeeAssets::HamlCoffee do
       var e, o;
       o = [];
       e = SomeWhere.escape;
-      o.push("<h2>" + (e(title)));
-      o.push("</h2>");
-      return o.join("\\n");
+      o.push(\"<h2>\" + (e(title)) + \"</h2>\");
+      return o.join(\"\\n\");
+    };
+    return fn.call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+    end
+
+    context 'Attribute escaping configuration' do
+      it 'does escape the attributes by default' do
+        subject.compile('attributes', '%a{ :title => @title }').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.HAML) == null) {
+    window.HAML = {};
+  }
+  window.HAML.attributes = function(context) {
+    var fn;
+    fn = function(context) {
+      var e, o;
+      o = [];
+      e = window.HAML.escape;
+      o.push("<a title='" + (e(this.title)) + "'></a>");
+      return o.join(\"\\n\");
     };
     return fn.call(context);
   };
@@ -125,32 +231,80 @@ describe HamlCoffeeAssets::HamlCoffee do
         TEMPLATE
       end
 
-      context 'context configuration' do
-        it 'does not use the global context without a merge function' do
-          subject.compile('link', '%a{ :href => "/" }').should eql <<-TEMPLATE
+      it 'does not escape the attributes when set to false' do
+        subject.escapeAttributes = false
+        subject.compile('attributes', '%a{ :title => @title }').should eql <<-TEMPLATE
 (function() {
   var _ref;
   if ((_ref = window.HAML) == null) {
     window.HAML = {};
   }
-  window.HAML.link = function(context) {
+  window.HAML.attributes = function(context) {
     var fn;
     fn = function(context) {
-      var o;
+      var e, o;
       o = [];
-      o.push("<a href=\\"/\\">");
-      o.push("</a>");
-      return o.join("\\n");
+      e = window.HAML.escape;
+      o.push("<a title='" + this.title + "'></a>");
+      return o.join(\"\\n\");
     };
     return fn.call(context);
   };
 }).call(this);
-          TEMPLATE
-        end
+        TEMPLATE
+      end
+    end
 
-        it 'uses a configured escape function' do
-          subject.context = 'SomeWhere.context'
-          subject.compile('link', '%a{ :href => "/" }').should eql <<-TEMPLATE
+    context 'HTML escaping configuration' do
+      it 'does escape the html by default' do
+        subject.compile('htmlE', '%p= @info }').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.HAML) == null) {
+    window.HAML = {};
+  }
+  window.HAML.htmlE = function(context) {
+    var fn;
+    fn = function(context) {
+      var e, o;
+      o = [];
+      e = window.HAML.escape;
+      o.push("<p>" + (e(this.info)) + "}</p>");
+      return o.join(\"\\n\");
+    };
+    return fn.call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'does not escape the html when set to false' do
+        subject.escapeHtml = false
+        subject.compile('htmlE', '%p= @info }').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.HAML) == null) {
+    window.HAML = {};
+  }
+  window.HAML.htmlE = function(context) {
+    var fn;
+    fn = function(context) {
+      var e, o;
+      o = [];
+      e = window.HAML.escape;
+      o.push("<p>" + this.info + "}</p>");
+      return o.join(\"\\n\");
+    };
+    return fn.call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+    end
+
+    context 'context configuration' do
+      it 'does not use the global context without a merge function' do
+        subject.compile('link', '%a{ :href => "/" }').should eql <<-TEMPLATE
 (function() {
   var _ref;
   if ((_ref = window.HAML) == null) {
@@ -159,19 +313,41 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.HAML.link = function(context) {
     var fn;
     fn = function(context) {
-      var o;
+      var e, o;
       o = [];
-      o.push("<a href=\\"/\\">");
-      o.push("</a>");
-      return o.join("\\n");
+      e = window.HAML.escape;
+      o.push(\"<a href='/'></a>\");
+      return o.join(\"\\n\");
+    };
+    return fn.call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'uses a configured escape function' do
+        subject.context = 'SomeWhere.context'
+        subject.compile('link', '%a{ :href => "/" }').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.HAML) == null) {
+    window.HAML = {};
+  }
+  window.HAML.link = function(context) {
+    var fn;
+    fn = function(context) {
+      var e, o;
+      o = [];
+      e = window.HAML.escape;
+      o.push(\"<a href='/'></a>\");
+      return o.join(\"\\n\");
     };
     return fn.call(SomeWhere.context(context));
   };
 }).call(this);
-          TEMPLATE
-        end
+        TEMPLATE
       end
-
     end
+
   end
 end

@@ -1,13 +1,13 @@
-# HamlCoffeeAssets [![Build Status](https://secure.travis-ci.org/netzpirat/haml_coffee_assets.png)](http://travis-ci.org/netzpirat/haml_coffee_assets)
+# Haml Coffee Assets [![Build Status](https://secure.travis-ci.org/netzpirat/haml_coffee_assets.png)](http://travis-ci.org/netzpirat/haml_coffee_assets)
 
-HamlCoffeeAssets compiles [Haml CoffeeScript](https://github.com/9elements/haml-coffee) templates in the Rails 3.1 asset
-pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application.
+Haml Coffee Assets compiles [Haml CoffeeScript](https://github.com/netzpirat/haml-coffee) templates in the Rails 3.1
+asset pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application.
 
 Tested on MRI Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest version of JRuby.
 
-## HamlCoffee
+## Haml Coffee
 
-HamlCoffee allows you to write inline [CoffeeScript](http://jashkenas.github.com/coffee-script/) in your
+Haml Coffee allows you to write inline [CoffeeScript](http://jashkenas.github.com/coffee-script/) in your
 [HAML](http://haml-lang.com/) JavaScript templates:
 
 ```haml
@@ -27,7 +27,7 @@ HamlCoffee allows you to write inline [CoffeeScript](http://jashkenas.github.com
 
 ## Installation
 
-The simplest way to install HamlCoffeeAssets is to use [Bundler](http://gembundler.com/).
+The simplest way to install Haml Coffee Assets is to use [Bundler](http://gembundler.com/).
 Add `haml_coffee_assets` and `execjs` to your `Gemfile`:
 
 ```ruby
@@ -48,7 +48,7 @@ below.
 
 ### JavaScript runtimes
 
-HamlCoffeeAssets uses [ExecJS](https://github.com/sstephenson/execjs) to pick the best runtime to evaluate the
+Haml Coffee Assets uses [ExecJS](https://github.com/sstephenson/execjs) to pick the best runtime to evaluate the
 CoffeeScript and generate the JavaScript template.
 
 * With CRuby you want to use a V8 JavaScript Engine or Mozilla SpiderMonkey.
@@ -120,24 +120,39 @@ Windows operating systems.
 
 ## Usage
 
-You should place all your HamlCoffee templates in the `app/assets/templates` directory and include all templates from
+You should place all your Haml Coffee templates in the `app/assets/templates` directory and include all templates from
 your `app/assets/javascripts/application.js.coffee`:
 
 ```coffeescript
 #= require_tree ../templates
 ```
 
-Now you can start to add your HamlCoffee templates to your template directory. Make sure all your templates have a
-`.hamlc` extension to be recognized by HamlCoffeeAssets.
+Now you can start to add your Haml Coffee templates to your template directory. Make sure all your templates have a
+`.hamlc` extension to be recognized by Haml Coffee Assets.
 
-**Note:** HamlCoffee already generates a JavaScript Template, so there is not need to pass it to the `JST` Sprocket
-processor by using `.jst.hamlc` as extension, and if you do, the HamlCoffee templates will not work.
+**Note:** Haml Coffee already generates a JavaScript Template, so there is not need to pass it to the `JST` Sprocket
+processor by using `.jst.hamlc` as extension, and if you do, the Haml Coffee templates will not work.
 
 ## Configuration
 
+### Document format
+
+By default all Haml Coffee templates are rendered to a HTML5 document. You can choose between the following output
+formats:
+
+* html
+* html4
+* xhtml
+
+If you prefer another HTML format than HTML5, you can set it in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.format = 'xhtml'
+```
+
 ### Template namespace
 
-By default all HamlCoffee templates are registered under the `JST` namespace.
+By default all Haml Coffee templates are registered under the `JST` namespace.
 
 **Example:**
 
@@ -152,48 +167,71 @@ will be accessible in your browser as `JST.header`. You can now render the preco
 to be rendered:
 
 ```javascript
-JST.header.render({ title: 'Hello HamlCoffee' })
+JST.header.render({ title: 'Hello Haml Coffee' })
 ```
 
 If you prefer another namespace, you can set it in your `config/application.rb`:
 
 ```ruby
-config.hamlcoffee.namespace = 'HAML'
+config.hamlcoffee.namespace = 'window.HAML'
 ```
+
+#### Template name
+
+The name under which the template can be addressed in the namespace depends not only from the filename, but also on
+the directory name.
+
+A template name `login.hamlc` that is placed directly at the `app/assets/templates` directory can be instantiated
+through `JST.login`, whereas a template `edit.hamlc` in the directory `app/assets/templates/users` is can be
+instantiated through `JST.users.edit`.
 
 ### Escaping
 
-By default your code block in your HamlCoffee template will be escaped through the `HAML.escape` function that is
+All generated output by running CoffeeScript in your template is being escaped, but you can disable escaping of either
+the attributes or the generated Html.
+
+#### Attribute escaping
+
+You can toggle attribute escaping in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.escapeAttributes = false
+```
+
+#### HTML escaping
+
+You can toggle HTML escaping in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.escapeHtml = false
+```
+
+#### Custom escape function
+
+By default your code block in your Haml Coffee template will be escaped through the `HAML.escape` function that is
 provided in the `hamlcoffee.js` script.
 
 You can set another escaping function in your `config/application.rb`:
 
 ```ruby
-config.hamlcoffee.escape = 'App.myEscape'
-```
-
-or disable escaping completely:
-
-```ruby
-config.hamlcoffee.escape = false
+config.hamlcoffee.customHtmlEscape = 'App.myEscape'
 ```
 
 Your custom escape function must take the unescaped text as parameter and returns the escaped text.
 The following default implementation comes with `hamlcoffee.js`:
 
 ```coffeescript
-App.myEscape = (text) -> 
+App.myEscape = (text) ->
   ('' + text)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
 ```
 
 ### Global context
 
-HamlCoffeeAssets allows you to configure a global context function that gets merged into the local template context for
+Haml Coffee Assets allows you to configure a global context function that gets merged into the local template context for
 each template.
 
 There is a example implementation provided in the `hamlcoffee.js` that can use the `extend` like functions

@@ -9,9 +9,12 @@ module HamlCoffeeAssets
     config.hamlcoffee = ActiveSupport::OrderedOptions.new
 
     DEFAULT_CONFIG = {
-        :namespace => 'JST',
-        :escape    => 'HAML.escape',
-        :context   => 'HAML.context'
+        :format           => 'html5',
+        :namespace        => 'window.JST',
+        :escapeHtml       => true,
+        :escapeAttributes => true,
+        :customHtmlEscape => 'HAML.escape',
+        :context          => 'HAML.context'
     }
 
     # Initialize Haml Coffee Assets after Sprockets
@@ -26,9 +29,12 @@ module HamlCoffeeAssets
       options = DEFAULT_CONFIG.merge(app.config.hamlcoffee)
 
       HamlCoffee.configure do |config|
-        config.namespace = options[:namespace]
-        config.escape    = options[:escape]
-        config.context   = options[:context]
+        config.namespace        = options[:namespace]
+        config.format           = options[:format]
+        config.escapeHtml       = options[:escapeHtml]
+        config.escapeAttributes = options[:escapeAttributes]
+        config.customHtmlEscape = options[:customHtmlEscape]
+        config.context          = options[:context]
       end
     end
 

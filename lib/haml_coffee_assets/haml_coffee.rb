@@ -7,7 +7,7 @@ module HamlCoffeeAssets
   module HamlCoffee
     class << self
 
-      mattr_accessor :namespace, :escape, :context
+      mattr_accessor :namespace, :format, :escapeHtml, :escapeAttributes, :customHtmlEscape, :context
 
       # Configure HamlCoffee
       #
@@ -22,7 +22,9 @@ module HamlCoffeeAssets
       # @return [String] the compiled template in JavaScript
       #
       def compile(name, source)
-        runtime.call('HamlCoffeeAssets.compile', namespace, name, source, escape, context)
+        runtime.call('HamlCoffeeAssets.compile',
+                     namespace, name, source, format,
+                     escapeHtml, escapeAttributes, customHtmlEscape, context)
       end
 
       private
