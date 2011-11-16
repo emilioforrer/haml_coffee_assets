@@ -1,12 +1,9 @@
 # Haml Coffee Assets [![Build Status](https://secure.travis-ci.org/netzpirat/haml_coffee_assets.png)](http://travis-ci.org/netzpirat/haml_coffee_assets)
 
-Haml Coffee Assets compiles [Haml CoffeeScript](https://github.com/netzpirat/haml-coffee) templates in the Rails 3.1
+Haml Coffee Assets compiles [Haml CoffeeScript](https://github.com/9elements/haml-coffee) templates in the Rails 3.1
 asset pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application.
 
 Tested on MRI Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest version of JRuby.
-
-**Please note that I'm using haml-coffee from my fork until
-[my pull request](https://github.com/9elements/haml-coffee/pull/7) is merged.**
 
 ## Haml Coffee
 
