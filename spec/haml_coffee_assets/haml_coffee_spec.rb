@@ -3,12 +3,13 @@ require 'spec_helper'
 describe HamlCoffeeAssets::HamlCoffee do
 
   before do
-    subject.format           = nil
-    subject.namespace        = nil
-    subject.escapeHtml       = nil
-    subject.escapeAttributes = nil
-    subject.customHtmlEscape = nil
-    subject.context          = nil
+    # Reset configuration to defaults
+    HamlCoffeeAssets::HamlCoffee.namespace = 'window.JST'
+    HamlCoffeeAssets::HamlCoffee.format = 'html5'
+    HamlCoffeeAssets::HamlCoffee.escapeHtml = true
+    HamlCoffeeAssets::HamlCoffee.escapeAttributes = true
+    HamlCoffeeAssets::HamlCoffee.customHtmlEscape = 'window.HAML.escape'
+    HamlCoffeeAssets::HamlCoffee.context = ''
   end
 
   describe "#compile" do
@@ -17,10 +18,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('template_name', '%h2').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['template_name'] = function(context) {
+  window.JST['template_name'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -41,10 +42,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['script'] = function(context) {
+  window.JST['script'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -66,10 +67,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['script'] = function(context) {
+  window.JST['script'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -91,10 +92,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['script'] = function(context) {
+  window.JST['script'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -119,10 +120,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('header', '%h2').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['header'] = function(context) {
+  window.JST['header'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -138,14 +139,14 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses a configured namespace' do
-        subject.namespace = 'window.JST'
+        subject.namespace = 'window.HAML'
         subject.compile('header', '%h2').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.JST) == null) {
-    window.JST = {};
+  if ((_ref = window.HAML) == null) {
+    window.HAML = {};
   }
-  window.JST['header'] = function(context) {
+  window.HAML['header'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -166,10 +167,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('title', '%h2= title').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['title'] = function(context) {
+  window.JST['title'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -189,10 +190,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('title', '%h2= title').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['title'] = function(context) {
+  window.JST['title'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -213,10 +214,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('attributes', '%a{ :title => @title }').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['attributes'] = function(context) {
+  window.JST['attributes'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -236,10 +237,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('attributes', '%a{ :title => @title }').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['attributes'] = function(context) {
+  window.JST['attributes'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -260,10 +261,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('htmlE', '%p= @info }').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['htmlE'] = function(context) {
+  window.JST['htmlE'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -283,10 +284,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('htmlE', '%p= @info }').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['htmlE'] = function(context) {
+  window.JST['htmlE'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -307,10 +308,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('link', '%a{ :href => "/" }').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['link'] = function(context) {
+  window.JST['link'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
@@ -330,10 +331,10 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('link', '%a{ :href => "/" }').should eql <<-TEMPLATE
 (function() {
   var _ref;
-  if ((_ref = window.HAML) == null) {
-    window.HAML = {};
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
   }
-  window.HAML['link'] = function(context) {
+  window.JST['link'] = function(context) {
     var fn;
     fn = function(context) {
       var e, o;
