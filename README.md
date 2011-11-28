@@ -289,6 +289,15 @@ App.globalTemplateContext = (locals) -> _.extend({}, {
 }, locals)
 ```
 
+## Using on Heroku
+
+Using haml_coffee_assets on Heroku with Ruby on Rails 3.1 requires you to set
+
+    config.assets.initialize_on_precompile = false
+
+in your `config/environments/production.rb`. Read more about the potential issues at the
+[Asset Pipeline Guide](http://guides.rubyonrails.org/asset_pipeline.html#precompiling-assets).
+
 ## Acknowledgement
 
 * [Jeremy Ashkenas](http://twitter.com/#!/jashkenas) for CoffeeScript, that little language that compiles into
