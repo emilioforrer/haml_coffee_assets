@@ -14,6 +14,7 @@ module HamlCoffeeAssets
         :escapeHtml       => true,
         :escapeAttributes => true,
         :customHtmlEscape => 'HAML.escape',
+        :customCleanValue => 'HAML.cleanValue',
         :context          => 'HAML.context'
     }
 
@@ -34,6 +35,7 @@ module HamlCoffeeAssets
         config.escapeHtml       = options[:escapeHtml]
         config.escapeAttributes = options[:escapeAttributes]
         config.customHtmlEscape = options[:customHtmlEscape]
+        config.customCleanValue = options[:customCleanValue]
         config.context          = options[:context]
       end
     end

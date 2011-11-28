@@ -31,6 +31,11 @@ module HamlCoffeeAssets
     mattr_accessor :customHtmlEscape
     self.customHtmlEscape = 'window.HAML.escape'
 
+    # Custom global code clean value function
+    #
+    mattr_accessor :customCleanValue
+    self.customCleanValue = 'window.HAML.cleanValue'
+
     # Custom global context to merge
     #
     mattr_accessor :context
@@ -53,7 +58,7 @@ module HamlCoffeeAssets
       def compile(name, source)
         runtime.call('HamlCoffeeAssets.compile', name, source,
                      HamlCoffee.namespace, HamlCoffee.format, HamlCoffee.escapeHtml, HamlCoffee.escapeAttributes,
-                     HamlCoffee.customHtmlEscape, HamlCoffee.context)
+                     HamlCoffee.customHtmlEscape, HamlCoffee.customCleanValue, HamlCoffee.context)
       end
 
       private

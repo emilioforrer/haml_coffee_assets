@@ -214,7 +214,7 @@ config.hamlcoffee.escapeHtml = false
 By default your code block in your Haml Coffee template will be escaped through the `HAML.escape` function that is
 provided in the `hamlcoffee.js` script.
 
-You can set another escaping function in your `config/application.rb`:
+You can set a custom escaping function in your `config/application.rb`:
 
 ```ruby
 config.hamlcoffee.customHtmlEscape = 'App.myEscape'
@@ -230,6 +230,24 @@ App.myEscape = (text) ->
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
+```
+
+#### Custom clean value function
+
+All your evaluated CoffeeScript code will go through the clean value function. By default this simply cleans `undefined`
+and `null` values, so that they appear as empty string in your template.
+
+You can set a custom clean value function in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.customCleanValue = 'App.myCleanValue'
+```
+
+Your custom clean value function must take the value as parameter and returns the cleaned value.
+The following default implementation comes with `hamlcoffee.js`:
+
+```coffeescript
+App.myCleanValue = (value) -> if value is null or value is undefined then '' else value
 ```
 
 ### Global context

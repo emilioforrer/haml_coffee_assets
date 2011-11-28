@@ -18,6 +18,20 @@ window.HAML.escape || (window.HAML.escape = function(text) {
 });
 
 /**
+ * HAML Coffee clean value function
+ *
+ * @param text [String] the text to be cleaned
+ * @return [String] the cleaned text
+ */
+window.HAML.cleanValue || (window.HAML.cleanValue = function(text) {
+  if (text === null || text === void 0) {
+    return '';
+  } else {
+    return text;
+  }
+});
+
+/**
  * HAML Coffee extend function.
  *
  * This will reuse the extend function from either:

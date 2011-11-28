@@ -9,6 +9,7 @@ describe HamlCoffeeAssets::HamlCoffee do
     HamlCoffeeAssets::HamlCoffee.escapeHtml = true
     HamlCoffeeAssets::HamlCoffee.escapeAttributes = true
     HamlCoffeeAssets::HamlCoffee.customHtmlEscape = 'window.HAML.escape'
+    HamlCoffeeAssets::HamlCoffee.customCleanValue = 'window.HAML.cleanValue'
     HamlCoffeeAssets::HamlCoffee.context = ''
   end
 
@@ -24,9 +25,10 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['template_name'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
+      c = window.HAML.cleanValue;
       o.push(\"<h2></h2>\");
       return o.join(\"\\n\");
     };
@@ -48,9 +50,10 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['script'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
+      c = window.HAML.cleanValue;
       o.push("<script>");
       o.push("  var i = 1;");
       o.push("</script>");
@@ -73,9 +76,10 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['script'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
+      c = window.HAML.cleanValue;
       o.push("<script type='text/javascript'>");
       o.push("  var i = 1;");
       o.push("</script>");
@@ -98,9 +102,10 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['script'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
+      c = window.HAML.cleanValue;
       o.push("<script type='text/javascript'>");
       o.push("  //<![CDATA[");
       o.push("    var i = 1;");
@@ -126,9 +131,10 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['header'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
+      c = window.HAML.cleanValue;
       o.push(\"<h2></h2>\");
       return o.join(\"\\n\");
     };
@@ -149,9 +155,10 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.HAML['header'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
+      c = window.HAML.cleanValue;
       o.push(\"<h2></h2>\");
       return o.join(\"\\n\");
     };
@@ -173,10 +180,11 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['title'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
-      o.push(\"<h2>\" + (e(title)) + \"</h2>\");
+      c = window.HAML.cleanValue;
+      o.push(\"<h2>\" + (e(c(title))) + \"</h2>\");
       return o.join(\"\\n\");
     };
     return fn.call(context);
@@ -196,10 +204,11 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['title'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = SomeWhere.escape;
-      o.push(\"<h2>\" + (e(title)) + \"</h2>\");
+      c = window.HAML.cleanValue;
+      o.push(\"<h2>\" + (e(c(title))) + \"</h2>\");
       return o.join(\"\\n\");
     };
     return fn.call(context);
@@ -208,6 +217,56 @@ describe HamlCoffeeAssets::HamlCoffee do
         TEMPLATE
       end
     end
+
+    context 'clean value function configuration' do
+      it 'uses the default clean value function when no custom function is provided' do
+        subject.compile('title', '%h2= title').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['title'] = function(context) {
+    var fn;
+    fn = function(context) {
+      var c, e, o;
+      o = [];
+      e = window.HAML.escape;
+      c = window.HAML.cleanValue;
+      o.push(\"<h2>\" + (e(c(title))) + \"</h2>\");
+      return o.join(\"\\n\");
+    };
+    return fn.call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'uses a configured clean value function' do
+        subject.customCleanValue = 'SomeWhere.cleanValue'
+        subject.compile('title', '%h2= title').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['title'] = function(context) {
+    var fn;
+    fn = function(context) {
+      var c, e, o;
+      o = [];
+      e = window.HAML.escape;
+      c = SomeWhere.cleanValue;
+      o.push(\"<h2>\" + (e(c(title))) + \"</h2>\");
+      return o.join(\"\\n\");
+    };
+    return fn.call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+    end
+
 
     context 'Attribute escaping configuration' do
       it 'does escape the attributes by default' do
@@ -220,10 +279,11 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['attributes'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
-      o.push("<a title='" + (e(this.title)) + "'></a>");
+      c = window.HAML.cleanValue;
+      o.push("<a title='" + (e(c(this.title))) + "'></a>");
       return o.join(\"\\n\");
     };
     return fn.call(context);
@@ -243,10 +303,11 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['attributes'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
-      o.push("<a title='" + this.title + "'></a>");
+      c = window.HAML.cleanValue;
+      o.push("<a title='" + (c(this.title)) + "'></a>");
       return o.join(\"\\n\");
     };
     return fn.call(context);
@@ -258,7 +319,7 @@ describe HamlCoffeeAssets::HamlCoffee do
 
     context 'HTML escaping configuration' do
       it 'does escape the html by default' do
-        subject.compile('htmlE', '%p= @info }').should eql <<-TEMPLATE
+        subject.compile('htmlE', '%p= @info').should eql <<-TEMPLATE
 (function() {
   var _ref;
   if ((_ref = window.JST) == null) {
@@ -267,10 +328,11 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['htmlE'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
-      o.push("<p>" + (e(this.info)) + "}</p>");
+      c = window.HAML.cleanValue;
+      o.push("<p>" + (e(c(this.info))) + "</p>");
       return o.join(\"\\n\");
     };
     return fn.call(context);
@@ -281,7 +343,7 @@ describe HamlCoffeeAssets::HamlCoffee do
 
       it 'does not escape the html when set to false' do
         subject.escapeHtml = false
-        subject.compile('htmlE', '%p= @info }').should eql <<-TEMPLATE
+        subject.compile('htmlE', '%p= @info').should eql <<-TEMPLATE
 (function() {
   var _ref;
   if ((_ref = window.JST) == null) {
@@ -290,10 +352,11 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['htmlE'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
-      o.push("<p>" + this.info + "}</p>");
+      c = window.HAML.cleanValue;
+      o.push("<p>" + (c(this.info)) + "</p>");
       return o.join(\"\\n\");
     };
     return fn.call(context);
@@ -314,9 +377,10 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['link'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
+      c = window.HAML.cleanValue;
       o.push(\"<a href='/'></a>\");
       return o.join(\"\\n\");
     };
@@ -337,9 +401,10 @@ describe HamlCoffeeAssets::HamlCoffee do
   window.JST['link'] = function(context) {
     var fn;
     fn = function(context) {
-      var e, o;
+      var c, e, o;
       o = [];
       e = window.HAML.escape;
+      c = window.HAML.cleanValue;
       o.push(\"<a href='/'></a>\");
       return o.join(\"\\n\");
     };
