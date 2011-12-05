@@ -160,14 +160,14 @@ A template `app/assets/templates/header.hamlc` with the given content:
 
 ```haml
 %header
-  %h2= title
+  %h2= @title
 ```
 
 will be accessible in your browser as `JST['header']`. You can now render the precompiled template and pass the data
 to be rendered:
 
 ```javascript
-JST['header'].render({ title: 'Hello Haml Coffee' })
+JST['header']({ title: 'Hello Haml Coffee' })
 ```
 
 If you prefer another namespace, you can set it in your `config/application.rb`:
