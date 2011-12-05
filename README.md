@@ -307,9 +307,9 @@ App.globalTemplateContext = (locals) -> _.extend({}, {
 }, locals)
 ```
 
-## Using on Heroku
+## Prepare your assets for production
 
-Using haml_coffee_assets on Heroku with Ruby on Rails 3.1 requires you to set
+Using haml_coffee_assets requires you to set
 
     config.assets.initialize_on_precompile = true
 
