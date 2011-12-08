@@ -295,7 +295,7 @@ config.hamlcoffee.preserve = 'pre,textarea,abbr'
 This list is also taken into account for the `HAML.preserveAndFind` helper function that is provided and its shortcut
 notation `~`.
 
-### Auto-closing tag list
+#### Auto-closing tag list
 
 Tags: `meta`, `img`, `link`, `br`, `hr`, `input`, `area`, `param`, `col`, `base`
 
