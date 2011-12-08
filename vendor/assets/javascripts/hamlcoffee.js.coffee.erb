@@ -1,0 +1,88 @@
+# HAML Coffee namespace
+#
+window.HAML ||= {}
+
+# HAML Coffee html escape function
+#
+# @param text [String] the text to escape
+# @return [String] the escaped text
+#
+window.HAML.escape ||= (text) ->
+  ("" + text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+
+# HAML Coffee clean value function
+#
+# @param text [String] the text to be cleaned
+# @return [String] the cleaned text
+#
+window.HAML.cleanValue ||= (text) ->
+  if text is null or text is undefined then '' else text
+
+# HAML Coffee extend function.
+#
+# This will reuse the extend function from either:
+#
+# - jQuery
+# - Underscore.js
+# - Prototype
+# - MooTools
+# - Zepto.js
+#
+# You can assign a custom extend function if your framework
+# is not supported out of the box.
+#
+window.HAML.extend ||= (globals, locals) ->
+  if jQuery?.extend
+    jQuery.extend {}, globals, locals
+
+  else if _?.extend
+    _.extend {}, globals, locals
+
+  else if Zepto?.extend
+    Zepto.extend(Zepto.extend({}, globals), locals)
+
+  else if Object.extend
+    Object.extend(Object.extend({}, globals), locals)
+
+  else if Object.append
+    Object.append(Object.append({}, globals), locals)
+
+  else
+    locals
+
+# HAML Coffee global template context.
+#
+# @return [Object] the global template context
+#
+window.HAML.globals ||= -> {}
+
+# Get the HAML template context. This merges the local
+# and the global template context into a new context.
+#
+# @param locals [Object] the local template context
+# @return [Object] the merged context
+#
+window.HAML.context ||= (locals) ->
+  HAML.extend(HAML.globals(), locals)
+
+# Preserve newlines in the text
+#
+# @param text [String] the text to preserve
+# @return [String] the preserved text
+#
+window.HAML.preserve ||= (text) ->
+  text.replace /\\n/g, '&#x000A;'
+
+# Find and preserve newlines in the preserving tags
+#
+# @param text [String] the text to preserve
+# @return [String] the preserved text
+#
+window.HAML.findAndPreserve ||= ->
+  tags = '<%= HamlCoffeeAssets::HamlCoffee.preserveTags %>'.split(',').join('|')
+  text.replace ///<(#{ tags })>([^]*?)<\/\1>///g, (str, tag, content) ->
+    "<#{ tag }>#{ <%= HamlCoffeeAssets::HamlCoffee.customPreserve %>(content) }</#{ tag }>"

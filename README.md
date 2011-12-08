@@ -209,45 +209,13 @@ You can toggle HTML escaping in your `config/application.rb`:
 config.hamlcoffee.escapeHtml = false
 ```
 
-#### Custom escape function
+### Uglify generated HTML
 
-By default your code block in your Haml Coffee template will be escaped through the `HAML.escape` function that is
-provided in the `hamlcoffee.js` script.
-
-You can set a custom escaping function in your `config/application.rb`:
+By default all generated HTML is indented to have a nice reading experience. If you like to ignore indention to have a
+better rendering performance, you can enable the uglify option in your `config/application.rb`:
 
 ```ruby
-config.hamlcoffee.customHtmlEscape = 'App.myEscape'
-```
-
-Your custom escape function must take the unescaped text as parameter and returns the escaped text.
-The following default implementation comes with `hamlcoffee.js`:
-
-```coffeescript
-App.myEscape = (text) ->
-  ('' + text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-```
-
-#### Custom clean value function
-
-All your evaluated CoffeeScript code will go through the clean value function. By default this simply cleans `undefined`
-and `null` values, so that they appear as empty string in your template.
-
-You can set a custom clean value function in your `config/application.rb`:
-
-```ruby
-config.hamlcoffee.customCleanValue = 'App.myCleanValue'
-```
-
-Your custom clean value function must take the value as parameter and returns the cleaned value.
-The following default implementation comes with `hamlcoffee.js`:
-
-```coffeescript
-App.myCleanValue = (value) -> if value is null or value is undefined then '' else value
+config.hamlcoffee.uglify = true
 ```
 
 ### Global context
@@ -307,6 +275,126 @@ App.globalTemplateContext = (locals) -> _.extend({}, {
 }, locals)
 ```
 
+### Customize the tag lists
+
+Haml Coffee contains two list of HTML tags that you can customize. In general you're fine with the defaults, but if
+you need to extend the list, you can instruct Haml Coffee Assets to do so.
+
+#### Whitespace sensitive tag list
+
+* Tags: `textarea`, `pre`
+
+Some HTML tags are whitespace sensitive, which means that whitespace used for proper indention results in a wrong
+display of the tag. In order to avoid this, the content is preserved by converting the nerwlines to a HTML
+entity. You can set your own list of whitespace sensitive tags in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.preserve = 'pre,textarea,abbr'
+```
+
+This list is also taken into account for the `HAML.preserveAndFind` helper function that is provided and its shortcut
+notation `~`.
+
+### Auto-closing tag list
+
+Tags: `meta`, `img`, `link`, `br`, `hr`, `input`, `area`, `param`, `col`, `base`
+
+The auto-closing tag list will contains the tags that will be self-closes if they have no content. You can set the
+list of self closing tags in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.autoclose = 'meta,img,link,br,hr,input,area,param,col,base'
+```
+
+### Custom helper functions
+
+Haml Coffee Assets provides a set of custom functions for Haml Coffee, so that the templates doesn't have to be self
+contained and can make use of the global functions. In general you don't have to customize them further, but if you need
+to, you can.
+
+#### Custom escape function
+
+By default your code block in your Haml Coffee template will be escaped through the `HAML.escape` function that is
+provided in the `hamlcoffee.js` script.
+
+You can set a custom escaping function in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.customHtmlEscape = 'App.myEscape'
+```
+
+Your custom escape function must take the unescaped text as parameter and returns the escaped text.
+The following default implementation comes with `hamlcoffee.js`:
+
+```coffeescript
+App.myEscape = (text) ->
+  ('' + text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/'/g, '&apos;')
+    .replace(/"/g, '&quot;')
+```
+
+#### Custom clean value function
+
+All your evaluated CoffeeScript code will go through the clean value function. By default this simply cleans `undefined`
+and `null` values, so that they appear as empty string in your template.
+
+You can set a custom clean value function in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.customCleanValue = 'App.myCleanValue'
+```
+
+Your custom clean value function must take the value as parameter and returns the cleaned value.
+The following default implementation comes with `hamlcoffee.js`:
+
+```coffeescript
+App.myCleanValue = (value) -> if value is null or value is undefined then '' else value
+```
+
+#### Custom preserve function
+
+All the content from the HTML tags that are contained in the whitespace sensitive tag list are passed through the
+preserve function.
+
+You can set a custom preserve function in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.customPreserve = 'App.myPreserve'
+```
+
+Your custom preserve function must take the text to be preserved as parameter and returns the preserved content.
+The following default implementation comes with `hamlcoffee.js`:
+
+```coffeescript
+App.myPreserve = (value) -> text.replace /\\n/g, '&#x000A;'
+```
+
+#### Custom find and preserve function
+
+The findAndPreserve function is a specialized preserve function, that you can pass a text containing HTML, and only the
+newlines in between a whitespace sensitive tag are preserved. This function uses the previous preserve function to do
+the final preservation.
+
+You can set a custom find and preserve function in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.customFindAndPreserve = 'App.myFindAndPreserve'
+```
+
+Your custom find and preserve function must take the text to search for whitespace sensitive tags as parameter and
+returns the preserved content.
+
+The following default implementation comes with `hamlcoffee.js`:
+
+```coffeescript
+App.myPreserve = (value) ->
+  text.replace /<(textarea|pre)>([^]*?)<\/\1>/g, (str, tag, content) ->
+    "<#{ tag }>#{ HAML.preserve(content) }</#{ tag }>"
+```
+
 ## Prepare your assets for production
 
 Using haml_coffee_assets requires you to set
@@ -315,6 +403,22 @@ Using haml_coffee_assets requires you to set
 
 in your `config/environments/production.rb`. Read more about the it at the
 [Asset Pipeline Guide](http://guides.rubyonrails.org/asset_pipeline.html#precompiling-assets).
+
+## Development
+
+* Issues and feature request hosted at [GitHub Issues](https://github.com/netzpirat/haml_coffee_assets/issues).
+* Documentation hosted at [RubyDoc](http://rubydoc.info/github/netzpirat/haml_coffee_assets/master/frames).
+* Source hosted at [GitHub](https://github.com/netzpirat/haml_coffee_assets).
+
+Pull requests are very welcome! Please try to follow these simple rules if applicable:
+
+* Please create a topic branch for every separate change you make.
+* Make sure your patches are well tested. All specs must pass.
+* Update the [Yard](http://yardoc.org/) documentation.
+* Update the README.
+* Please **do not change** the version number.
+
+For questions please join `#haml` on irc.freenode.net
 
 ## Acknowledgement
 

@@ -9,13 +9,18 @@ module HamlCoffeeAssets
     config.hamlcoffee = ActiveSupport::OrderedOptions.new
 
     DEFAULT_CONFIG = {
-        :format           => 'html5',
-        :namespace        => 'window.JST',
-        :escapeHtml       => true,
-        :escapeAttributes => true,
-        :customHtmlEscape => 'HAML.escape',
-        :customCleanValue => 'HAML.cleanValue',
-        :context          => 'HAML.context'
+        :format                => 'html5',
+        :namespace             => 'window.JST',
+        :uglify                => false,
+        :escapeHtml            => true,
+        :escapeAttributes      => true,
+        :customHtmlEscape      => 'HAML.escape',
+        :customCleanValue      => 'HAML.cleanValue',
+        :customPreserve        => 'HAML.escape',
+        :customFindAndPreserve => 'HAML.findAndPreserve',
+        :preserve              => 'textarea,pre',
+        :autoclose             => 'meta,img,link,br,hr,input,area,param,col,base',
+        :context               => 'HAML.context'
     }
 
     # Initialize Haml Coffee Assets after Sprockets
@@ -30,13 +35,18 @@ module HamlCoffeeAssets
       options = DEFAULT_CONFIG.merge(app.config.hamlcoffee)
 
       HamlCoffee.configure do |config|
-        config.namespace        = options[:namespace]
-        config.format           = options[:format]
-        config.escapeHtml       = options[:escapeHtml]
-        config.escapeAttributes = options[:escapeAttributes]
-        config.customHtmlEscape = options[:customHtmlEscape]
-        config.customCleanValue = options[:customCleanValue]
-        config.context          = options[:context]
+        config.namespace             = options[:namespace]
+        config.format                = options[:format]
+        config.uglify                = options[:uglify]
+        config.escapeHtml            = options[:escapeHtml]
+        config.escapeAttributes      = options[:escapeAttributes]
+        config.customHtmlEscape      = options[:customHtmlEscape]
+        config.customCleanValue      = options[:customCleanValue]
+        config.customPreserve        = options[:customPreserve]
+        config.customFindAndPreserve = options[:customFindAndPreserve]
+        config.preserveTags          = options[:preserve]
+        config.selfCloseTags         = options[:autoclose]
+        config.context               = options[:context]
       end
     end
 

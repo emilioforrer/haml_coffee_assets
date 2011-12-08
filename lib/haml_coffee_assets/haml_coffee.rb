@@ -16,6 +16,11 @@ module HamlCoffeeAssets
     mattr_accessor :format
     self.format = 'html5'
 
+    # Uglify HTML output by skip indention
+    #
+    mattr_accessor :uglify
+    self.uglify = false
+
     # Escape template code output
     #
     mattr_accessor :escapeHtml
@@ -35,6 +40,26 @@ module HamlCoffeeAssets
     #
     mattr_accessor :customCleanValue
     self.customCleanValue = 'window.HAML.cleanValue'
+
+    # Custom preserve function
+    #
+    mattr_accessor :customPreserve
+    self.customPreserve = 'window.HAML.preserve'
+
+    # Custom find and preserve function
+    #
+    mattr_accessor :customFindAndPreserve
+    self.customFindAndPreserve = 'window.HAML.findAndPreserve'
+
+    # List of tags to preserve
+    #
+    mattr_accessor :preserveTags
+    self.preserveTags = 'textarea,pre'
+
+    # List of self closing tags
+    #
+    mattr_accessor :selfCloseTags
+    self.selfCloseTags = 'meta,img,link,br,hr,input,area,param,col,base'
 
     # Custom global context to merge
     #
@@ -56,9 +81,12 @@ module HamlCoffeeAssets
       # @return [String] the compiled template in JavaScript
       #
       def compile(name, source)
-        runtime.call('HamlCoffeeAssets.compile', name, source,
-                     HamlCoffee.namespace, HamlCoffee.format, HamlCoffee.escapeHtml, HamlCoffee.escapeAttributes,
-                     HamlCoffee.customHtmlEscape, HamlCoffee.customCleanValue, HamlCoffee.context)
+        runtime.call('HamlCoffeeAssets.compile', name, source, HamlCoffee.namespace, HamlCoffee.format, HamlCoffee.uglify,
+                     HamlCoffee.escapeHtml, HamlCoffee.escapeAttributes,
+                     HamlCoffee.customHtmlEscape, HamlCoffee.customCleanValue,
+                     HamlCoffee.customPreserve, HamlCoffee.customFindAndPreserve,
+                     HamlCoffee.preserveTags, HamlCoffee.selfCloseTags,
+                     HamlCoffee.context)
       end
 
       private
