@@ -285,7 +285,7 @@ you need to extend the list, you can instruct Haml Coffee Assets to do so.
 * Tags: `textarea`, `pre`
 
 Some HTML tags are whitespace sensitive, which means that whitespace used for proper indention results in a wrong
-display of the tag. In order to avoid this, the content is preserved by converting the nerwlines to a HTML
+display of the tag. In order to avoid this, the content is preserved by converting the newlines to a HTML
 entity. You can set your own list of whitespace sensitive tags in your `config/application.rb`:
 
 ```ruby
