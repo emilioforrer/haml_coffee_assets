@@ -25,7 +25,7 @@ module HamlCoffeeAssets
 
     # Initialize Haml Coffee Assets after Sprockets
     #
-    initializer 'sprockets.hamlcoffeeassets', :after => 'sprockets.environment' do |app|
+    initializer 'sprockets.hamlcoffeeassets', :group => :all, :after => 'sprockets.environment' do |app|
       next unless app.assets
 
       # Register tilt template
