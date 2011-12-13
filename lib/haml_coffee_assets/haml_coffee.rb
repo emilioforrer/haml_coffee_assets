@@ -31,6 +31,11 @@ module HamlCoffeeAssets
     mattr_accessor :escapeAttributes
     self.escapeAttributes = true
 
+    # Clean inline CoffeeScript values
+    #
+    mattr_accessor :cleanValue
+    self.cleanValue = true
+
     # Custom global HTML escaping function
     #
     mattr_accessor :customHtmlEscape
@@ -82,7 +87,7 @@ module HamlCoffeeAssets
       #
       def compile(name, source)
         runtime.call('HamlCoffeeAssets.compile', name, source, HamlCoffee.namespace, HamlCoffee.format, HamlCoffee.uglify,
-                     HamlCoffee.escapeHtml, HamlCoffee.escapeAttributes,
+                     HamlCoffee.escapeHtml, HamlCoffee.escapeAttributes, HamlCoffee.cleanValue,
                      HamlCoffee.customHtmlEscape, HamlCoffee.customCleanValue,
                      HamlCoffee.customPreserve, HamlCoffee.customFindAndPreserve,
                      HamlCoffee.preserveTags, HamlCoffee.selfCloseTags,

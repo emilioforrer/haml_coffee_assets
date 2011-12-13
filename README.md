@@ -209,6 +209,15 @@ You can toggle HTML escaping in your `config/application.rb`:
 config.hamlcoffee.escapeHtml = false
 ```
 
+#### Clean values
+
+Every value that is returned from inline CoffeeScript will be cleaned by default. The included implementation converts
+`null` and `undefined` to an empty string. You can disable value cleaning in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.cleanValue = false
+```
+
 ### Uglify generated HTML
 
 By default all generated HTML is indented to have a nice reading experience. If you like to ignore indention to have a

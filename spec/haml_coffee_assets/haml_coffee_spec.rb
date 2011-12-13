@@ -11,6 +11,7 @@ describe HamlCoffeeAssets::HamlCoffee do
     HamlCoffeeAssets::HamlCoffee.selfCloseTags = 'meta,img,link,br,hr,input,area,param,col,base'
     HamlCoffeeAssets::HamlCoffee.escapeHtml = true
     HamlCoffeeAssets::HamlCoffee.escapeAttributes = true
+    HamlCoffeeAssets::HamlCoffee.cleanValue = true
     HamlCoffeeAssets::HamlCoffee.customHtmlEscape = 'window.HAML.escape'
     HamlCoffeeAssets::HamlCoffee.customCleanValue = 'window.HAML.cleanValue'
     HamlCoffeeAssets::HamlCoffee.customPreserve = 'window.HAML.preserve'
@@ -28,18 +29,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['template_name'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push(\"<h2></h2>\");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<h2></h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -55,20 +50,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['script'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<script>");
-      o.push("  var i = 1;");
-      o.push("</script>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<script>\\n  var i = 1;\\n</script>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -83,20 +70,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['script'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<script type='text/javascript'>");
-      o.push("  var i = 1;");
-      o.push("</script>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<script type='text/javascript'>\\n  var i = 1;\\n</script>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -111,22 +90,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['script'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<script type='text/javascript'>");
-      o.push("  //<![CDATA[");
-      o.push("    var i = 1;");
-      o.push("  //]]>");
-      o.push("</script>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<script type='text/javascript'>\\n  //<![CDATA[\\n    var i = 1;\\n  //]]>\\n</script>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -142,18 +111,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['header'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push(\"<h2></h2>\");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<h2></h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -168,18 +131,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.HAML = {};
   }
   window.HAML['header'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push(\"<h2></h2>\");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<h2></h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -195,18 +152,14 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['title'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push(\"<h2>\" + (e(c(title))) + \"</h2>\");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $c, $e, $o;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      $o = [];
+      $o.push("<h2>" + ($e($c(title))) + "</h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -221,18 +174,14 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['title'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = SomeWhere.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push(\"<h2>\" + (e(c(title))) + \"</h2>\");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $c, $e, $o;
+      $e = SomeWhere.escape;
+      $c = window.HAML.cleanValue;
+      $o = [];
+      $o.push("<h2>" + ($e($c(title))) + "</h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -248,18 +197,14 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['title'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push(\"<h2>\" + (e(c(title))) + \"</h2>\");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $c, $e, $o;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      $o = [];
+      $o.push("<h2>" + ($e($c(title))) + "</h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -274,24 +219,19 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['title'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = SomeWhere.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push(\"<h2>\" + (e(c(title))) + \"</h2>\");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $c, $e, $o;
+      $e = window.HAML.escape;
+      $c = SomeWhere.cleanValue;
+      $o = [];
+      $o.push("<h2>" + ($e($c(title))) + "</h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
       end
     end
-
 
     context 'Attribute escaping configuration' do
       it 'does escape the attributes by default' do
@@ -302,18 +242,14 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['attributes'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<a title='" + (e(c(this.title))) + "'></a>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $c, $e, $o;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      $o = [];
+      $o.push("<a title='" + ($e($c(this.title))) + "'></a>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -328,18 +264,57 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['attributes'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<a title='" + (c(this.title)) + "'></a>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $c, $o;
+      $c = window.HAML.cleanValue;
+      $o = [];
+      $o.push("<a title='" + ($c(this.title)) + "'></a>");
+      return $o.join("\\n");
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+    end
+
+    context 'Clean value configuration' do
+      it 'does clean the values by default' do
+        subject.compile('values', '%h1= @title').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['values'] = function(context) {
+    return (function() {
+      var $c, $e, $o;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      $o = [];
+      $o.push("<h1>" + ($e($c(this.title))) + "</h1>");
+      return $o.join("\\n");
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'does not clean the values when set to false' do
+        subject.cleanValue = false
+        subject.compile('values', '%h1= @title').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['values'] = function(context) {
+    return (function() {
+      var $e, $o;
+      $e = window.HAML.escape;
+      $o = [];
+      $o.push("<h1>" + ($e(this.title)) + "</h1>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -355,18 +330,14 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['htmlE'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<p>" + (e(c(this.info))) + "</p>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $c, $e, $o;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      $o = [];
+      $o.push("<p>" + ($e($c(this.info))) + "</p>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -381,18 +352,13 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['htmlE'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<p>" + (c(this.info)) + "</p>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $c, $o;
+      $c = window.HAML.cleanValue;
+      $o = [];
+      $o.push("<p>" + ($c(this.info)) + "</p>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -408,18 +374,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['link'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push(\"<a href='/'></a>\");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<a href='/'></a>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -434,18 +394,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['link'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push(\"<a href='/'></a>\");
-      return o.join(\"\\n\");
-    };
-    return fn.call(SomeWhere.context(context));
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<a href='/'></a>");
+      return $o.join("\\n");
+    }).call(SomeWhere.context(context));
   };
 }).call(this);
         TEMPLATE
@@ -461,24 +415,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['ugly'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<html>");
-      o.push("  <body>");
-      o.push("    <form>");
-      o.push("      <input>");
-      o.push("    </form>");
-      o.push("  </body>");
-      o.push("</html>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<html>\\n  <body>\\n    <form>\\n      <input>\\n    </form>\\n  </body>\\n</html>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -493,24 +435,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['ugly'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<html>");
-      o.push("<body>");
-      o.push("<form>");
-      o.push("<input>");
-      o.push("</form>");
-      o.push("</body>");
-      o.push("</html>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<html>\\n<body>\\n<form>\\n<input>\\n</form>\\n</body>\\n</html>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -526,20 +456,15 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['ws'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<textarea>" + (p(e(c('Test\\nMe')))) + "</textarea>");
-      o.push("<pre>" + (p(e(c('Test\\nMe')))) + "</pre>");
-      o.push("<p>" + (e(c('Test\\nMe'))) + "</p>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $c, $e, $o, $p;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      $p = window.HAML.preserve;
+      $o = [];
+      $o.push("<textarea>" + ($p($e($c('Test\\nMe')))) + "</textarea>\\n<pre>" + ($p($e($c('Test\\nMe')))) + "</pre>\\n<p>" + ($e($c('Test\\nMe'))) + "</p>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -554,20 +479,15 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['ws'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<textarea>" + (p(e(c('Test\\nMe')))) + "</textarea>");
-      o.push("<pre>" + (e(c('Test\\nMe'))) + "</pre>");
-      o.push("<p>" + (p(e(c('Test\\nMe')))) + "</p>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $c, $e, $o, $p;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      $p = window.HAML.preserve;
+      $o = [];
+      $o.push("<textarea>" + ($p($e($c('Test\\nMe')))) + "</textarea>\\n<pre>" + ($e($c('Test\\nMe'))) + "</pre>\\n<p>" + ($p($e($c('Test\\nMe')))) + "</p>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -584,20 +504,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['close'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<img />");
-      o.push("<br />");
-      o.push("<p></p>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<img />\\n<br />\\n<p></p>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -613,20 +525,12 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['close'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<img></img>");
-      o.push("<br />");
-      o.push("<p />");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<img></img>\\n<br />\\n<p />");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -642,18 +546,14 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['pres'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<h2>" + (fp(title)) + "</h2>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $fp, $o, $p;
+      $p = window.HAML.preserve;
+      $fp = window.HAML.findAndPreserve;
+      $o = [];
+      $o.push("<h2>" + ($fp(title)) + "</h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -668,18 +568,14 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['pres'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = SomeWhere.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<h2>" + (fp(title)) + "</h2>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $fp, $o, $p;
+      $p = SomeWhere.preserve;
+      $fp = window.HAML.findAndPreserve;
+      $o = [];
+      $o.push("<h2>" + ($fp(title)) + "</h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -695,18 +591,14 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['find'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = window.HAML.findAndPreserve;
-      o.push("<h2>" + (fp(title)) + "</h2>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $fp, $o, $p;
+      $p = window.HAML.preserve;
+      $fp = window.HAML.findAndPreserve;
+      $o = [];
+      $o.push("<h2>" + ($fp(title)) + "</h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE
@@ -721,18 +613,14 @@ describe HamlCoffeeAssets::HamlCoffee do
     window.JST = {};
   }
   window.JST['find'] = function(context) {
-    var fn;
-    fn = function(context) {
-      var c, e, findAndPreserve, fp, o, p;
-      o = [];
-      e = window.HAML.escape;
-      c = window.HAML.cleanValue;
-      p = window.HAML.preserve;
-      fp = findAndPreserve = SomeWhere.findAndPreserve;
-      o.push("<h2>" + (fp(title)) + "</h2>");
-      return o.join(\"\\n\");
-    };
-    return fn.call(context);
+    return (function() {
+      var $fp, $o, $p;
+      $p = window.HAML.preserve;
+      $fp = SomeWhere.findAndPreserve;
+      $o = [];
+      $o.push("<h2>" + ($fp(title)) + "</h2>");
+      return $o.join("\\n");
+    }).call(context);
   };
 }).call(this);
         TEMPLATE

@@ -14,6 +14,7 @@ module HamlCoffeeAssets
         :uglify                => false,
         :escapeHtml            => true,
         :escapeAttributes      => true,
+        :cleanValue            => true,
         :customHtmlEscape      => 'HAML.escape',
         :customCleanValue      => 'HAML.cleanValue',
         :customPreserve        => 'HAML.escape',
@@ -40,6 +41,7 @@ module HamlCoffeeAssets
         config.uglify                = options[:uglify]
         config.escapeHtml            = options[:escapeHtml]
         config.escapeAttributes      = options[:escapeAttributes]
+        config.cleanValue            = options[:cleanValue]
         config.customHtmlEscape      = options[:customHtmlEscape]
         config.customCleanValue      = options[:customCleanValue]
         config.customPreserve        = options[:customPreserve]
