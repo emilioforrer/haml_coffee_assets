@@ -627,5 +627,39 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
     end
 
+    describe 'the template creation function' do
+      it 'returns the JavaScript template when true' do
+        subject.compile('func', '%p', true).should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['func'] = function(context) {
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<p></p>");
+      return $o.join("\\n");
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'returns only the template function when false' do
+        template = <<-TEMPLATE
+(function(context) {
+  return (function() {
+    var $o;
+    $o = [];
+    $o.push("<p></p>");
+    return $o.join("\\n");
+  }).call(context);
+});
+        TEMPLATE
+        subject.compile('func', '%p', false).should eql template.gsub(/\n$/, '')
+      end
+    end
   end
 end

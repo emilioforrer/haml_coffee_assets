@@ -126,12 +126,23 @@ your `app/assets/javascripts/application.js.coffee`:
 ```coffeescript
 #= require_tree ../templates
 ```
+Now you can start to add your Haml Coffee templates to your template directory.
 
-Now you can start to add your Haml Coffee templates to your template directory. Make sure all your templates have a
-`.hamlc` extension to be recognized by Haml Coffee Assets.
+### Sprocket JST processor template generation
 
-**Note:** Haml Coffee already generates a JavaScript Template, so there is not need to pass it to the `JST` Sprocket
-processor by using `.jst.hamlc` as extension, and if you do, the Haml Coffee templates will not work.
+* Extension: `.jst.hamlc`
+
+When you give your templates the extension `.jst.hamlc`, Haml Coffee Assets will only generate the template function,
+which then in turn will be further processed by the
+[Sprocket JST processor](https://github.com/sstephenson/sprockets/blob/master/lib/sprockets/jst_processor.rb).
+This is the Rails way of asset processing and the only downside is that namespace definition is more cumbersome.
+
+### Haml Coffee template generation
+
+* Extension: `.hamlc`
+
+If you omit the `.jst` and give your templates only a `.hamlc` extension, then Haml Coffee Assets will handle the
+JavaScript template generation. With this approach you can easily define your own namespace with a simple configuration.
 
 ## Configuration
 
@@ -175,6 +186,24 @@ If you prefer another namespace, you can set it in your `config/application.rb`:
 ```ruby
 config.hamlcoffee.namespace = 'window.HAML'
 ```
+
+You can even set a deep nested namespace like `window.templates.HAML` and Haml Coffee will handle creation all the way
+down.
+
+You can't use this configuration if you give your templates a `.jst.hamlc` extension, because the Sprockets JST
+processor handles the template generation. In this case you have to subclass the JST processor:
+
+```ruby
+class MyJstProcessor < Sprockets::JstProcessor
+  def prepare
+    @namespace = 'MyApp.Tpl'
+  end
+end
+
+Foo::Application.assets.register_engine '.jst', MyJstProcessor
+```
+
+And you must make sure `MyApp` exists before any template is loaded.
 
 #### Template name
 

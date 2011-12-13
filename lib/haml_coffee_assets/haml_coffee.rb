@@ -83,10 +83,11 @@ module HamlCoffeeAssets
       #
       # @param [String] name the template name
       # @param [String] source the template source code
+      # @param [Boolean] jst if a JST template should be generated
       # @return [String] the compiled template in JavaScript
       #
-      def compile(name, source)
-        runtime.call('HamlCoffeeAssets.compile', name, source, HamlCoffee.namespace, HamlCoffee.format, HamlCoffee.uglify,
+      def compile(name, source, jst = true)
+        runtime.call('HamlCoffeeAssets.compile', name, source, jst, HamlCoffee.namespace, HamlCoffee.format, HamlCoffee.uglify,
                      HamlCoffee.escapeHtml, HamlCoffee.escapeAttributes, HamlCoffee.cleanValue,
                      HamlCoffee.customHtmlEscape, HamlCoffee.customCleanValue,
                      HamlCoffee.customPreserve, HamlCoffee.customFindAndPreserve,
