@@ -395,15 +395,6 @@ App.myPreserve = (value) ->
     "<#{ tag }>#{ HAML.preserve(content) }</#{ tag }>"
 ```
 
-## Prepare your assets for production
-
-Using haml_coffee_assets requires you to set
-
-    config.assets.initialize_on_precompile = true
-
-in your `config/environments/production.rb`. Read more about the it at the
-[Asset Pipeline Guide](http://guides.rubyonrails.org/asset_pipeline.html#precompiling-assets).
-
 ## Development
 
 * Issues and feature request hosted at [GitHub Issues](https://github.com/netzpirat/haml_coffee_assets/issues).
@@ -419,6 +410,10 @@ Pull requests are very welcome! Please try to follow these simple rules if appli
 * Please **do not change** the version number.
 
 For questions please join `#haml` on irc.freenode.net
+
+## Contributors
+
+* [Arun Sivashankaran](https://github.com/axs89)
 
 ## Acknowledgement
 
