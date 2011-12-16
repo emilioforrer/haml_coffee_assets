@@ -21,6 +21,11 @@ module HamlCoffeeAssets
     mattr_accessor :uglify
     self.uglify = false
 
+    # Ignore path when generate the JST
+    #
+    mattr_accessor :basename
+    self.basename = false
+
     # Escape template code output
     #
     mattr_accessor :escapeHtml
@@ -87,7 +92,7 @@ module HamlCoffeeAssets
       # @return [String] the compiled template in JavaScript
       #
       def compile(name, source, jst = true)
-        runtime.call('HamlCoffeeAssets.compile', name, source, jst, HamlCoffee.namespace, HamlCoffee.format, HamlCoffee.uglify,
+        runtime.call('HamlCoffeeAssets.compile', name, source, jst, HamlCoffee.namespace, HamlCoffee.format, HamlCoffee.uglify, HamlCoffee.basename,
                      HamlCoffee.escapeHtml, HamlCoffee.escapeAttributes, HamlCoffee.cleanValue,
                      HamlCoffee.customHtmlEscape, HamlCoffee.customCleanValue,
                      HamlCoffee.customPreserve, HamlCoffee.customFindAndPreserve,

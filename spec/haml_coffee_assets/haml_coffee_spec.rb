@@ -7,6 +7,7 @@ describe HamlCoffeeAssets::HamlCoffee do
     HamlCoffeeAssets::HamlCoffee.namespace = 'window.JST'
     HamlCoffeeAssets::HamlCoffee.format = 'html5'
     HamlCoffeeAssets::HamlCoffee.uglify = false
+    HamlCoffeeAssets::HamlCoffee.basename = false
     HamlCoffeeAssets::HamlCoffee.preserveTags = 'textarea,pre'
     HamlCoffeeAssets::HamlCoffee.selfCloseTags = 'meta,img,link,br,hr,input,area,param,col,base'
     HamlCoffeeAssets::HamlCoffee.escapeHtml = true
@@ -439,6 +440,47 @@ describe HamlCoffeeAssets::HamlCoffee do
       var $o;
       $o = [];
       $o.push("<html>\\n<body>\\n<form>\\n<input>\\n</form>\\n</body>\\n</html>");
+      return $o.join("\\n");
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+    end
+
+    context 'basename configuration' do
+      it 'does not strip the path by default' do
+        subject.compile('path/to/file', "%p Basename").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['path/to/file'] = function(context) {
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<p>Basename</p>");
+      return $o.join("\\n");
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'does strip the path' do
+        subject.basename = true
+        subject.compile('path/to/file', "%p Basename").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['file'] = function(context) {
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<p>Basename</p>");
       return $o.join("\\n");
     }).call(context);
   };

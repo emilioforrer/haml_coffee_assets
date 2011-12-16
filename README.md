@@ -163,11 +163,8 @@ config.hamlcoffee.format = 'xhtml'
 
 ### Template namespace
 
-By default all Haml Coffee templates are registered under the `JST` namespace.
-
-**Example:**
-
-A template `app/assets/templates/header.hamlc` with the given content:
+By default all Haml Coffee templates are registered under the `JST` namespace. A template
+`app/assets/templates/header.hamlc` with the given content:
 
 ```haml
 %header
@@ -208,7 +205,7 @@ And you must make sure `MyApp` exists before any template is loaded.
 #### Template name
 
 The name under which the template can be addressed in the namespace depends not only from the filename, but also on
-the directory name.
+the directory name by default.
 
 The following examples assumes a configured namespace `window.JST` and the asset template directory
 `app/assets/templates`:
@@ -216,6 +213,25 @@ The following examples assumes a configured namespace `window.JST` and the asset
 * `app/assets/templates/login.hamlc` will become `JST['login']`
 * `app/assets/templates/users/new.hamlc` will become `JST['users/new']`
 * `app/assets/templates/shared/form/address.hamlc` will become `JST['shared/form/address']`
+
+### Basename
+
+If you don't want to have your directory names under which your template is located to be contained in the JST name,
+you can configure Haml Coffee n your `config/application.rb` to strip off the path to the file name and only use the
+basename as JST name:
+
+```ruby
+config.hamlcoffee.basename = true
+```
+
+With this setting enabled the following naming rule applies:
+
+* `app/assets/templates/login.hamlc` will become `JST['login']`
+* `app/assets/templates/users/new.hamlc` will become `JST['new']`
+* `app/assets/templates/shared/form/address.hamlc` will become `JST['address']`
+
+This setting has only an effect when you're using Haml Coffee to generate the JST and not when using the Sprockets
+JST processor.
 
 ### Escaping
 

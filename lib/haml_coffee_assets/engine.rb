@@ -12,6 +12,7 @@ module HamlCoffeeAssets
         :format                => 'html5',
         :namespace             => 'window.JST',
         :uglify                => false,
+        :basename              => false,
         :escapeHtml            => true,
         :escapeAttributes      => true,
         :cleanValue            => true,
@@ -39,6 +40,7 @@ module HamlCoffeeAssets
         config.namespace             = options[:namespace]
         config.format                = options[:format]
         config.uglify                = options[:uglify]
+        config.basename              = options[:basename]
         config.escapeHtml            = options[:escapeHtml]
         config.escapeAttributes      = options[:escapeAttributes]
         config.cleanValue            = options[:cleanValue]
