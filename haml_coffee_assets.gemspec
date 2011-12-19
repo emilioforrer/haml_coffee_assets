@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
 
   s.files         = Dir.glob('{app,lib,vendor}/**/*') + %w[LICENSE README.md]
 
-  s.add_runtime_dependency 'rails',  '>= 3.1'
-  s.add_runtime_dependency 'execjs', '~> 1.2.9'
+  s.add_runtime_dependency 'railties', '>= 3.1'
+  s.add_runtime_dependency 'execjs',   '~> 1.2.9'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rspec',       '~> 2.7.0'
