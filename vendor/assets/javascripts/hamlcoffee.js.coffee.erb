@@ -82,7 +82,7 @@ window.HAML.preserve ||= (text) ->
 # @param text [String] the text to preserve
 # @return [String] the preserved text
 #
-window.HAML.findAndPreserve ||= ->
+window.HAML.findAndPreserve ||= (text) ->
   tags = '<%= HamlCoffeeAssets::HamlCoffee.preserveTags %>'.split(',').join('|')
   text.replace ///<(#{ tags })>([^]*?)<\/\1>///g, (str, tag, content) ->
     "<#{ tag }>#{ <%= HamlCoffeeAssets::HamlCoffee.customPreserve %>(content) }</#{ tag }>"
