@@ -2,7 +2,7 @@
 
 require 'pathname'
 
-require 'rails'
+
 require 'tilt'
 require 'sprockets'
 require 'execjs'
@@ -10,4 +10,11 @@ require 'execjs'
 require 'haml_coffee_assets/version'
 require 'haml_coffee_assets/haml_coffee'
 require 'haml_coffee_assets/haml_coffee_template'
-require 'haml_coffee_assets/engine'
+
+if defined?(Rails)
+  require 'rails'  
+  require 'haml_coffee_assets/engine'
+else
+  require 'sprockets'
+  Sprockets.register_engine '.hamlc', HamlCoffeeTemplate
+end
