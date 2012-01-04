@@ -103,6 +103,7 @@ module HamlCoffeeAssets
       # @return [String] the compiled template in JavaScript
       #
       def compile(name, source, jst = true)
+        self.configuration ||= Configuration.new
         runtime.call('HamlCoffeeAssets.compile', name, source, jst, configuration.namespace, configuration.format, configuration.uglify, configuration.basename,
                      configuration.escapeHtml, configuration.escapeAttributes, configuration.cleanValue,
                      configuration.customHtmlEscape, configuration.customCleanValue,
