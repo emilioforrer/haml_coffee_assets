@@ -1,12 +1,10 @@
 # coding: UTF-8
 
 require 'pathname'
-  
 
 require 'tilt'
 require 'sprockets'
 require 'execjs'
-require 'active_support/core_ext/module'
 
 require 'haml_coffee_assets/version'
 require 'haml_coffee_assets/haml_coffee'

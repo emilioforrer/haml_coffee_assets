@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "execjs", ">= 1.2.9"
   s.add_runtime_dependency "tilt", ">= 1.3.3"
   s.add_runtime_dependency "sprockets", ">= 2.0.3"
-  s.add_runtime_dependency "activesupport", ">= 3.1"
     
   s.add_development_dependency 'bundler'
   

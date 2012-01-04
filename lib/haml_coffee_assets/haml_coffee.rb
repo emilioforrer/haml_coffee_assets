@@ -5,83 +5,94 @@ module HamlCoffeeAssets
   # Handles compilation of Haml CoffeeScript templates to pure JavaScript.
   #
   module HamlCoffee
+    
+    class Configuration
+      
+      # Constructor with defaults
+      def initialize
+        self.namespace              = 'window.JST'
+        self.format                 = 'html5'
+        self.uglify                 = false
+        self.basename               = false
+        self.escapeHtml             = true
+        self.escapeAttributes       = true
+        self.cleanValue             = true
+        self.customHtmlEscape       = 'window.HAML.escape'
+        self.customCleanValue       = 'window.HAML.cleanValue'
+        self.customPreserve         = 'window.HAML.preserve'
+        self.customFindAndPreserve  = 'window.HAML.findAndPreserve'
+        self.preserveTags           = 'textarea,pre'
+        self.selfCloseTags          = 'meta,img,link,br,hr,input,area,param,col,base'
+        self.context                = ''
+      end
+    
+      # Template namespace
+      #
+      attr_accessor :namespace
 
-    # Template namespace
-    #
-    mattr_accessor :namespace
-    self.namespace = 'window.JST'
+      # Template format, either html5, html4 or xhtml
+      #
+      attr_accessor :format
 
-    # Template format, either html5, html4 or xhtml
-    #
-    mattr_accessor :format
-    self.format = 'html5'
+      # Uglify HTML output by skip indention
+      #
+      attr_accessor :uglify
 
-    # Uglify HTML output by skip indention
-    #
-    mattr_accessor :uglify
-    self.uglify = false
+      # Ignore path when generate the JST
+      #
+      attr_accessor :basename
 
-    # Ignore path when generate the JST
-    #
-    mattr_accessor :basename
-    self.basename = false
+      # Escape template code output
+      #
+      attr_accessor :escapeHtml
 
-    # Escape template code output
-    #
-    mattr_accessor :escapeHtml
-    self.escapeHtml = true
+      # Escape template code output for attributes
+      #
+      attr_accessor :escapeAttributes
 
-    # Escape template code output for attributes
-    #
-    mattr_accessor :escapeAttributes
-    self.escapeAttributes = true
+      # Clean inline CoffeeScript values
+      #
+      attr_accessor :cleanValue
 
-    # Clean inline CoffeeScript values
-    #
-    mattr_accessor :cleanValue
-    self.cleanValue = true
+      # Custom global HTML escaping function
+      #
+      attr_accessor :customHtmlEscape
 
-    # Custom global HTML escaping function
-    #
-    mattr_accessor :customHtmlEscape
-    self.customHtmlEscape = 'window.HAML.escape'
+      # Custom global code clean value function
+      #
+      attr_accessor :customCleanValue
 
-    # Custom global code clean value function
-    #
-    mattr_accessor :customCleanValue
-    self.customCleanValue = 'window.HAML.cleanValue'
+      # Custom preserve function
+      #
+      attr_accessor :customPreserve
 
-    # Custom preserve function
-    #
-    mattr_accessor :customPreserve
-    self.customPreserve = 'window.HAML.preserve'
+      # Custom find and preserve function
+      #
+      attr_accessor :customFindAndPreserve
 
-    # Custom find and preserve function
-    #
-    mattr_accessor :customFindAndPreserve
-    self.customFindAndPreserve = 'window.HAML.findAndPreserve'
+      # List of tags to preserve
+      #
+      attr_accessor :preserveTags
 
-    # List of tags to preserve
-    #
-    mattr_accessor :preserveTags
-    self.preserveTags = 'textarea,pre'
+      # List of self closing tags
+      #
+      attr_accessor :selfCloseTags
 
-    # List of self closing tags
-    #
-    mattr_accessor :selfCloseTags
-    self.selfCloseTags = 'meta,img,link,br,hr,input,area,param,col,base'
-
-    # Custom global context to merge
-    #
-    mattr_accessor :context
-    self.context = ''
+      # Custom global context to merge
+      #
+      attr_accessor :context
+    
+    end
 
     class << self
+      
+      attr_accessor :configuration
 
       # Configure HamlCoffee
       #
       def configure
-        yield self
+        self.configuration ||= Configuration.new
+        yield self.configuration
       end
 
       # Compile the Haml CoffeeScript template.
@@ -92,12 +103,12 @@ module HamlCoffeeAssets
       # @return [String] the compiled template in JavaScript
       #
       def compile(name, source, jst = true)
-        runtime.call('HamlCoffeeAssets.compile', name, source, jst, HamlCoffee.namespace, HamlCoffee.format, HamlCoffee.uglify, HamlCoffee.basename,
-                     HamlCoffee.escapeHtml, HamlCoffee.escapeAttributes, HamlCoffee.cleanValue,
-                     HamlCoffee.customHtmlEscape, HamlCoffee.customCleanValue,
-                     HamlCoffee.customPreserve, HamlCoffee.customFindAndPreserve,
-                     HamlCoffee.preserveTags, HamlCoffee.selfCloseTags,
-                     HamlCoffee.context)
+        runtime.call('HamlCoffeeAssets.compile', name, source, jst, configuration.namespace, configuration.format, configuration.uglify, configuration.basename,
+                     configuration.escapeHtml, configuration.escapeAttributes, configuration.cleanValue,
+                     configuration.customHtmlEscape, configuration.customCleanValue,
+                     configuration.customPreserve, configuration.customFindAndPreserve,
+                     configuration.preserveTags, configuration.selfCloseTags,
+                     configuration.context)
       end
 
       private
