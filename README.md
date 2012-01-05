@@ -396,6 +396,7 @@ For questions please join `#haml` on irc.freenode.net
 ## Contributors
 
 * [Arun Sivashankaran](https://github.com/axs89)
+* [Jay Zeschin](https://github.com/jayzes)
 
 ## Acknowledgement
 
