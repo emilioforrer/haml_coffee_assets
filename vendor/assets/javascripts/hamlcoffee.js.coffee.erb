@@ -1,3 +1,5 @@
+<% configuration = HamlCoffeeAssets::HamlCoffee.configuration || HamlCoffeeAssets::HamlCoffee::Configurationi.new %>
+
 # HAML Coffee namespace
 #
 window.HAML ||= {}
@@ -82,7 +84,7 @@ window.HAML.preserve ||= (text) ->
 # @param text [String] the text to preserve
 # @return [String] the preserved text
 #
-window.HAML.findAndPreserve ||= ->
-  tags = '<%= HamlCoffeeAssets::HamlCoffee.preserveTags %>'.split(',').join('|')
+window.HAML.findAndPreserve ||= (text) ->
+  tags = '<%= configuration.preserveTags %>'.split(',').join('|')
   text.replace ///<(#{ tags })>([^]*?)<\/\1>///g, (str, tag, content) ->
-    "<#{ tag }>#{ <%= HamlCoffeeAssets::HamlCoffee.customPreserve %>(content) }</#{ tag }>"
+    "<#{ tag }>#{ <%= configuration.customPreserve %>(content) }</#{ tag }>"

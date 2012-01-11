@@ -4,20 +4,23 @@ describe HamlCoffeeAssets::HamlCoffee do
 
   before do
     # Reset configuration to defaults
-    HamlCoffeeAssets::HamlCoffee.namespace = 'window.JST'
-    HamlCoffeeAssets::HamlCoffee.format = 'html5'
-    HamlCoffeeAssets::HamlCoffee.uglify = false
-    HamlCoffeeAssets::HamlCoffee.basename = false
-    HamlCoffeeAssets::HamlCoffee.preserveTags = 'textarea,pre'
-    HamlCoffeeAssets::HamlCoffee.selfCloseTags = 'meta,img,link,br,hr,input,area,param,col,base'
-    HamlCoffeeAssets::HamlCoffee.escapeHtml = true
-    HamlCoffeeAssets::HamlCoffee.escapeAttributes = true
-    HamlCoffeeAssets::HamlCoffee.cleanValue = true
-    HamlCoffeeAssets::HamlCoffee.customHtmlEscape = 'window.HAML.escape'
-    HamlCoffeeAssets::HamlCoffee.customCleanValue = 'window.HAML.cleanValue'
-    HamlCoffeeAssets::HamlCoffee.customPreserve = 'window.HAML.preserve'
-    HamlCoffeeAssets::HamlCoffee.customFindAndPreserve = 'window.HAML.findAndPreserve'
-    HamlCoffeeAssets::HamlCoffee.context = ''
+    HamlCoffeeAssets::HamlCoffee.configure do |c|
+      c.namespace = 'window.JST'
+      c.format = 'html5'
+      c.uglify = false
+      c.basename = false
+      c.preserveTags = 'textarea,pre'
+      c.selfCloseTags = 'meta,img,link,br,hr,input,area,param,col,base'
+      c.escapeHtml = true
+      c.escapeAttributes = true
+      c.cleanValue = true
+      c.customHtmlEscape = 'window.HAML.escape'
+      c.customCleanValue = 'window.HAML.cleanValue'
+      c.customPreserve = 'window.HAML.preserve'
+      c.customFindAndPreserve = 'window.HAML.findAndPreserve'
+      c.context = ''
+    end
+    HamlCoffeeAssets::HamlCoffee
   end
 
   describe "#compile" do
@@ -63,7 +66,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'generates HTML4 documents when configured' do
-        subject.format = 'html4'
+        subject.configuration.format = 'html4'
         subject.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -83,7 +86,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'generates XHTML documents when configured' do
-        subject.format = 'xhtml'
+        subject.configuration.format = 'xhtml'
         subject.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -124,7 +127,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses a configured namespace' do
-        subject.namespace = 'window.HAML'
+        subject.configuration.namespace = 'window.HAML'
         subject.compile('header', '%h2').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -167,7 +170,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses a configured escape function' do
-        subject.customHtmlEscape = 'SomeWhere.escape'
+        subject.configuration.customHtmlEscape = 'SomeWhere.escape'
         subject.compile('title', '%h2= title').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -212,7 +215,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses a configured clean value function' do
-        subject.customCleanValue = 'SomeWhere.cleanValue'
+        subject.configuration.customCleanValue = 'SomeWhere.cleanValue'
         subject.compile('title', '%h2= title').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -257,7 +260,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'does not escape the attributes when set to false' do
-        subject.escapeAttributes = false
+        subject.configuration.escapeAttributes = false
         subject.compile('attributes', '%a{ :title => @title }').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -301,7 +304,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'does not clean the values when set to false' do
-        subject.cleanValue = false
+        subject.configuration.cleanValue = false
         subject.compile('values', '%h1= @title').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -345,7 +348,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'does not escape the html when set to false' do
-        subject.escapeHtml = false
+        subject.configuration.escapeHtml = false
         subject.compile('htmlE', '%p= @info').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -387,7 +390,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses a configured escape function' do
-        subject.context = 'SomeWhere.context'
+        subject.configuration.context = 'SomeWhere.context'
         subject.compile('link', '%a{ :href => "/" }').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -428,7 +431,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'does uglify the output when configured' do
-        subject.uglify = true
+        subject.configuration.uglify = true
         subject.compile('ugly', "%html\n  %body\n    %form\n      %input").should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -469,7 +472,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'does strip the path' do
-        subject.basename = true
+        subject.configuration.basename = true
         subject.compile('path/to/file', "%p Basename").should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -513,7 +516,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses any element configured' do
-        subject.preserveTags = 'textarea,p'
+        subject.configuration.preserveTags = 'textarea,p'
         subject.compile('ws', "%textarea= 'Test\\nMe'\n%pre= 'Test\\nMe'\n%p= 'Test\\nMe'\n").should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -538,7 +541,7 @@ describe HamlCoffeeAssets::HamlCoffee do
 
     context 'autoclose tag list configuration' do
       it 'uses the default list' do
-        subject.format = 'xhtml'
+        subject.configuration.format = 'xhtml'
         subject.compile('close', "%img\n%br\n%p\n").should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -558,8 +561,8 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses any element configured' do
-        subject.selfCloseTags = 'br,p'
-        subject.format = 'xhtml'
+        subject.configuration.selfCloseTags = 'br,p'
+        subject.configuration.format = 'xhtml'
         subject.compile('close', "%img\n%br\n%p\n").should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -602,7 +605,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses a configured preserve function' do
-        subject.customPreserve = 'SomeWhere.preserve'
+        subject.configuration.customPreserve = 'SomeWhere.preserve'
         subject.compile('pres', '%h2~ title').should eql <<-TEMPLATE
 (function() {
   var _ref;
@@ -647,7 +650,7 @@ describe HamlCoffeeAssets::HamlCoffee do
       end
 
       it 'uses a configured findAndPreserve function' do
-        subject.customFindAndPreserve = 'SomeWhere.findAndPreserve'
+        subject.configuration.customFindAndPreserve = 'SomeWhere.findAndPreserve'
         subject.compile('find', '%h2~ title').should eql <<-TEMPLATE
 (function() {
   var _ref;
