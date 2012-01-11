@@ -25,6 +25,9 @@ Haml Coffee allows you to write inline [CoffeeScript](http://jashkenas.github.co
               = I18n.t('js.cart.item.remove')
 ```
 
+Please note that the `I18n` object in the above example is not part ot Haml Coffee Assets, the internationalization
+functions are provided by the [i18n.js](https://github.com/fnando/i18n-js) library.
+
 ## Installation
 
 The simplest way to install Haml Coffee Assets is to use [Bundler](http://gembundler.com/).
