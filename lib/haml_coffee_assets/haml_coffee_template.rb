@@ -32,7 +32,7 @@ module HamlCoffeeAssets
     # Compile the template.
     #
     def evaluate(scope, locals = { }, &block)
-      jst = scope.pathname.to_s =~ /\.jst\.hamlc$/ ? false : true
+      jst = scope.pathname.to_s =~ /\.jst\.hamlc(?:\.|$)/ ? false : true
       @output ||= HamlCoffee.compile(scope.logical_path, data, jst)
     end
 
