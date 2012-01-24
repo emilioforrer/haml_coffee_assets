@@ -295,90 +295,19 @@ config.hamlcoffee.autoclose = 'meta,img,link,br,hr,input,area,param,col,base'
 
 Haml Coffee Assets provides a set of custom functions for Haml Coffee, so that the templates doesn't have to be self
 contained and can make use of the global functions. In general you don't have to customize them further, but if you need
-to, you can.
+to, you can set custom functions for:
 
-#### Custom escape function
+* config.hamlcoffee.customHtmlEscape
+* config.hamlcoffee.customCleanValue
+* config.hamlcoffee.customPreserve
+* config.hamlcoffee.customFindAndPreserve
+* config.hamlcoffee.customSurround
+* config.hamlcoffee.customSucceed
+* config.hamlcoffee.customPrecede
 
-By default your code block in your Haml Coffee template will be escaped through the `HAML.escape` function that is
-provided in the `hamlcoffee.js` script.
-
-You can set a custom escaping function in your `config/application.rb`:
-
-```ruby
-config.hamlcoffee.customHtmlEscape = 'App.myEscape'
-```
-
-Your custom escape function must take the unescaped text as parameter and returns the escaped text.
-The following default implementation comes with `hamlcoffee.js`:
-
-```coffeescript
-App.myEscape = (text) ->
-  ('' + text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/'/g, '&apos;')
-    .replace(/"/g, '&quot;')
-```
-
-#### Custom clean value function
-
-All your evaluated CoffeeScript code will go through the clean value function. By default this simply cleans `undefined`
-and `null` values, so that they appear as empty string in your template.
-
-You can set a custom clean value function in your `config/application.rb`:
-
-```ruby
-config.hamlcoffee.customCleanValue = 'App.myCleanValue'
-```
-
-Your custom clean value function must take the value as parameter and returns the cleaned value.
-The following default implementation comes with `hamlcoffee.js`:
-
-```coffeescript
-App.myCleanValue = (value) -> if value is null or value is undefined then '' else value
-```
-
-#### Custom preserve function
-
-All the content from the HTML tags that are contained in the whitespace sensitive tag list are passed through the
-preserve function.
-
-You can set a custom preserve function in your `config/application.rb`:
-
-```ruby
-config.hamlcoffee.customPreserve = 'App.myPreserve'
-```
-
-Your custom preserve function must take the text to be preserved as parameter and returns the preserved content.
-The following default implementation comes with `hamlcoffee.js`:
-
-```coffeescript
-App.myPreserve = (value) -> text.replace /\\n/g, '&#x000A;'
-```
-
-#### Custom find and preserve function
-
-The findAndPreserve function is a specialized preserve function, that you can pass a text containing HTML, and only the
-newlines in between a whitespace sensitive tag are preserved. This function uses the previous preserve function to do
-the final preservation.
-
-You can set a custom find and preserve function in your `config/application.rb`:
-
-```ruby
-config.hamlcoffee.customFindAndPreserve = 'App.myFindAndPreserve'
-```
-
-Your custom find and preserve function must take the text to search for whitespace sensitive tags as parameter and
-returns the preserved content.
-
-The following default implementation comes with `hamlcoffee.js`:
-
-```coffeescript
-App.myPreserve = (value) ->
-  text.replace /<(textarea|pre)>([^]*?)<\/\1>/g, (str, tag, content) ->
-    "<#{ tag }>#{ HAML.preserve(content) }</#{ tag }>"
-```
+You can see the [default implementation](https://github.com/netzpirat/haml_coffee_assets/blob/master/vendor/assets/javascripts/hamlcoffee.js.coffee.erb)
+and the [Haml Coffee documentation](https://github.com/9elements/haml-coffee#custom-helper-function-compiler-options)
+for more information about each helper function.
 
 ## Development
 

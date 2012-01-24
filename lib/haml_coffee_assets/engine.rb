@@ -20,6 +20,9 @@ module HamlCoffeeAssets
         :customCleanValue      => 'HAML.cleanValue',
         :customPreserve        => 'HAML.escape',
         :customFindAndPreserve => 'HAML.findAndPreserve',
+        :customSurround        => 'HAML.surround',
+        :customSucceed         => 'HAML.succeed',
+        :customPrecede         => 'HAML.precede',
         :preserve              => 'textarea,pre',
         :autoclose             => 'meta,img,link,br,hr,input,area,param,col,base',
         :context               => 'HAML.context'
@@ -48,6 +51,9 @@ module HamlCoffeeAssets
         config.customCleanValue      = options[:customCleanValue]
         config.customPreserve        = options[:customPreserve]
         config.customFindAndPreserve = options[:customFindAndPreserve]
+        config.customPreserve        = options[:customSurround]
+        config.customSucceed         = options[:customSucceed]
+        config.customPrecede         = options[:customPrecede]
         config.preserveTags          = options[:preserve]
         config.selfCloseTags         = options[:autoclose]
         config.context               = options[:context]

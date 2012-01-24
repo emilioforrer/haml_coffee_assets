@@ -18,6 +18,9 @@ describe HamlCoffeeAssets::HamlCoffee do
       c.customCleanValue = 'window.HAML.cleanValue'
       c.customPreserve = 'window.HAML.preserve'
       c.customFindAndPreserve = 'window.HAML.findAndPreserve'
+      c.customSurround = 'window.HAML.surround'
+      c.customSucceed = 'window.HAML.succeed'
+      c.customPrecede = 'window.HAML.precede'
       c.context = ''
     end
     HamlCoffeeAssets::HamlCoffee
@@ -664,6 +667,179 @@ describe HamlCoffeeAssets::HamlCoffee do
       $fp = SomeWhere.findAndPreserve;
       $o = [];
       $o.push("<h2>" + ($fp(title)) + "</h2>");
+      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+    end
+
+    context 'surround function configuration' do
+      it 'uses the default surround function when no custom function is provided' do
+        subject.compile('surround', "= surround '(', ')', ->\n  %a{:href => 'food'} chicken").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['surround'] = function(context) {
+    return (function() {
+      var $c, $e, $o, surround;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      surround = window.HAML.surround;
+      $o = [];
+      $o.push("" + $e($c(surround('(', ')', function() {
+        var $b;
+        $b = [];
+        $b.push("<a href='food'>chicken</a>");
+        return $b.join("\\n");
+      }))));
+      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'uses a configured surround function' do
+        subject.configuration.customSurround = 'SomeWhere.surround'
+        subject.compile('surround', "= surround '(', ')', ->\n  %a{:href => 'food'} chicken").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['surround'] = function(context) {
+    return (function() {
+      var $c, $e, $o, surround;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      surround = SomeWhere.surround;
+      $o = [];
+      $o.push("" + $e($c(surround('(', ')', function() {
+        var $b;
+        $b = [];
+        $b.push("<a href='food'>chicken</a>");
+        return $b.join("\\n");
+      }))));
+      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+    end
+
+    context 'succeed function configuration' do
+      it 'uses the default succeed function when no custom function is provided' do
+        subject.compile('succeed', "click\n= succeed '.', ->\n  %a{:href=>'thing'} here").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['succeed'] = function(context) {
+    return (function() {
+      var $c, $e, $o, succeed;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      succeed = window.HAML.succeed;
+      $o = [];
+      $o.push("click");
+      $o.push("" + $e($c(succeed('.', function() {
+        var $b;
+        $b = [];
+        $b.push("<a href='thing'>here</a>");
+        return $b.join("\\n");
+      }))));
+      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'uses a configured succeed function' do
+        subject.configuration.customSucceed = 'SomeWhere.succeed'
+        subject.compile('succeed', "click\n= succeed '.', ->\n  %a{:href=>'thing'} here").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['succeed'] = function(context) {
+    return (function() {
+      var $c, $e, $o, succeed;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      succeed = SomeWhere.succeed;
+      $o = [];
+      $o.push("click");
+      $o.push("" + $e($c(succeed('.', function() {
+        var $b;
+        $b = [];
+        $b.push("<a href='thing'>here</a>");
+        return $b.join("\\n");
+      }))));
+      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+    end
+
+    context 'precede function configuration' do
+      it 'uses the default precede function when no custom function is provided' do
+        subject.compile('precede', "= precede '*', ->\n  %span.small Not really").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['precede'] = function(context) {
+    return (function() {
+      var $c, $e, $o, precede;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      precede = window.HAML.precede;
+      $o = [];
+      $o.push("" + $e($c(precede('*', function() {
+        var $b;
+        $b = [];
+        $b.push("<span class='small'>Not really</span>");
+        return $b.join("\\n");
+      }))));
+      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+    }).call(context);
+  };
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'uses a configured precede function' do
+        subject.configuration.customPrecede = 'SomeWhere.precede'
+        subject.compile('precede', "= precede '*', ->\n  %span.small Not really").should eql <<-TEMPLATE
+(function() {
+  var _ref;
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+  window.JST['precede'] = function(context) {
+    return (function() {
+      var $c, $e, $o, precede;
+      $e = window.HAML.escape;
+      $c = window.HAML.cleanValue;
+      precede = SomeWhere.precede;
+      $o = [];
+      $o.push("" + $e($c(precede('*', function() {
+        var $b;
+        $b = [];
+        $b.push("<span class='small'>Not really</span>");
+        return $b.join("\\n");
+      }))));
       return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
     }).call(context);
   };

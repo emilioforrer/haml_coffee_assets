@@ -21,6 +21,9 @@ module HamlCoffeeAssets
         self.customCleanValue       = 'window.HAML.cleanValue'
         self.customPreserve         = 'window.HAML.preserve'
         self.customFindAndPreserve  = 'window.HAML.findAndPreserve'
+        self.customSurround         = 'window.HAML.surround'
+        self.customSucceed          = 'window.HAML.succeed'
+        self.customPrecede          = 'window.HAML.precede'
         self.preserveTags           = 'textarea,pre'
         self.selfCloseTags          = 'meta,img,link,br,hr,input,area,param,col,base'
         self.context                = ''
@@ -61,6 +64,18 @@ module HamlCoffeeAssets
       # Custom global code clean value function
       #
       attr_accessor :customCleanValue
+
+      # Custom global surround function
+      #
+      attr_accessor :customSurround
+
+      # Custom global succeed function
+      #
+      attr_accessor :customSucceed
+
+      # Custom global precede function
+      #
+      attr_accessor :customPrecede
 
       # Custom preserve function
       #
@@ -104,10 +119,12 @@ module HamlCoffeeAssets
       #
       def compile(name, source, jst = true)
         self.configuration ||= Configuration.new
-        runtime.call('HamlCoffeeAssets.compile', name, source, jst, configuration.namespace, configuration.format, configuration.uglify, configuration.basename,
+        runtime.call('HamlCoffeeAssets.compile', name, source, jst,
+                     configuration.namespace, configuration.format, configuration.uglify, configuration.basename,
                      configuration.escapeHtml, configuration.escapeAttributes, configuration.cleanValue,
                      configuration.customHtmlEscape, configuration.customCleanValue,
                      configuration.customPreserve, configuration.customFindAndPreserve,
+                     configuration.customSurround, configuration.customSucceed, configuration.customPrecede,
                      configuration.preserveTags, configuration.selfCloseTags,
                      configuration.context)
       end
