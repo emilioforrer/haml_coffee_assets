@@ -23,10 +23,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'bundler'
   
   s.add_development_dependency 'railties',    '>= 3.1'
-  s.add_development_dependency 'rspec',       '~> 2.7.0'
-  s.add_development_dependency 'guard-rspec', '~> 0.5.0'
-  s.add_development_dependency 'yard',        '~> 0.7.3'
-  s.add_development_dependency 'redcarpet',   '~> 1.17.2'
-  s.add_development_dependency 'pry',         '~> 0.9.6.2'
-  s.add_development_dependency 'rake',        '~> 0.9.2.2'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'guard-rspec'
+  s.add_development_dependency 'yard'
+  s.add_development_dependency 'redcarpet'
+  s.add_development_dependency 'pry'
+  s.add_development_dependency 'rake'
 end

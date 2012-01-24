@@ -8,9 +8,9 @@ gem 'rb-fsevent'
 gem 'ruby_gntp'
 
 platform :ruby do
-  gem 'therubyracer', '~> 0.9.8'
+  gem 'therubyracer'
 end
 
 platform :jruby do
-  gem 'therubyrhino', '~> 1.72.8'
+  gem 'therubyrhino'
 end
