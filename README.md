@@ -309,6 +309,13 @@ You can see the [default implementation](https://github.com/netzpirat/haml_coffe
 and the [Haml Coffee documentation](https://github.com/9elements/haml-coffee#custom-helper-function-compiler-options)
 for more information about each helper function.
 
+## Shameless self promotion
+
+Developed by Michael Kessler, sponsored by [mksoft.ch](https://mksoft.ch).
+
+If you like Haml Coffee Assets, you can watch the repository at [GitHub](https://github.com/netzpirat/haml_coffee_assets) and
+follow [@netzpirat](https://twitter.com/#!/netzpirat) on Twitter for project updates.
+
 ## Development
 
 * Issues and feature request hosted at [GitHub Issues](https://github.com/netzpirat/haml_coffee_assets/issues).
