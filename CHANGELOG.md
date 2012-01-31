@@ -1,6 +1,6 @@
 # Changelog
 
-Please have also a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
+Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
 ## 0.8.0 - January 31, 2012
 
@@ -12,13 +12,13 @@ Please have also a look at the [Haml Coffee Changelog](https://github.com/9eleme
 
 ## 0.7.0 - January 24, 2012
 
-- Upgrade to Haml Coffee 0.6.0 ([@netzpirat][])
+- Upgrade to Haml Coffee 0.6.0
 - Allow processing of `.jst.hamlc.*` files as JST ([@jfirebaugh][])
 
 ## 0.6.1 - January 16, 2012
 
-- Upgrade to Haml Coffee 0.5.6 ([@netzpirat][])
-- [Issue #21](https://github.com/netzpirat/haml_coffee_assets/issues/21): Add link to I18n.js library in the README ([@netzpirat][])
+- Upgrade to Haml Coffee 0.5.6
+- [Issue #21](https://github.com/netzpirat/haml_coffee_assets/issues/21): Add link to I18n.js library in the README
 
 ## 0.6.0 - January 4, 2012
 
@@ -27,21 +27,21 @@ Please have also a look at the [Haml Coffee Changelog](https://github.com/9eleme
 
 ## 0.5.3 - December 16, 2011
 
-- Upgrade to Haml Coffee 0.5.5 ([@netzpirat][])
-- Add `basename` configuration ([@netzpirat][])
+- Upgrade to Haml Coffee 0.5.5
+- Add `basename` configuration
 
 ## 0.5.2 - December 16, 2011
 
-- Upgrade to Haml Coffee 0.5.4 ([@netzpirat][])
+- Upgrade to Haml Coffee 0.5.4
 
 ## 0.5.1 - December 15, 2011
 
-- Upgrade to Haml Coffee 0.5.3 ([@netzpirat][])
+- Upgrade to Haml Coffee 0.5.3
 
 ## 0.5.0 - December 13, 2011
 
-- Upgrade to Haml Coffee 0.5.2 ([@netzpirat][])
-- [Issue #4](https://github.com/netzpirat/haml_coffee_assets/issues/4): Support for the Sprockets JST processor  ([@netzpirat][])
+- Upgrade to Haml Coffee 0.5.2
+- [Issue #4](https://github.com/netzpirat/haml_coffee_assets/issues/4): Support for the Sprockets JST processor
 
 ## 0.4.1 - December 13, 2011
 
@@ -49,29 +49,29 @@ Please have also a look at the [Haml Coffee Changelog](https://github.com/9eleme
 
 ## 0.4.0 - December 8, 2011
 
-- Upgrade to Haml Coffee 0.4.0  ([@netzpirat][])
-- Add configuration of the Haml Coffee compiler settings  ([@netzpirat][])
-- add configuration of the Haml Coffee helper functions  ([@netzpirat][])
-- [Issue #12](https://github.com/netzpirat/haml_coffee_assets/issues/12): Fix wrong README examples ([@netzpirat][])
+- Upgrade to Haml Coffee 0.4.0
+- Add configuration of the Haml Coffee compiler settings
+- add configuration of the Haml Coffee helper functions
+- [Issue #12](https://github.com/netzpirat/haml_coffee_assets/issues/12): Fix wrong README examples
 
 ## 0.3.0 - November 28, 2011
 
-- Upgrade to Haml Coffee 0.3.1 ([@netzpirat][])
-- [Issue #9](https://github.com/netzpirat/haml_coffee_assets/issues/9): null values show up as text ([@netzpirat][])
+- Upgrade to Haml Coffee 0.3.1
+- [Issue #9](https://github.com/netzpirat/haml_coffee_assets/issues/9): null values show up as text
 
 ## 0.2.6 - November 23, 2011
 
-- Fix [Issue #8](https://github.com/netzpirat/haml_coffee_assets/issues/8): Empty "name" attribute ([@netzpirat][])
+- Fix [Issue #8](https://github.com/netzpirat/haml_coffee_assets/issues/8): Empty "name" attribute
 
 ## 0.2.5 - November 21, 2011
 
-- Switch to official Haml Coffee release ([@netzpirat][])
-- [Issue #6](https://github.com/netzpirat/haml_coffee_assets/issues/6): Doesn't work under windows (using cscript) ([@netzpirat][])
-- [Issue #5](https://github.com/netzpirat/haml_coffee_assets/issues/5): data-inline="true" is not correctly translate ([@netzpirat][])
+- Switch to official Haml Coffee release
+- [Issue #6](https://github.com/netzpirat/haml_coffee_assets/issues/6): Doesn't work under windows (using cscript)
+- [Issue #5](https://github.com/netzpirat/haml_coffee_assets/issues/5): data-inline="true" is not correctly translate
 
 ## 0.2.4 - November 16, 2011
 
-- More strict quoting and `:` prefix checks ([@netzpirat][])
+- More strict quoting and `:` prefix checks
 
 ## 0.2.3 - November 16, 2011
 
@@ -81,25 +81,24 @@ Please have also a look at the [Haml Coffee Changelog](https://github.com/9eleme
 
 ## 0.2.2 - November 16, 2011
 
-- [Issue #1](https://github.com/netzpirat/haml_coffee_assets/issues/1): hamlcoffee.js not being found ([@netzpirat][])
+- [Issue #1](https://github.com/netzpirat/haml_coffee_assets/issues/1): hamlcoffee.js not being found
 
 ## 0.2.1 - November 15, 2011
 
-- Allow `!=`, `~`, `&=` also in element assignments ([@netzpirat][])
+- Allow `!=`, `~`, `&=` also in element assignments
 
 ## 0.2.0 - November 15, 2011
 
-- Allow slash in template name ([@netzpirat][])
-- Support data attributes ([@netzpirat][])
+- Allow slash in template name
+- Support data attributes
 
 ## 0.0.1 - November 7, 2011
 
-- First release with my Haml Coffee fork ([@netzpirat][])
+- First release with my Haml Coffee fork
 
 [@axs89]: https://github.com/axs89
 [@dzello]: https://github.com/dzello
 [@jfirebaugh]: https://github.com/jfirebaugh
 [@jingoro]: https://github.com/jingoro
 [@jayzes]: https://github.com/jayzes
-[@netzpirat]: https://github.com/netzpirat
 [@whitequark]: https://github.com/whitequark
