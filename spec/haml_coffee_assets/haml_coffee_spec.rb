@@ -882,5 +882,39 @@ describe HamlCoffeeAssets::HamlCoffee do
         subject.compile('func', '%p', false).should eql template.gsub(/\n$/, '')
       end
     end
+
+    describe 'name_filter' do
+      before { HamlCoffeeAssets::HamlCoffeeTemplate.name_filter = nil }
+      after  { HamlCoffeeAssets::HamlCoffeeTemplate.name_filter = nil }
+        
+      it 'should not be used if not set' do
+        template = HamlCoffeeAssets::HamlCoffeeTemplate.new { |t| '%h2' }
+        scope = Object.new
+        scope.stub(:pathname)     { 'templates/foo/bar.htmlc' }
+        scope.stub(:logical_path) { 'templates/foo/bar' }
+        HamlCoffeeAssets::HamlCoffeeTemplate.name_filter.should be_nil
+        HamlCoffeeAssets::HamlCoffee.should_receive(:compile).with('templates/foo/bar', '%h2', true)
+        template.render(scope)
+      end
+      it 'should be used if set' do
+        HamlCoffeeAssets::HamlCoffeeTemplate.name_filter = lambda { |n| n.sub /^templates\//, '' }
+        template = HamlCoffeeAssets::HamlCoffeeTemplate.new { |t| '%h2' }
+        scope = Object.new
+        scope.stub(:pathname)     { 'templates/foo/bar.htmlc' }
+        scope.stub(:logical_path) { 'templates/foo/bar' }
+        HamlCoffeeAssets::HamlCoffee.should_receive(:compile).with('foo/bar', '%h2', true)
+        template.render(scope)
+      end
+      it 'should not be used if name_filter does not match' do
+        HamlCoffeeAssets::HamlCoffeeTemplate.name_filter = lambda { |n| n.sub /^templates\//, '' }
+        template = HamlCoffeeAssets::HamlCoffeeTemplate.new { |t| '%h2' }
+        scope = Object.new
+        scope.stub(:pathname)     { 'other/template.htmlc' }
+        scope.stub(:logical_path) { 'other/template' }
+        HamlCoffeeAssets::HamlCoffee.should_receive(:compile).with('other/template', '%h2', true)
+        template.render(scope)
+      end
+    end
+
   end
 end
