@@ -54,13 +54,7 @@ upgrading to a newer Haml Coffee Assets version.
 
 ## Usage
 
-You should place all your Haml Coffee templates in the `app/assets/javascripts/templates` directory and include all
-templates from your `app/assets/javascripts/application.js.coffee`:
-
-```coffeescript
-#= require_tree ./templates
-```
-Now you can start to add your Haml Coffee templates to your template directory.
+Haml Coffee Assets allows two different ways of generating your JavaScript templates:
 
 ### Sprocket JST processor template generation
 
@@ -68,17 +62,42 @@ Now you can start to add your Haml Coffee templates to your template directory.
 
 When you give your templates the extension `.jst.hamlc`, Haml Coffee Assets will only generate the template function,
 which then in turn will be further processed by the
-[Sprocket JST processor](https://github.com/sstephenson/sprockets/blob/master/lib/sprockets/jst_processor.rb).
-This is the Rails way of asset processing and the only downside is that namespace definition is more cumbersome.
+[Sprocket JST processor](https://github.com/sstephenson/sprockets/blob/master/lib/sprockets/jst_processor.rb). Because
+Haml Coffee Assets will not generate the template, you can't use the template name filter and the JST namespace
+definition is more cumbersome compared to the Haml Coffee template generation.
+
+With this approach you should place all your Haml Coffee templates in the `app/assets/templates` directory and include
+all templates from your `app/assets/javascripts/application.js.coffee`:
+
+```coffeescript
+#= require_tree ../templates
+```
+
+If you would place your templates into `app/assets/javascripts/templates`, then all your JST template names would begin
+with `templates/`, which may be not what you want.
 
 ### Haml Coffee template generation
 
 * Extension: `.hamlc`
 
 If you omit the `.jst` and give your templates only a `.hamlc` extension, then Haml Coffee Assets will handle the
-JavaScript template generation. With this approach you can easily define your own namespace with a simple configuration.
+JavaScript template generation. With this approach you can easily define your own namespace with a simple configuration
+and you can use the template name filter.
+
+You can place all your Haml Coffee templates in the `app/assets/javascripts/templates` directory and include all
+templates from your `app/assets/javascripts/application.js.coffee`:
+
+```coffeescript
+#= require_tree ./templates
+```
+
+Because Haml Coffee Assets provides a default template name filter, the `templates/` prefix will be automatically
+removed.
 
 ## Configuration
+
+_Please note that all configuration examples will use the paths of the Haml Coffee template generation and not the
+Sprocket JST processor template generation._
 
 ### Document format
 
@@ -136,7 +155,7 @@ Foo::Application.assets.register_engine '.jst', MyJstProcessor
 
 And you must make sure `MyApp` exists before any template is loaded.
 
-#### Template name
+### Template name
 
 The name under which the template can be addressed in the namespace depends not only from the filename, but also on
 the directory name by default.
@@ -148,13 +167,18 @@ The following examples assumes a configured namespace `window.JST` and the asset
 * `app/assets/javascripts/templates/users/new.hamlc` will become `JST['users/new']`
 * `app/assets/javascripts/templates/shared/form/address.hamlc` will become `JST['shared/form/address']`
 
+#### Template name filter
+
 If you wish to put the templates in a different location, you may want to modify `name_filter` in an initializer.
 
 ```ruby
 HamlCoffeeAssets::HamlCoffeeTemplate.name_filter = lambda { |n| n.sub /^templates\//, '' }
 ```
 
-By default, `name_filter` strips the leading `templates/` directory off of the name. Please note, `name_filter` is only applicable if you use the `.hamlc` extension and let Haml Coffee Assets handle the JST generation. If you use the `.jst.hamlc` extension, then Sprockets JST processor will name things accordingly (e.g., with `templates/` intact in this case).
+By default, `name_filter` strips the leading `templates/` directory off of the name. Please note, `name_filter` is only
+applicable if you use the `.hamlc` extension and let Haml Coffee Assets handle the JST generation. If you use the
+`.jst.hamlc` extension, then Sprockets JST processor will name things accordingly (e.g., with `templates/` intact in
+this case).
 
 ### Basename
 
