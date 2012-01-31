@@ -49,6 +49,9 @@ And require the `hamlcoffee.js` in your `app/assets/javascripts/application.js.c
 This provides the default escaping and the global context functions. Read more about it in the configuration section
 below.
 
+Please have a look at the [CHANGELOG](https://github.com/netzpirat/haml_coffee_assets/blob/master/CHANGELOG.md) when
+upgrading to a newer Haml Coffee Assets version.
+
 ## Usage
 
 You should place all your Haml Coffee templates in the `app/assets/javascripts/templates` directory and include all
@@ -336,15 +339,15 @@ Pull requests are very welcome! Please try to follow these simple rules if appli
 * Make sure your patches are well tested. All specs must pass.
 * Update the [Yard](http://yardoc.org/) documentation.
 * Update the README.
+* Update the CHANGELOG for noteworthy changes.
 * Please **do not change** the version number.
 
 For questions please join `#haml` on irc.freenode.net
 
 ## Contributors
 
-* [Arun Sivashankaran](https://github.com/axs89)
-* [Jay Zeschin](https://github.com/jayzes)
-* [John Nishinaga](https://github.com/jingoro)
+See the [CHANGELOG](https://github.com/netzpirat/haml_coffee_assets/blob/master/CHANGELOG.md) and the GitHub list of
+[contributors](https://github.com/netzpirat/haml_coffee_assets/contributors).
 
 ## Acknowledgement
 
