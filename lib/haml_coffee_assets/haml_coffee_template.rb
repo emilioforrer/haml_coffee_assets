@@ -7,7 +7,16 @@ module HamlCoffeeAssets
   # Haml CoffeeScript template implementation for Tilt.
   #
   class HamlCoffeeTemplate < Tilt::Template
+    
+    class << self
+      # A proc that is called to modify the template name used as the
+      # JST key. The proc is passed the name as an argument and should
+      # return the modified name (or unmodified) name.
+      attr_accessor :name_filter
+    end
 
+    # By default, remove any leading templates/ in the name
+    self.name_filter = lambda { |n| n.sub /^templates\//, '' }
     self.default_mime_type = 'application/javascript'
 
     # Test if the compiler is initialized.
@@ -33,7 +42,9 @@ module HamlCoffeeAssets
     #
     def evaluate(scope, locals = { }, &block)
       jst = scope.pathname.to_s =~ /\.jst\.hamlc(?:\.|$)/ ? false : true
-      @output ||= HamlCoffee.compile(scope.logical_path, data, jst)
+      name = scope.logical_path
+      name = self.class.name_filter.call(name) if self.class.name_filter && jst
+      @output ||= HamlCoffee.compile(name, data, jst)
     end
 
   end

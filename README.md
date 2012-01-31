@@ -51,11 +51,11 @@ below.
 
 ## Usage
 
-You should place all your Haml Coffee templates in the `app/assets/templates` directory and include all templates from
+You should place all your Haml Coffee templates in the `app/assets/javascripts/templates` directory and include all templates from
 your `app/assets/javascripts/application.js.coffee`:
 
 ```coffeescript
-#= require_tree ../templates
+#= require_tree ./templates
 ```
 Now you can start to add your Haml Coffee templates to your template directory.
 
@@ -95,7 +95,7 @@ config.hamlcoffee.format = 'xhtml'
 ### Template namespace
 
 By default all Haml Coffee templates are registered under the `JST` namespace. A template
-`app/assets/templates/header.hamlc` with the given content:
+`app/assets/javascripts/templates/header.hamlc` with the given content:
 
 ```haml
 %header
@@ -139,11 +139,19 @@ The name under which the template can be addressed in the namespace depends not 
 the directory name by default.
 
 The following examples assumes a configured namespace `window.JST` and the asset template directory
-`app/assets/templates`:
+`app/assets/javascripts/templates`:
 
-* `app/assets/templates/login.hamlc` will become `JST['login']`
-* `app/assets/templates/users/new.hamlc` will become `JST['users/new']`
-* `app/assets/templates/shared/form/address.hamlc` will become `JST['shared/form/address']`
+* `app/assets/javascripts/templates/login.hamlc` will become `JST['login']`
+* `app/assets/javascripts/templates/users/new.hamlc` will become `JST['users/new']`
+* `app/assets/javascripts/templates/shared/form/address.hamlc` will become `JST['shared/form/address']`
+
+If you wish to put the templates in a different location, you may want to modify `name_filter` in an initializer.
+
+```ruby
+HamlCoffeeAssets::HamlCoffeeTemplate.name_filter = lambda { |n| n.sub /^templates\//, '' }
+```
+
+By default, `name_filter` strips the leading `templates/` directory off of the name. Please note, `name_filter` is only applicable if you use the `.hamlc` extension and let Haml Coffee Assets handle the JST generation. If you use the `.jst.hamlc` extension, then Sprockets JST processor will name things accordingly (e.g., with `templates/` intact in this case).
 
 ### Basename
 
@@ -157,9 +165,9 @@ config.hamlcoffee.basename = true
 
 With this setting enabled the following naming rule applies:
 
-* `app/assets/templates/login.hamlc` will become `JST['login']`
-* `app/assets/templates/users/new.hamlc` will become `JST['new']`
-* `app/assets/templates/shared/form/address.hamlc` will become `JST['address']`
+* `app/assets/javascripts/templates/login.hamlc` will become `JST['login']`
+* `app/assets/javascripts/templates/users/new.hamlc` will become `JST['new']`
+* `app/assets/javascripts/templates/shared/form/address.hamlc` will become `JST['address']`
 
 This setting has only an effect when you're using Haml Coffee to generate the JST and not when using the Sprockets
 JST processor.
