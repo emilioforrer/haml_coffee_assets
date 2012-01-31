@@ -51,8 +51,8 @@ below.
 
 ## Usage
 
-You should place all your Haml Coffee templates in the `app/assets/javascripts/templates` directory and include all templates from
-your `app/assets/javascripts/application.js.coffee`:
+You should place all your Haml Coffee templates in the `app/assets/javascripts/templates` directory and include all
+templates from your `app/assets/javascripts/application.js.coffee`:
 
 ```coffeescript
 #= require_tree ./templates
@@ -344,6 +344,7 @@ For questions please join `#haml` on irc.freenode.net
 
 * [Arun Sivashankaran](https://github.com/axs89)
 * [Jay Zeschin](https://github.com/jayzes)
+* [John Nishinaga](https://github.com/jingoro)
 
 ## Acknowledgement
 
