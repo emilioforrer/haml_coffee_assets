@@ -2,6 +2,14 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
+## 0.8.1 - February 13, 2012
+
+- Upgrade to Haml Coffee 0.6.1
+
+## 0.8.2 - February 13, 2012
+
+- Upgrade to Haml Coffee 0.6.1
+
 ## 0.8.0 - January 31, 2012
 
 - [Issue #14](https://github.com/netzpirat/haml_coffee_assets/issues/14): Make it possible to put templates in a different directory ([@jingoro][])
