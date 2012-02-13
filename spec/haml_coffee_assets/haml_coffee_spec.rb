@@ -691,10 +691,10 @@ describe HamlCoffeeAssets::HamlCoffee do
       surround = window.HAML.surround;
       $o = [];
       $o.push("" + $e($c(surround('(', ')', function() {
-        var $b;
-        $b = [];
-        $b.push("<a href='food'>chicken</a>");
-        return $b.join("\\n");
+        var $o1;
+        $o1 = [];
+        $o1.push("<a href='food'>chicken</a>");
+        return $o1.join("\\n");
       }))));
       return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
     }).call(context);
@@ -719,10 +719,10 @@ describe HamlCoffeeAssets::HamlCoffee do
       surround = SomeWhere.surround;
       $o = [];
       $o.push("" + $e($c(surround('(', ')', function() {
-        var $b;
-        $b = [];
-        $b.push("<a href='food'>chicken</a>");
-        return $b.join("\\n");
+        var $o1;
+        $o1 = [];
+        $o1.push("<a href='food'>chicken</a>");
+        return $o1.join("\\n");
       }))));
       return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
     }).call(context);
@@ -749,10 +749,10 @@ describe HamlCoffeeAssets::HamlCoffee do
       $o = [];
       $o.push("click");
       $o.push("" + $e($c(succeed('.', function() {
-        var $b;
-        $b = [];
-        $b.push("<a href='thing'>here</a>");
-        return $b.join("\\n");
+        var $o1;
+        $o1 = [];
+        $o1.push("<a href='thing'>here</a>");
+        return $o1.join("\\n");
       }))));
       return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
     }).call(context);
@@ -778,10 +778,10 @@ describe HamlCoffeeAssets::HamlCoffee do
       $o = [];
       $o.push("click");
       $o.push("" + $e($c(succeed('.', function() {
-        var $b;
-        $b = [];
-        $b.push("<a href='thing'>here</a>");
-        return $b.join("\\n");
+        var $o1;
+        $o1 = [];
+        $o1.push("<a href='thing'>here</a>");
+        return $o1.join("\\n");
       }))));
       return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
     }).call(context);
@@ -807,10 +807,10 @@ describe HamlCoffeeAssets::HamlCoffee do
       precede = window.HAML.precede;
       $o = [];
       $o.push("" + $e($c(precede('*', function() {
-        var $b;
-        $b = [];
-        $b.push("<span class='small'>Not really</span>");
-        return $b.join("\\n");
+        var $o1;
+        $o1 = [];
+        $o1.push("<span class='small'>Not really</span>");
+        return $o1.join("\\n");
       }))));
       return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
     }).call(context);
@@ -835,10 +835,10 @@ describe HamlCoffeeAssets::HamlCoffee do
       precede = SomeWhere.precede;
       $o = [];
       $o.push("" + $e($c(precede('*', function() {
-        var $b;
-        $b = [];
-        $b.push("<span class='small'>Not really</span>");
-        return $b.join("\\n");
+        var $o1;
+        $o1 = [];
+        $o1.push("<span class='small'>Not really</span>");
+        return $o1.join("\\n");
       }))));
       return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
     }).call(context);
