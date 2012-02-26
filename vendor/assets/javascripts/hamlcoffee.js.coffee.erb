@@ -47,11 +47,11 @@ window.HAML.extend ||= (globals, locals) ->
   else if Zepto?.extend
     Zepto.extend(Zepto.extend({}, globals), locals)
 
-  else if Object.extend
-    Object.extend(Object.extend({}, globals), locals)
-
   else if Object.append
     Object.append(Object.append({}, globals), locals)
+    
+  else if Object.extend
+    Object.extend(Object.extend({}, globals), locals)
 
   else
     locals
