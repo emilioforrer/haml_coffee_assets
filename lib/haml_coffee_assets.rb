@@ -15,5 +15,6 @@ if defined?(Rails)
   require 'haml_coffee_assets/engine'
 else
   require 'sprockets'
+  require 'sprockets/engines'
   Sprockets.register_engine '.hamlc', HamlCoffeeAssets::HamlCoffeeTemplate
 end
