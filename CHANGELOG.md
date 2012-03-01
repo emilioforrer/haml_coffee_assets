@@ -2,13 +2,23 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
-## 0.8.1 - February 13, 2012
+## 0.8.4 - March 1, 2012
 
-- Upgrade to Haml Coffee 0.6.1
+- Upgrade to Haml Coffee 0.6.2
+- Fix provided precede, succeed and surround helpers.
+- [Pull #31](https://github.com/netzpirat/haml_coffee_assets/pull/31): Explicit require Sprockets engine.
+
+## 0.8.3 - February 13, 2012
+
+- [Pull #29](https://github.com/netzpirat/haml_coffee_assets/pull/29): Fix HAML.extend for Mootools.
 
 ## 0.8.2 - February 13, 2012
 
 - Upgrade to Haml Coffee 0.6.1
+
+## 0.8.1 - February 13, 2012
+
+- [Pull #26](https://github.com/netzpirat/haml_coffee_assets/pull/26): Fix HAML configuration in the JS helpers.
 
 ## 0.8.0 - January 31, 2012
 
