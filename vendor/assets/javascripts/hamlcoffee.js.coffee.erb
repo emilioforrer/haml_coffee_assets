@@ -49,7 +49,7 @@ window.HAML.extend ||= (globals, locals) ->
 
   else if Object.append
     Object.append(Object.append({}, globals), locals)
-    
+
   else if Object.extend
     Object.extend(Object.extend({}, globals), locals)
 
@@ -97,7 +97,7 @@ window.HAML.findAndPreserve ||= (text) ->
 # @param [Function] fn the text generating function
 # @return [String] the surrounded text
 #
-surround: (start, end, fn) -> 
+window.HAML.surround ||= (start, end, fn) ->
   start + fn() + end
 
 # The succeed helper appends text to the function output
@@ -107,7 +107,7 @@ surround: (start, end, fn) ->
 # @param [Function] fn the text generating function
 # @return [String] the succeeded text
 #
-succeed: (end, fn) -> 
+window.HAML.succeed ||= (end, fn) ->
   fn() + end
 
 # The precede helper prepends text to the function output
@@ -117,5 +117,5 @@ succeed: (end, fn) ->
 # @param [Function] fn the text generating function
 # @return [String] the preeceded text
 #
-precede: (start, fn) -> 
+window.HAML.precede ||= (start, fn) ->
   start + fn()
