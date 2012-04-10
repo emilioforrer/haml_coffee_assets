@@ -99,6 +99,14 @@ removed.
 _Please note that all configuration examples will use the paths of the Haml Coffee template generation and not the
 Sprocket JST processor template generation._
 
+Sprockets will cache your templates after compiling and will only recompile them when the content of the template has
+changed, thus if you change to your configuration, the new settings will not be applied to templates already compiled.
+You can clear the Sprockets cache with:
+
+```Bash
+rake assets:clean
+```
+
 ### Document format
 
 By default all Haml Coffee templates are rendered to a HTML5 document. You can choose between the following output
