@@ -303,6 +303,9 @@ App.globalTemplateContext = (locals) -> _.extend({}, {
 }, locals)
 ```
 
+Please have a look at the wiki for [further examples](https://github.com/netzpirat/haml_coffee_assets/wiki) on how to
+use the global context.
+
 ### Customize the tag lists
 
 Haml Coffee contains two list of HTML tags that you can customize. In general you're fine with the defaults, but if
