@@ -191,7 +191,7 @@ this case).
 ### Basename
 
 If you don't want to have your directory names under which your template is located to be contained in the JST name,
-you can configure Haml Coffee n your `config/application.rb` to strip off the path to the file name and only use the
+you can configure Haml Coffee in your `config/application.rb` to strip off the path to the file name and only use the
 basename as JST name:
 
 ```ruby
