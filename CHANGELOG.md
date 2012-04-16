@@ -2,6 +2,10 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
+## 0.8.5 - April 16, 2012
+
+- [Pull #38](https://github.com/netzpirat/haml_coffee_assets/pull/38): Fix `customSurround` option. ([@dzello][])
+
 ## 0.8.4 - March 1, 2012
 
 - Upgrade to Haml Coffee 0.6.2
