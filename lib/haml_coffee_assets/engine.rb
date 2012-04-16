@@ -51,7 +51,7 @@ module HamlCoffeeAssets
         config.customCleanValue      = options[:customCleanValue]
         config.customPreserve        = options[:customPreserve]
         config.customFindAndPreserve = options[:customFindAndPreserve]
-        config.customPreserve        = options[:customSurround]
+        config.customSurround        = options[:customSurround]
         config.customSucceed         = options[:customSucceed]
         config.customPrecede         = options[:customPrecede]
         config.preserveTags          = options[:preserve]
