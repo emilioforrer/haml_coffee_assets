@@ -2,6 +2,10 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
+## 0.8.6 - April 30, 2012
+
+- [Issue #40](https://github.com/netzpirat/haml_coffee_assets/issues/40): Fix special class interpolation. ([@netzpirat][])
+
 ## 0.8.5 - April 16, 2012
 
 - [Pull #38](https://github.com/netzpirat/haml_coffee_assets/pull/38): Fix `customSurround` option. ([@dzello][])
