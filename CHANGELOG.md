@@ -2,6 +2,10 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
+## 0.9.0 - Mail 9, 2012
+
+- Upgrade to Haml Coffee 0.7.0
+
 ## 0.8.6 - April 30, 2012
 
 - [Issue #40](https://github.com/netzpirat/haml_coffee_assets/issues/40): Fix special class interpolation. ([@netzpirat][])
