@@ -2,6 +2,10 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
+## 0.9.1 - Mail 14, 2012
+
+- Upgrade to Haml Coffee 0.7.1
+
 ## 0.9.0 - Mail 9, 2012
 
 - Upgrade to Haml Coffee 0.7.0
