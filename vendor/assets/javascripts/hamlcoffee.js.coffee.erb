@@ -1,5 +1,3 @@
-<% configuration = HamlCoffeeAssets::HamlCoffee.configuration || HamlCoffeeAssets::HamlCoffee::Configuration.new %>
-
 # HAML Coffee namespace
 #
 class window.HAML
@@ -66,9 +64,9 @@ class window.HAML
   # @return [String] the preserved text
   #
   @findAndPreserve: (text) ->
-    tags = '<%= configuration.preserveTags %>'.split(',').join('|')
+    tags = '<%= HamlCoffeeAssets.config.preserveTags %>'.split(',').join('|')
     text = text.replace ///<(#{ tags })>([^]*?)<\/\1>///g, (str, tag, content) ->
-        "<#{ tag }>#{ <%= configuration.customPreserve %>(content) }</#{ tag }>"
+        "<#{ tag }>#{ <%= HamlCoffeeAssets.config.customPreserve %>(content) }</#{ tag }>"
 
   # The surround helper surrounds the function output
   # with the start and end string without whitespace in between.

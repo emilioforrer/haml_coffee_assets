@@ -107,6 +107,10 @@ You can clear the Sprockets cache with:
 rake assets:clean
 ```
 
+For Rails, you can set the configuration options in `config/application.rb` by accessing `config.hamlcoffee`, whereas
+if you just use the Tilt template you can access the configuration with `HamlCoffeeAssets.config`. All the following
+examples use the Rails way.
+
 ### Document format
 
 By default all Haml Coffee templates are rendered to a HTML5 document. You can choose between the following output
@@ -177,10 +181,10 @@ The following examples assumes a configured namespace `window.JST` and the asset
 
 #### Template name filter
 
-If you wish to put the templates in a different location, you may want to modify `name_filter` in an initializer.
+If you wish to put the templates in a different location, you may want to change the `name_filter` config.
 
 ```ruby
-HamlCoffeeAssets::HamlCoffeeTemplate.name_filter = lambda { |n| n.sub /^templates\//, '' }
+config.hamlcoffee.name_filter = lambda { |n| n.sub /^templates\//, '' }
 ```
 
 By default, `name_filter` strips the leading `templates/` directory off of the name. Please note, `name_filter` is only
@@ -249,18 +253,7 @@ config.hamlcoffee.uglify = true
 ### Global context
 
 Haml Coffee Assets allows you to configure a global context function that gets merged into the local template context for
-each template.
-
-There is a example implementation provided in the `hamlcoffee.js` that can use the `extend` like functions
-from the listed frameworks to merge the global and the local conext data:
-
-* jQuery
-* Underscore.js
-* Prototype
-* MooTools
-* Zepto.js
-
-If you use one of these, than you can simply override `HAML.globals` and return the global context data:
+each template. You can simply override `HAML.globals` and return the global context data:
 
 ```coffeescript
 HAML.globals = ->
@@ -294,11 +287,11 @@ config.hamlcoffee.context = false
 ```
 
 Your custom context function must take the local context as parameter and returns the merged context data.
-The following example uses the _.underscore `extend` function to merge the global context data with the
+The following example uses the Haml Coffee Assets `extend` function to merge the global context data with the
 passed local context data:
 
 ```coffeescript
-App.globalTemplateContext = (locals) -> _.extend({}, {
+App.globalTemplateContext = (locals) -> HAML.extend({}, {
     authenticated: App.isAuthenticated()
 }, locals)
 ```
