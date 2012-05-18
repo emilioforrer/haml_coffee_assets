@@ -7,6 +7,8 @@ rvm:
 branches:
   only:
     - master
+script: 'rake spec'
+after_script: 'bundle exec guard-jasmine'
 notifications:
   recipients:
     - michi@netzpiraten.ch

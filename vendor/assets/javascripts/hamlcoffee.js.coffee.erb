@@ -2,120 +2,101 @@
 
 # HAML Coffee namespace
 #
-window.HAML ||= {}
+class window.HAML
 
-# HAML Coffee html escape function
-#
-# @param text [String] the text to escape
-# @return [String] the escaped text
-#
-window.HAML.escape ||= (text) ->
-  ("" + text)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
+  # HAML Coffee html escape function
+  #
+  # @param text [String] the text to escape
+  # @return [String] the escaped text
+  #
+  @escape: (text) ->
+    ("" + text)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
 
-# HAML Coffee clean value function
-#
-# @param text [String] the text to be cleaned
-# @return [String] the cleaned text
-#
-window.HAML.cleanValue ||= (text) ->
-  if text is null or text is undefined then '' else text
+  # HAML Coffee clean value function
+  #
+  # @param text [String] the text to be cleaned
+  # @return [String] the cleaned text
+  #
+  @cleanValue: (text) ->
+    if text is null or text is undefined then '' else text
 
-# HAML Coffee extend function.
-#
-# This will reuse the extend function from either:
-#
-# - jQuery
-# - Underscore.js
-# - Prototype
-# - MooTools
-# - Zepto.js
-#
-# You can assign a custom extend function if your framework
-# is not supported out of the box.
-#
-window.HAML.extend ||= (globals, locals) ->
-  if jQuery?.extend
-    jQuery.extend {}, globals, locals
+  # Extends an object with the properties from
+  # the source objects.
+  #
+  # @param [Object] obj the object to extended
+  # @param [Object] sources the objects to copy from
+  # @return [Object] the extended object
+  #
+  @extend: (obj, sources...) ->
+    for source in sources
+      obj[key] = val for key, val of source
 
-  else if _?.extend
-    _.extend {}, globals, locals
+    obj
 
-  else if Zepto?.extend
-    Zepto.extend(Zepto.extend({}, globals), locals)
+  # HAML Coffee global template context.
+  #
+  # @return [Object] the global template context
+  #
+  @globals: -> {}
 
-  else if Object.append
-    Object.append(Object.append({}, globals), locals)
+  # Get the HAML template context. This merges the local
+  # and the global template context into a new context.
+  #
+  # @param locals [Object] the local template context
+  # @return [Object] the merged context
+  #
+  @context: (locals) ->
+    @extend {}, HAML.globals(), locals
 
-  else if Object.extend
-    Object.extend(Object.extend({}, globals), locals)
+  # Preserve newlines in the text
+  #
+  # @param text [String] the text to preserve
+  # @return [String] the preserved text
+  #
+  @preserve: (text) ->
+    text.replace /\n/g, '&#x000A;'
 
-  else
-    locals
+  # Find and preserve newlines in the preserving tags
+  #
+  # @param text [String] the text to preserve
+  # @return [String] the preserved text
+  #
+  @findAndPreserve: (text) ->
+    tags = '<%= configuration.preserveTags %>'.split(',').join('|')
+    text = text.replace ///<(#{ tags })>([^]*?)<\/\1>///g, (str, tag, content) ->
+        "<#{ tag }>#{ <%= configuration.customPreserve %>(content) }</#{ tag }>"
 
-# HAML Coffee global template context.
-#
-# @return [Object] the global template context
-#
-window.HAML.globals ||= -> {}
+  # The surround helper surrounds the function output
+  # with the start and end string without whitespace in between.
+  #
+  # @param [String] start the text to prepend to the text
+  # @param [String] end the text to append to the text
+  # @param [Function] fn the text generating function
+  # @return [String] the surrounded text
+  #
+  @surround: (start, end, fn) ->
+    start + fn() + end
 
-# Get the HAML template context. This merges the local
-# and the global template context into a new context.
-#
-# @param locals [Object] the local template context
-# @return [Object] the merged context
-#
-window.HAML.context ||= (locals) ->
-  HAML.extend(HAML.globals(), locals)
+  # The succeed helper appends text to the function output
+  # without whitespace in between.
+  #
+  # @param [String] end the text to append to the text
+  # @param [Function] fn the text generating function
+  # @return [String] the succeeded text
+  #
+  @succeed: (end, fn) ->
+    fn() + end
 
-# Preserve newlines in the text
-#
-# @param text [String] the text to preserve
-# @return [String] the preserved text
-#
-window.HAML.preserve ||= (text) ->
-  text.replace /\\n/g, '&#x000A;'
-
-# Find and preserve newlines in the preserving tags
-#
-# @param text [String] the text to preserve
-# @return [String] the preserved text
-#
-window.HAML.findAndPreserve ||= (text) ->
-  tags = '<%= configuration.preserveTags %>'.split(',').join('|')
-  text.replace ///<(#{ tags })>([^]*?)<\/\1>///g, (str, tag, content) ->
-    "<#{ tag }>#{ <%= configuration.customPreserve %>(content) }</#{ tag }>"
-
-# The surround helper surrounds the function output
-# with the start and end string without whitespace in between.
-#
-# @param [String] start the text to prepend to the text
-# @param [String] end the text to append to the text
-# @param [Function] fn the text generating function
-# @return [String] the surrounded text
-#
-window.HAML.surround ||= (start, end, fn) ->
-  start + fn() + end
-
-# The succeed helper appends text to the function output
-# without whitespace in between.
-#
-# @param [String] end the text to append to the text
-# @param [Function] fn the text generating function
-# @return [String] the succeeded text
-#
-window.HAML.succeed ||= (end, fn) ->
-  fn() + end
-
-# The precede helper prepends text to the function output
-# without whitespace in between.
-#
-# @param [String] start the text to prepend to the text
-# @param [Function] fn the text generating function
-# @return [String] the preeceded text
-#
-window.HAML.precede ||= (start, fn) ->
-  start + fn()
+  # The precede helper prepends text to the function output
+  # without whitespace in between.
+  #
+  # @param [String] start the text to prepend to the text
+  # @param [Function] fn the text generating function
+  # @return [String] the preeceded text
+  #
+  @precede: (start, fn) ->
+    start + fn()

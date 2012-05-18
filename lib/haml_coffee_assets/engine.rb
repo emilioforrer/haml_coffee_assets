@@ -18,7 +18,7 @@ module HamlCoffeeAssets
         :cleanValue            => true,
         :customHtmlEscape      => 'HAML.escape',
         :customCleanValue      => 'HAML.cleanValue',
-        :customPreserve        => 'HAML.escape',
+        :customPreserve        => 'HAML.preserve',
         :customFindAndPreserve => 'HAML.findAndPreserve',
         :customSurround        => 'HAML.surround',
         :customSucceed         => 'HAML.succeed',

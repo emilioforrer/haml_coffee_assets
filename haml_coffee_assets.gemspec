@@ -19,14 +19,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "execjs", ">= 1.2.9"
   s.add_runtime_dependency "tilt", ">= 1.3.3"
   s.add_runtime_dependency "sprockets", ">= 2.0.3"
-    
+
   s.add_development_dependency 'bundler'
-  
-  s.add_development_dependency 'railties',    '>= 3.1'
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'guard-rspec'
-  s.add_development_dependency 'yard'
-  s.add_development_dependency 'redcarpet'
-  s.add_development_dependency 'pry'
-  s.add_development_dependency 'rake'
 end
