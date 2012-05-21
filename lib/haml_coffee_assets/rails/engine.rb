@@ -19,7 +19,7 @@ module HamlCoffeeAssets
         app.assets.register_engine '.hamlc', ::HamlCoffeeAssets::Tilt::TemplateHandler
 
         # Copy Rails config to the Haml Coffee Assets config
-        app.config.hamlcoffee do |key, value|
+        app.config.hamlcoffee.each do |key, value|
           HamlCoffeeAssets.config.instance_variable_set("@#{ key }", value)
         end
       end
