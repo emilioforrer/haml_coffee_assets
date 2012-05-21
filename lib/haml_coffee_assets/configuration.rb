@@ -25,7 +25,7 @@ module HamlCoffeeAssets
       self.customPrecede          = 'window.HAML.precede'
       self.preserveTags           = 'textarea,pre'
       self.selfCloseTags          = 'meta,img,link,br,hr,input,area,param,col,base'
-      self.context                = 'HAML.context'
+      self.context                = 'window.HAML.context'
       self.name_filter            = lambda { |n| n.sub /^templates\//, '' }
     end
 
