@@ -2,6 +2,11 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
+## Master
+
+- Upgrade to Haml Coffee 0.8.0
+- Internal refactoring and more specs added.
+
 ## 0.9.1 - Mail 14, 2012
 
 - Upgrade to Haml Coffee 0.7.1
