@@ -2,7 +2,7 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
-## Master
+## 0.9.3 - Mai 22, 2012
 
 - Upgrade to Haml Coffee 0.8.1
 - [Issue #46](https://github.com/netzpirat/haml_coffee_assets/issues/46): Attribute parsing partially broken. ([@netzpirat][])
