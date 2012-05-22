@@ -107,9 +107,24 @@ You can clear the Sprockets cache with:
 rake assets:clean
 ```
 
-For Rails, you can set the configuration options in `config/application.rb` by accessing `config.hamlcoffee`, whereas
+For Rails, you can set the configuration options in your environment by accessing `config.hamlcoffee`, whereas
 if you just use the Tilt template you can access the configuration with `HamlCoffeeAssets.config`. All the following
 examples use the Rails way.
+
+**Please note:** When you put Haml Coffee Assets into the `:assets` group within your `Gemfile` and precompile the
+assets (the default Rails behaviour), then Haml Coffee Assets is not loaded in production and you can't set any
+configuration at `config.hamlcoffee` in both `config/application.rb` and `config/environments/production.rb`.
+
+You can simply add a condition around the configuration:
+
+```Ruby
+if defined? ::HamlCoffeeAssets
+ config.hamlcoffee.awesome = true
+end
+```
+
+or move your configuration to `config/environments/development.rb` (and `config/environments/test.rb`, depending on your
+JavaScript testing setup).
 
 ### Document format
 
