@@ -4,14 +4,19 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/9eleme
 
 ## Master
 
+- Upgrade to Haml Coffee 0.8.1
+- [Issue #46](https://github.com/netzpirat/haml_coffee_assets/issues/46): Attribute parsing partially broken. ([@netzpirat][])
+
+## 0.9.2 - Mai 21, 2012
+
 - Upgrade to Haml Coffee 0.8.0
 - Internal refactoring and more specs added.
 
-## 0.9.1 - Mail 14, 2012
+## 0.9.1 - Mai 14, 2012
 
 - Upgrade to Haml Coffee 0.7.1
 
-## 0.9.0 - Mail 9, 2012
+## 0.9.0 - Mai 9, 2012
 
 - Upgrade to Haml Coffee 0.7.0
 
