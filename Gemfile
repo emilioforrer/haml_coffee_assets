@@ -4,9 +4,6 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'rb-fsevent'
-gem 'ruby_gntp'
-
 platform :ruby do
   gem 'therubyracer'
 end
@@ -34,11 +31,8 @@ group :development, :test do
   gem 'rake'
   gem 'pry'
 
-  gem 'jasminerice'
   gem 'rspec'
 
-  gem 'guard-rspec'
-  gem 'guard-jasmine'
   gem 'rb-fsevent'
   gem 'ruby_gntp'
 
