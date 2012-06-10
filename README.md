@@ -314,6 +314,22 @@ App.globalTemplateContext = (locals) -> HAML.extend({}, {
 Please have a look at the wiki for [further examples](https://github.com/netzpirat/haml_coffee_assets/wiki) on how to
 use the global context.
 
+#### Extending the template scope with the context
+
+Pure haml-coffee cannot extend the template scope with the context, since CoffeeScript doesn't have the `with`
+statement. But when you're using Haml Coffee Assets, then you can have the scope to be extended
+with the context by enable it in the configuration:
+
+```ruby
+config.hamlcoffee.extendContext = true
+```
+
+With this option enabled, you don't need to use `@` or `this` to reference context data:
+
+```Haml
+%p= name
+```
+
 ### Customize the tag lists
 
 Haml Coffee contains two list of HTML tags that you can customize. In general you're fine with the defaults, but if
