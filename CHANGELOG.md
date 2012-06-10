@@ -2,7 +2,7 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
-## Master
+## 1.0.0 - June 10, 2012
 
 - Upgrade to Haml Coffee 1.0.1
 - Add extend scope template option.
