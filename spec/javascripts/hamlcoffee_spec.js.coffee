@@ -22,6 +22,12 @@ describe 'HAML', ->
     it 'returns an empty string for undefined', ->
       expect(HAML.cleanValue(undefined)).toEqual ''
 
+    it 'marks a boolean true with unicode character u0093', ->
+      expect(HAML.cleanValue(true)).toEqual '\u0093true'
+
+    it 'marks a boolean true with unicode character u0093', ->
+      expect(HAML.cleanValue(false)).toEqual '\u0093false'
+
     it 'passes everything else unchanged', ->
       expect(HAML.cleanValue('Still the same')).toEqual 'Still the same'
 

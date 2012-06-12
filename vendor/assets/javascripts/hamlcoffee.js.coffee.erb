@@ -2,7 +2,7 @@
 #
 class window.HAML
 
-  # HAML Coffee html escape function
+  # HAML Coffee html escape function.
   #
   # @param text [String] the text to escape
   # @return [String] the escaped text
@@ -15,13 +15,21 @@ class window.HAML
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&apos;")
 
-  # HAML Coffee clean value function
+  # HAML Coffee clean value function. Beside just
+  # cleaning `null` and `undefined` values, it
+  # adds a hidden unicode marker character to
+  # boolean values, so that the render time boolean
+  # logic can distinguish between real booleans and
+  # boolean-like strings.
   #
   # @param text [String] the text to be cleaned
   # @return [String] the cleaned text
   #
   @cleanValue: (text) ->
-    if text is null or text is undefined then '' else text
+    switch text
+      when null, undefined then ''
+      when true, false then '\u0093' + text
+      else text
 
   # Extends an object with the properties from
   # the source objects.
