@@ -1,6 +1,6 @@
 # Changelog
 
-Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
+Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
 ## 1.1.0 - June 12, 2012
 
@@ -18,7 +18,7 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/9eleme
 
 ## 0.9.4 - June 1, 2012
 
-- [Haml Coffee Issue #27](https://github.com/9elements/haml-coffee/issues/27): Add apostrophe to the encoded entities.
+- [Haml Coffee Issue #27](https://github.com/netzpirat/haml-coffee/issues/27): Add apostrophe to the encoded entities.
 
 ## 0.9.3 - Mai 22, 2012
 

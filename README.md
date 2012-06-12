@@ -1,6 +1,6 @@
 # Haml Coffee Assets [![Build Status](https://secure.travis-ci.org/netzpirat/haml_coffee_assets.png)](http://travis-ci.org/netzpirat/haml_coffee_assets)
 
-Haml Coffee Assets compiles [Haml Coffee](https://github.com/9elements/haml-coffee) templates in the Rails 3.1
+Haml Coffee Assets compiles [Haml Coffee](https://github.com/netzpirat/haml-coffee) templates in the Rails 3.1
 asset pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application. It also works as [Tilt](https://github.com/rtomayko/tilt/) template without Rails.
 
 Tested on MRI Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest version of JRuby.
@@ -376,7 +376,7 @@ to, you can set custom functions for:
 * config.hamlcoffee.customPrecede
 
 You can see the [default implementation](https://github.com/netzpirat/haml_coffee_assets/blob/master/vendor/assets/javascripts/hamlcoffee.js.coffee.erb)
-and the [Haml Coffee documentation](https://github.com/9elements/haml-coffee#custom-helper-function-compiler-options)
+and the [Haml Coffee documentation](https://github.com/netzpirat/haml-coffee#custom-helper-function-compiler-options)
 for more information about each helper function.
 
 ## Author
@@ -412,7 +412,7 @@ See the [CHANGELOG](https://github.com/netzpirat/haml_coffee_assets/blob/master/
 
 * [Jeremy Ashkenas](http://twitter.com/#!/jashkenas) for CoffeeScript, that little language that compiles into
   JavaScript.
-* The people at [9elements](https://github.com/9elements) who gave us
+* The people at [9elements](https://github.com/9elements) who started
   [haml-coffee](https://github.com/9elements/haml-coffee), an elegant JavaScript template solution.
 
 ## License
