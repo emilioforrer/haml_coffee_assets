@@ -2,6 +2,11 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/9elements/haml-coffee/blob/master/CHANGELOG.md).
 
+## 1.1.0 - June 12, 2012
+
+- Upgrade to Haml Coffee 1.1.0
+- Change clean helper function to have proper render time boolean attribute conversion.
+
 ## 1.0.0 - June 10, 2012
 
 - Upgrade to Haml Coffee 1.0.1
