@@ -344,7 +344,7 @@ display of the tag. In order to avoid this, the content is preserved by converti
 entity. You can set your own list of whitespace sensitive tags in your `config/application.rb`:
 
 ```ruby
-config.hamlcoffee.preserve = 'pre,textarea,abbr'
+config.hamlcoffee.preserveTags = 'pre,textarea,abbr'
 ```
 
 This list is also taken into account for the `HAML.preserveAndFind` helper function that is provided and its shortcut
