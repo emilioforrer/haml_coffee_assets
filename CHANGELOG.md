@@ -2,6 +2,10 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
+## 1.1.2 - June 29, 2012
+
+- Upgrade to Haml Coffee 1.1.2
+
 ## 1.1.1 - June 19, 2012
 
 - Upgrade to Haml Coffee 1.1.1
