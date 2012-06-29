@@ -34,7 +34,8 @@ group :development, :test do
   gem 'rspec'
 
   gem 'rb-fsevent'
-  gem 'ruby_gntp'
+  gem 'growl'
+  gem 'coolline'
 
   gem 'yard'
   gem 'redcarpet'
