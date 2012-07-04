@@ -2,6 +2,10 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
+## Master
+
+- Upgrade to Haml Coffee 1.1.3
+
 ## 1.1.2 - June 29, 2012
 
 - Upgrade to Haml Coffee 1.1.2
@@ -11,7 +15,7 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 - Upgrade to Haml Coffee 1.1.1
 - [haml_coffee_assets issue #51](https://github.com/netzpirat/haml_coffee_assets/issues/51): Parsing fails with double quotes inside single-quoted attribute value.
 - [haml_coffee_assets issue #49](https://github.com/netzpirat/haml_coffee_assets/issues/49): Failing to quote object literal keys.
-  
+
 ## 1.1.0 - June 12, 2012
 
 - Upgrade to Haml Coffee 1.1.0
