@@ -2,7 +2,7 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
-## Master
+## 1.1.3 - Juli 4, 2012
 
 - Upgrade to Haml Coffee 1.1.3
 
