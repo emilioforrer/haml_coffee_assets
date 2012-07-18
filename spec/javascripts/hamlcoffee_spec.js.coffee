@@ -13,7 +13,7 @@ describe 'HAML', ->
       expect(HAML.escape('Michael "netzpirat" Kessler')).toEqual 'Michael &quot;netzpirat&quot; Kessler'
 
     it 'escapes a single quote', ->
-      expect(HAML.escape("Michael 'netzpirat' Kessler")).toEqual 'Michael &apos;netzpirat&apos; Kessler'
+      expect(HAML.escape("Michael 'netzpirat' Kessler")).toEqual 'Michael &#39;netzpirat&#39; Kessler'
 
   describe '.cleanValue', ->
     it 'returns an empty string for null', ->
