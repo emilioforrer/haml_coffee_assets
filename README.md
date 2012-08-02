@@ -53,6 +53,9 @@ below.
 Please have a look at the [CHANGELOG](https://github.com/netzpirat/haml_coffee_assets/blob/master/CHANGELOG.md) when
 upgrading to a newer Haml Coffee Assets version.
 
+If you want to use Haml Coffee with Sinatra, please have a look at the
+[Haml Coffee Sinatra](https://github.com/netzpirat/haml-coffee-sinatra) demo application.
+
 ## Usage
 
 Haml Coffee Assets allows two different ways of generating your JavaScript templates:
