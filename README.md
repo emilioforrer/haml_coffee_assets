@@ -1,7 +1,8 @@
 # Haml Coffee Assets [![Build Status](https://secure.travis-ci.org/netzpirat/haml_coffee_assets.png)](http://travis-ci.org/netzpirat/haml_coffee_assets)
 
 Haml Coffee Assets compiles [Haml Coffee](https://github.com/netzpirat/haml-coffee) templates in the Rails 3.1
-asset pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application. It also works as [Tilt](https://github.com/rtomayko/tilt/) template without Rails.
+asset pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application. It also works as
+a pure [Sprockets](https://github.com/sstephenson/sprockets) engine without Rails.
 
 Tested on MRI Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest version of JRuby.
 
@@ -108,8 +109,8 @@ rake assets:clean
 ```
 
 For Rails, you can set the configuration options in your environment by accessing `config.hamlcoffee`, whereas
-if you just use the Tilt template you can access the configuration with `HamlCoffeeAssets.config`. All the following
-examples use the Rails way.
+if you just use the plain Sprockets engine you can access the configuration with `HamlCoffeeAssets.config`. All the
+following examples use the Rails way.
 
 **Please note:** When you put Haml Coffee Assets into the `:assets` group within your `Gemfile` and precompile the
 assets (the default Rails behaviour), then Haml Coffee Assets is not loaded in production and you can't set any
