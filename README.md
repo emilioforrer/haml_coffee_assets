@@ -26,6 +26,8 @@ Haml Coffee allows you to write inline [CoffeeScript](http://jashkenas.github.co
               = I18n.t('js.cart.item.remove')
 ```
 
+You can try Haml Coffee online by visiting [Haml Coffee Online](http://haml-coffee-online.herokuapp.com/).
+
 Please note that the `I18n` object in the above example is not part ot Haml Coffee Assets, the internationalization
 functions are provided by the [i18n.js](https://github.com/fnando/i18n-js) library.
 
