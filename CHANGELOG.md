@@ -2,6 +2,10 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
+## 1.3.0 - August 3, 2012
+
+- Upgrade to Haml Coffee 1.3.0
+
 ## 1.2.0 - Juli 18, 2012
 
 - Use &#39; instead of &apos; for supporting IE < 9
