@@ -33,6 +33,14 @@ module HamlCoffeeAssets
     @config ||= ::HamlCoffeeAssets::Configuration.new
   end
 
+  # Get the path to the `hamlcoffee.js.coffee.erb` helper file.
+  #
+  # @return [String] the absolute path to the helpers file
+  #
+  def self.helpers_path
+    File.expand_path(File.join(File.dirname(__FILE__), '..', 'vendor', 'assets', 'javascripts', 'hamlcoffee.js.coffee.erb'))
+  end
+
   # Get the Haml Coffee Assets helper file
   #
   # @param [Boolean] compile whether to compile the CS helpers or not
@@ -41,7 +49,7 @@ module HamlCoffeeAssets
   def self.helpers(compile=true)
     require 'erb'
 
-    content = File.read(File.expand_path(File.join(File.dirname(__FILE__), '..', 'vendor', 'assets', 'javascripts', 'hamlcoffee.js.coffee.erb')))
+    content = File.read(HamlCoffeeAssets.helpers_path)
     script = ERB.new(content).result(binding)
 
     if compile
