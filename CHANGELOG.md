@@ -5,6 +5,7 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 ## Master
 
 - Add `HamlCoffeeAssets.helpers` to get the helper functions as CoffeeScript or compiled JavaScript.
+- Upgrade to Haml Coffee 1.4.1
 
 ## 1.3.0 - August 3, 2012
 
