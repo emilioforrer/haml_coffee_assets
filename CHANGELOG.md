@@ -2,6 +2,10 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
+## Master
+
+- Add `HamlCoffeeAssets.helpers` to get the helper functions as CoffeeScript or compiled JavaScript.
+
 ## 1.3.0 - August 3, 2012
 
 - Upgrade to Haml Coffee 1.3.0
