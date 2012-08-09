@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.files         = Dir.glob('{app,lib,vendor}/**/*') + %w[LICENSE README.md]
 
-  s.add_runtime_dependency "execjs", ">= 1.2.9"
+  s.add_runtime_dependency "coffee-script", ">= 1.0.0"
   s.add_runtime_dependency "tilt", ">= 1.3.3"
   s.add_runtime_dependency "sprockets", ">= 2.0.3"
 
