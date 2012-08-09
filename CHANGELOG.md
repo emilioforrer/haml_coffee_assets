@@ -2,7 +2,7 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
-## Master
+## 1.4.1 - August 9, 2012
 
 - [#60](https://github.com/netzpirat/haml_coffee_assets/issues/60): Remove included CoffeeScript library and use the one in the gem instead ([@paulyoung][])
 
