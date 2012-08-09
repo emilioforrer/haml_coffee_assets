@@ -1,5 +1,7 @@
 # coding: UTF-8
 
+require 'coffee-script'
+
 # Haml Coffee Assets main module
 #
 module HamlCoffeeAssets
@@ -68,7 +70,7 @@ module HamlCoffeeAssets
       # @return [String] the source
       #
       def coffeescript
-        read_js 'coffee-script.js'
+        File.read CoffeeScript::Source.bundled_path
       end
 
       # Read a JavaScript file from the `js` dir.
