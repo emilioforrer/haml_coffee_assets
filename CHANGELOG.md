@@ -4,7 +4,7 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 
 ## 1.4.1 - August 9, 2012
 
-- [#60](https://github.com/netzpirat/haml_coffee_assets/issues/60): Remove included CoffeeScript library and use the one in the gem instead ([@paulyoung][])
+- [#60][]: Remove included CoffeeScript library and use the one in the gem instead ([@paulyoung][])
 
 ## 1.4.0 - August 5, 2012
 
@@ -17,7 +17,7 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 
 ## 1.2.0 - Juli 18, 2012
 
-- Use &[#39][]; instead of &apos; for supporting IE < 9
+- Use `&#39;` instead of `&apos;` for supporting IE < 9
 - Upgrade to Haml Coffee 1.2.0
 
 ## 1.1.3 - Juli 4, 2012
@@ -31,8 +31,8 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 ## 1.1.1 - June 19, 2012
 
 - Upgrade to Haml Coffee 1.1.1
-- [#51](https://github.com/netzpirat/haml_coffee_assets/issues/51): Parsing fails with double quotes inside single-quoted attribute value.
-- [#49](https://github.com/netzpirat/haml_coffee_assets/issues/49): Failing to quote object literal keys.
+- [#51][]: Parsing fails with double quotes inside single-quoted attribute value.
+- [#49][]: Failing to quote object literal keys.
 
 ## 1.1.0 - June 12, 2012
 
@@ -50,12 +50,12 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 
 ## 0.9.4 - June 1, 2012
 
-- [Haml Coffee [#2][]7](https://github.com/netzpirat/haml-coffee/issues/27): Add apostrophe to the encoded entities.
+- Upgrade to Haml Coffee 0.8.2
 
 ## 0.9.3 - Mai 22, 2012
 
 - Upgrade to Haml Coffee 0.8.1
-- [#46](https://github.com/netzpirat/haml_coffee_assets/issues/46): Attribute parsing partially broken.
+- [#46][]: Attribute parsing partially broken.
 
 ## 0.9.2 - Mai 21, 2012
 
@@ -72,21 +72,21 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 
 ## 0.8.6 - April 30, 2012
 
-- [#40](https://github.com/netzpirat/haml_coffee_assets/issues/40): Fix special class interpolation.
+- [#40][]: Fix special class interpolation.
 
 ## 0.8.5 - April 16, 2012
 
-- [#38](https://github.com/netzpirat/haml_coffee_assets/pull/38): Fix `customSurround` option. ([@dzello][])
+- [#38][]: Fix `customSurround` option. ([@dzello][])
 
 ## 0.8.4 - March 1, 2012
 
 - Upgrade to Haml Coffee 0.6.2
 - Fix provided precede, succeed and surround helpers.
-- [#31](https://github.com/netzpirat/haml_coffee_assets/pull/31): Explicit require Sprockets engine.
+- [#31][]: Explicit require Sprockets engine.
 
 ## 0.8.3 - February 13, 2012
 
-- [#29](https://github.com/netzpirat/haml_coffee_assets/pull/29): Fix HAML.extend for Mootools.
+- [#29][]: Fix HAML.extend for Mootools.
 
 ## 0.8.2 - February 13, 2012
 
@@ -94,15 +94,15 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 
 ## 0.8.1 - February 13, 2012
 
-- [#26](https://github.com/netzpirat/haml_coffee_assets/pull/26): Fix HAML configuration in the JS helpers.
+- [#26][]: Fix HAML configuration in the JS helpers.
 
 ## 0.8.0 - January 31, 2012
 
-- [#14](https://github.com/netzpirat/haml_coffee_assets/issues/14): Make it possible to put templates in a different directory ([@jingoro][])
+- [#14][]: Make it possible to put templates in a different directory ([@jingoro][])
 
 ## 0.7.1 - January 27, 2012
 
-- [#23](https://github.com/netzpirat/haml_coffee_assets/issues/23): Fix CoffeeScript => operator ([@whitequark][])
+- [#23][]: Fix CoffeeScript => operator ([@whitequark][])
 
 ## 0.7.0 - January 24, 2012
 
@@ -112,7 +112,7 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 ## 0.6.1 - January 16, 2012
 
 - Upgrade to Haml Coffee 0.5.6
-- [Issue [#2][]1](https://github.com/netzpirat/haml_coffee_assets/issues/21): Add link to I18n.js library in the README
+- [#2][]: Add link to I18n.js library in the README
 
 ## 0.6.0 - January 4, 2012
 
@@ -135,7 +135,7 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 ## 0.5.0 - December 13, 2011
 
 - Upgrade to Haml Coffee 0.5.2
-- [#4](https://github.com/netzpirat/haml_coffee_assets/issues/4): Support for the Sprockets JST processor
+- [#4][]: Support for the Sprockets JST processor
 
 ## 0.4.1 - December 13, 2011
 
@@ -146,22 +146,22 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 - Upgrade to Haml Coffee 0.4.0
 - Add configuration of the Haml Coffee compiler settings
 - add configuration of the Haml Coffee helper functions
-- [#12](https://github.com/netzpirat/haml_coffee_assets/issues/12): Fix wrong README examples
+- [#12][]: Fix wrong README examples
 
 ## 0.3.0 - November 28, 2011
 
 - Upgrade to Haml Coffee 0.3.1
-- [#9](https://github.com/netzpirat/haml_coffee_assets/issues/9): null values show up as text
+- [#9][]: null values show up as text
 
 ## 0.2.6 - November 23, 2011
 
-- Fix [#8](https://github.com/netzpirat/haml_coffee_assets/issues/8): Empty "name" attribute
+- Fix [#8][]: Empty "name" attribute
 
 ## 0.2.5 - November 21, 2011
 
 - Switch to official Haml Coffee release
-- [#6](https://github.com/netzpirat/haml_coffee_assets/issues/6): Doesn't work under windows (using cscript)
-- [#5](https://github.com/netzpirat/haml_coffee_assets/issues/5): data-inline="true" is not correctly translate
+- [#6][]: Doesn't work under windows (using cscript)
+- [#5][]: data-inline="true" is not correctly translate
 
 ## 0.2.4 - November 16, 2011
 
@@ -169,13 +169,13 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 
 ## 0.2.3 - November 16, 2011
 
-- [#3](https://github.com/netzpirat/haml_coffee_assets/issues/3): Tag attributes value must be "string forced"
-- [#2](https://github.com/netzpirat/haml_coffee_assets/issues/2): Empty lines aren't supported
+- [#3][]: Tag attributes value must be "string forced"
+- [#2][]: Empty lines aren't supported
 - Allow `[]` in attribute code
 
 ## 0.2.2 - November 16, 2011
 
-- [#1](https://github.com/netzpirat/haml_coffee_assets/issues/1): hamlcoffee.js not being found
+- hamlcoffee.js not being found ([#1][])
 
 ## 0.2.1 - November 15, 2011
 
@@ -189,6 +189,29 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 ## 0.0.1 - November 7, 2011
 
 - First release with my Haml Coffee fork
+
+<!--- The following link definition list is generated by PimpMyChangelog --->
+[#1]: https://github.com/netzpirat/haml_coffee_assets/issues/1
+[#2]: https://github.com/netzpirat/haml_coffee_assets/issues/2
+[#3]: https://github.com/netzpirat/haml_coffee_assets/issues/3
+[#4]: https://github.com/netzpirat/haml_coffee_assets/issues/4
+[#5]: https://github.com/netzpirat/haml_coffee_assets/issues/5
+[#6]: https://github.com/netzpirat/haml_coffee_assets/issues/6
+[#8]: https://github.com/netzpirat/haml_coffee_assets/issues/8
+[#9]: https://github.com/netzpirat/haml_coffee_assets/issues/9
+[#12]: https://github.com/netzpirat/haml_coffee_assets/issues/12
+[#14]: https://github.com/netzpirat/haml_coffee_assets/issues/14
+[#23]: https://github.com/netzpirat/haml_coffee_assets/issues/23
+[#26]: https://github.com/netzpirat/haml_coffee_assets/issues/26
+[#29]: https://github.com/netzpirat/haml_coffee_assets/issues/29
+[#31]: https://github.com/netzpirat/haml_coffee_assets/issues/31
+[#38]: https://github.com/netzpirat/haml_coffee_assets/issues/38
+[#39]: https://github.com/netzpirat/haml_coffee_assets/issues/39
+[#40]: https://github.com/netzpirat/haml_coffee_assets/issues/40
+[#46]: https://github.com/netzpirat/haml_coffee_assets/issues/46
+[#49]: https://github.com/netzpirat/haml_coffee_assets/issues/49
+[#51]: https://github.com/netzpirat/haml_coffee_assets/issues/51
+[#60]: https://github.com/netzpirat/haml_coffee_assets/issues/60
 
 [@axs89]: https://github.com/axs89
 [@dzello]: https://github.com/dzello
