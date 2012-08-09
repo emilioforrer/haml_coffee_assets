@@ -70,7 +70,7 @@ module HamlCoffeeAssets
       # @return [String] the source
       #
       def coffeescript
-        File.read CoffeeScript::Source.bundled_path
+        File.read CoffeeScript::Source.path
       end
 
       # Read a JavaScript file from the `js` dir.
