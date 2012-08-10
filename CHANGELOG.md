@@ -2,6 +2,10 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
+## 1.4.2 - August 10, 2012
+
+- [#63][]: Allow CoffeeScript path to be set with COFFEESCRIPT_SOURCE_PATH ([@paulyoung][])
+
 ## 1.4.1 - August 9, 2012
 
 - [#60][]: Remove included CoffeeScript library and use the one in the gem instead ([@paulyoung][])
@@ -212,6 +216,7 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 [#49]: https://github.com/netzpirat/haml_coffee_assets/issues/49
 [#51]: https://github.com/netzpirat/haml_coffee_assets/issues/51
 [#60]: https://github.com/netzpirat/haml_coffee_assets/issues/60
+[#63]: https://github.com/netzpirat/haml_coffee_assets/issues/63
 
 [@axs89]: https://github.com/axs89
 [@dzello]: https://github.com/dzello
