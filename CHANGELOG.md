@@ -2,6 +2,11 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
+## Master
+
+- [#65][]: CoffeScript interpolation does not work.
+- Upgrade to Haml Coffee 1.4.2
+
 ## 1.4.2 - August 10, 2012
 
 - [#63][]: Allow CoffeeScript path to be set with COFFEESCRIPT_SOURCE_PATH ([@paulyoung][])
