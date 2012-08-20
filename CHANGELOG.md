@@ -2,7 +2,7 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
-## Master
+## 1.4.3 - August 20, 2012
 
 - [#65][]: CoffeScript interpolation does not work.
 - Upgrade to Haml Coffee 1.4.2
