@@ -24,7 +24,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<h2></h2>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -48,7 +48,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<script>\\n  var i = 1;\\n</script>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -71,7 +71,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<script type='text/javascript'>\\n  var i = 1;\\n</script>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -94,7 +94,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<script type='text/javascript'>\\n  //<![CDATA[\\n    var i = 1;\\n  //]]>\\n</script>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, " $1='$1'").replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -118,7 +118,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<h2></h2>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -141,7 +141,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<h2></h2>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -343,7 +343,7 @@ describe HamlCoffeeAssets::Compiler do
       $e = window.HAML.escape;
       $o = [];
       $o.push("<h1>" + ($e(this.title)) + "</h1>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -417,7 +417,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<a href='/'></a>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -440,7 +440,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<a href='/'></a>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(context);
   };
 
@@ -463,7 +463,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<a href='/'></a>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(SomeWhere.context(context));
   };
 
@@ -487,7 +487,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<html>\\n  <body>\\n    <form>\\n      <input>\\n    </form>\\n  </body>\\n</html>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -510,7 +510,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<html>\\n<body>\\n<form>\\n<input>\\n</form>\\n</body>\\n</html>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -534,7 +534,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<p>Basename</p>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -557,7 +557,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<p>Basename</p>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -635,7 +635,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<img />\\n<br />\\n<p></p>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, " $1='$1'").replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -659,7 +659,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<img></img>\\n<br />\\n<p />");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, " $1='$1'").replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -685,7 +685,7 @@ describe HamlCoffeeAssets::Compiler do
       $fp = window.HAML.findAndPreserve;
       $o = [];
       $o.push("<h2>" + ($fp(title)) + "</h2>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -710,7 +710,7 @@ describe HamlCoffeeAssets::Compiler do
       $fp = window.HAML.findAndPreserve;
       $o = [];
       $o.push("<h2>" + ($fp(title)) + "</h2>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -736,7 +736,7 @@ describe HamlCoffeeAssets::Compiler do
       $fp = window.HAML.findAndPreserve;
       $o = [];
       $o.push("<h2>" + ($fp(title)) + "</h2>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -761,7 +761,7 @@ describe HamlCoffeeAssets::Compiler do
       $fp = SomeWhere.findAndPreserve;
       $o = [];
       $o.push("<h2>" + ($fp(title)) + "</h2>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -976,7 +976,7 @@ describe HamlCoffeeAssets::Compiler do
       var $o;
       $o = [];
       $o.push("<p></p>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n");
     }).call(window.HAML.context(context));
   };
 
@@ -994,7 +994,7 @@ describe HamlCoffeeAssets::Compiler do
     
     $o.push("<p></p>");
     
-    return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+    return $o.join("\\n");
     
   }).call(window.HAML.context(context));
 });
