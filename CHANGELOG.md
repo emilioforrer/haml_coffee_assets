@@ -2,6 +2,11 @@
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
+## Master
+
+- [#68][]: Don't use trim() for IE <= 8 compatibility.
+- Upgrade to Haml Coffee 1.4.7
+
 ## 1.4.6 - August 28, 2012
 
 - Upgrade to Haml Coffee 1.4.6
