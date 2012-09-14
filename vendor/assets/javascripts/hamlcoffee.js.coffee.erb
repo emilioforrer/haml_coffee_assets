@@ -86,7 +86,7 @@ class window.HAML
   # @return [String] the surrounded text
   #
   @surround: (start, end, fn) ->
-    start + fn() + end
+    start + fn.call(@)?.replace(/^\s+|\s+$/g, '') + end
 
   # The succeed helper appends text to the function output
   # without whitespace in between.
@@ -96,7 +96,7 @@ class window.HAML
   # @return [String] the succeeded text
   #
   @succeed: (end, fn) ->
-    fn() + end
+    fn.call(@)?.replace(/\s+$/g, '') + end
 
   # The precede helper prepends text to the function output
   # without whitespace in between.
@@ -106,4 +106,4 @@ class window.HAML
   # @return [String] the preeceded text
   #
   @precede: (start, fn) ->
-    start + fn()
+    start + fn.call(@)?.replace(/^\s+/g, '')
