@@ -4,6 +4,7 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 
 ## Master
 
+- [#69][]: Timing issue during configuration
 - Upgrade to Haml Coffee 1.4.9
 - Trim whitespace in the helpers and make them run in the template context.
 
@@ -240,7 +241,9 @@ Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpi
 [#51]: https://github.com/netzpirat/haml_coffee_assets/issues/51
 [#60]: https://github.com/netzpirat/haml_coffee_assets/issues/60
 [#63]: https://github.com/netzpirat/haml_coffee_assets/issues/63
-
+[#65]: https://github.com/netzpirat/haml_coffee_assets/issues/65
+[#68]: https://github.com/netzpirat/haml_coffee_assets/issues/68
+[#69]: https://github.com/netzpirat/haml_coffee_assets/issues/69
 [@axs89]: https://github.com/axs89
 [@dzello]: https://github.com/dzello
 [@jayzes]: https://github.com/jayzes

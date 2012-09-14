@@ -25,14 +25,6 @@ end
 #
 module HamlCoffeeAssets
 
-  # Get the Haml Coffee Assets configuration
-  #
-  # @return [HamlCoffeeAssets::Configuration] the configuration object
-  #
-  def self.config
-    @config ||= ::HamlCoffeeAssets::Configuration.new
-  end
-
   # Get the path to the `hamlcoffee.js.coffee.erb` helper file.
   #
   # @return [String] the absolute path to the helpers file

@@ -1,5 +1,13 @@
 module HamlCoffeeAssets
 
+  # Get the Haml Coffee Assets configuration
+  #
+  # @return [HamlCoffeeAssets::Configuration] the configuration object
+  #
+  def self.config
+    @config ||= ::HamlCoffeeAssets::Configuration.new
+  end
+  
   # Haml Coffee configuration object that contains the default values.
   # It's a plain Ruby object so a Sinatra app doesn't have to depend
   # on ActiveSupport just because of the Rails engine configuration.

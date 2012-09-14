@@ -8,7 +8,7 @@ module HamlCoffeeAssets
     #
     class Engine < ::Rails::Engine
 
-      config.hamlcoffee = ActiveSupport::OrderedOptions.new
+      config.hamlcoffee = ::HamlCoffeeAssets.config
 
       # Initialize Haml Coffee Assets after Sprockets
       #
@@ -17,11 +17,6 @@ module HamlCoffeeAssets
 
         # Register tilt template
         app.assets.register_engine '.hamlc', ::HamlCoffeeAssets::Tilt::TemplateHandler
-
-        # Copy Rails config to the Haml Coffee Assets config
-        app.config.hamlcoffee.each do |key, value|
-          HamlCoffeeAssets.config.instance_variable_set("@#{ key }", value)
-        end
       end
 
     end
