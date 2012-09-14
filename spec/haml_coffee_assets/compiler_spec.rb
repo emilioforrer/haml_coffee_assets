@@ -785,7 +785,9 @@ describe HamlCoffeeAssets::Compiler do
       var $c, $e, $o, surround;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      surround = window.HAML.surround;
+      surround = function(start, end, fn) {
+        return window.HAML.surround.call(context, start, end, fn);
+      };
       $o = [];
       $o.push("" + $e($c(surround('(', ')', function() {
         var $o1;
@@ -816,7 +818,9 @@ describe HamlCoffeeAssets::Compiler do
       var $c, $e, $o, surround;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      surround = SomeWhere.surround;
+      surround = function(start, end, fn) {
+        return SomeWhere.surround.call(context, start, end, fn);
+      };
       $o = [];
       $o.push("" + $e($c(surround('(', ')', function() {
         var $o1;
@@ -848,7 +852,9 @@ describe HamlCoffeeAssets::Compiler do
       var $c, $e, $o, succeed;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      succeed = window.HAML.succeed;
+      succeed = function(start, end, fn) {
+        return window.HAML.succeed.call(context, start, end, fn);
+      };
       $o = [];
       $o.push("click");
       $o.push("" + $e($c(succeed('.', function() {
@@ -880,7 +886,9 @@ describe HamlCoffeeAssets::Compiler do
       var $c, $e, $o, succeed;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      succeed = SomeWhere.succeed;
+      succeed = function(start, end, fn) {
+        return SomeWhere.succeed.call(context, start, end, fn);
+      };
       $o = [];
       $o.push("click");
       $o.push("" + $e($c(succeed('.', function() {
@@ -913,7 +921,9 @@ describe HamlCoffeeAssets::Compiler do
       var $c, $e, $o, precede;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      precede = window.HAML.precede;
+      precede = function(start, end, fn) {
+        return window.HAML.precede.call(context, start, end, fn);
+      };
       $o = [];
       $o.push("" + $e($c(precede('*', function() {
         var $o1;
@@ -944,7 +954,9 @@ describe HamlCoffeeAssets::Compiler do
       var $c, $e, $o, precede;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      precede = SomeWhere.precede;
+      precede = function(start, end, fn) {
+        return SomeWhere.precede.call(context, start, end, fn);
+      };
       $o = [];
       $o.push("" + $e($c(precede('*', function() {
         var $o1;
