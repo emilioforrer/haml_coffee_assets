@@ -1,8 +1,12 @@
 # Changelog
 
+The Haml Coffee Assets gem tries to follow semantic versioning, but in some cases it skips a version to be on par with
+the Haml Coffee version. This simplifies issue managing, because it's not always easy for a user to see where an issue
+belongs to.
+
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
-## Master
+## 1.4.9 - September 14, 2012
 
 - [#69][]: Timing issue during configuration
 - Upgrade to Haml Coffee 1.4.9
