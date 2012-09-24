@@ -6,6 +6,10 @@ belongs to.
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
+## 1.5.1 - September 24, 2012
+
+- Upgrade to Haml Coffee 1.5.1
+
 ## 1.4.9 - September 14, 2012
 
 - [#69][]: Timing issue during configuration

@@ -782,11 +782,12 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['surround'] = function(context) {
     return (function() {
-      var $c, $e, $o, surround;
+      var $c, $e, $o, surround,
+        _this = this;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       surround = function(start, end, fn) {
-        return window.HAML.surround.call(context, start, end, fn);
+        return window.HAML.surround.call(_this, start, end, fn);
       };
       $o = [];
       $o.push("" + $e($c(surround('(', ')', function() {
@@ -815,11 +816,12 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['surround'] = function(context) {
     return (function() {
-      var $c, $e, $o, surround;
+      var $c, $e, $o, surround,
+        _this = this;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       surround = function(start, end, fn) {
-        return SomeWhere.surround.call(context, start, end, fn);
+        return SomeWhere.surround.call(_this, start, end, fn);
       };
       $o = [];
       $o.push("" + $e($c(surround('(', ')', function() {
@@ -849,11 +851,12 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['succeed'] = function(context) {
     return (function() {
-      var $c, $e, $o, succeed;
+      var $c, $e, $o, succeed,
+        _this = this;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       succeed = function(start, end, fn) {
-        return window.HAML.succeed.call(context, start, end, fn);
+        return window.HAML.succeed.call(_this, start, end, fn);
       };
       $o = [];
       $o.push("click");
@@ -883,11 +886,12 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['succeed'] = function(context) {
     return (function() {
-      var $c, $e, $o, succeed;
+      var $c, $e, $o, succeed,
+        _this = this;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       succeed = function(start, end, fn) {
-        return SomeWhere.succeed.call(context, start, end, fn);
+        return SomeWhere.succeed.call(_this, start, end, fn);
       };
       $o = [];
       $o.push("click");
@@ -918,11 +922,12 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['precede'] = function(context) {
     return (function() {
-      var $c, $e, $o, precede;
+      var $c, $e, $o, precede,
+        _this = this;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       precede = function(start, end, fn) {
-        return window.HAML.precede.call(context, start, end, fn);
+        return window.HAML.precede.call(_this, start, end, fn);
       };
       $o = [];
       $o.push("" + $e($c(precede('*', function() {
@@ -931,7 +936,7 @@ describe HamlCoffeeAssets::Compiler do
         $o1.push("<span class='small'>Not really</span>");
         return $o1.join("\\n");
       }))));
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '').replace(/\\s(?:id|class)=(['"])(\\1)/mg, "");
     }).call(window.HAML.context(context));
   };
 
@@ -951,11 +956,12 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['precede'] = function(context) {
     return (function() {
-      var $c, $e, $o, precede;
+      var $c, $e, $o, precede,
+        _this = this;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       precede = function(start, end, fn) {
-        return SomeWhere.precede.call(context, start, end, fn);
+        return SomeWhere.precede.call(_this, start, end, fn);
       };
       $o = [];
       $o.push("" + $e($c(precede('*', function() {
@@ -964,7 +970,7 @@ describe HamlCoffeeAssets::Compiler do
         $o1.push("<span class='small'>Not really</span>");
         return $o1.join("\\n");
       }))));
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '').replace(/\\s(?:id|class)=(['"])(\\1)/mg, "");
     }).call(window.HAML.context(context));
   };
 
