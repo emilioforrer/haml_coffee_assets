@@ -35,7 +35,7 @@ module HamlCoffeeAssets
 
   # Get the Haml Coffee Assets helper file
   #
-  # @param [Boolean] compile whether to compile the CS helpers or not
+  # @param [Boolean] whether to compile the CS helpers or not
   # @return [String] the helpers content
   #
   def self.helpers(compile=true)
