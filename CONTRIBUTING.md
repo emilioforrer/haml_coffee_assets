@@ -1,5 +1,5 @@
-Contribute to Guard
-===================
+Contribute to Haml Coffee Assets
+================================
 
 File an issue
 -------------
