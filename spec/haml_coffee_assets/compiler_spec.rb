@@ -252,6 +252,52 @@ describe HamlCoffeeAssets::Compiler do
       end
     end
 
+    context 'placement configuration' do
+      it 'uses the global placement by default' do
+        HamlCoffeeAssets::Compiler.compile('placement', '%p Global placement').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+
+  window.JST['placement'] = function(context) {
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<p>Global placement</p>");
+      return $o.join("\\n");
+    }).call(window.HAML.context(context));
+  };
+
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'wraps the function within a define function with the amd placement' do
+        HamlCoffeeAssets.config.placement = 'amd'
+        HamlCoffeeAssets::Compiler.compile('placement', '%p AMD placement').should eql <<-TEMPLATE
+(function() {
+
+  define(function() {
+    return function(context) {
+      var render;
+      render = function() {
+        var $o;
+        $o = [];
+        $o.push("<p>AMD placement</p>");
+        return $o.join("\\n");
+      };
+      return render.call(window.HAML.context(context));
+    };
+  });
+
+}).call(this);
+        TEMPLATE
+      end
+    end
+
     context 'Attribute escaping configuration' do
       it 'does escape the attributes by default' do
         HamlCoffeeAssets::Compiler.compile('attributes', '%a{ :title => @title }').should eql <<-TEMPLATE

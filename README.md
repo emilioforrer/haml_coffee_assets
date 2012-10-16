@@ -147,6 +147,17 @@ If you prefer another HTML format than HTML5, you can set it in your `config/app
 config.hamlcoffee.format = 'xhtml'
 ```
 
+### Template Placement
+
+By default all Haml Coffee templates are placed under the configured template namespace. You can choose between the
+following placements:
+
+* global
+* amd
+
+By setting the placement option to `amd`, each template will be wrapped within a `define` function, enabling the usage
+of a module loader.
+
 ### Template namespace
 
 By default all Haml Coffee templates are registered under the `JST` namespace. A template

@@ -7,7 +7,7 @@ module HamlCoffeeAssets
   def self.config
     @config ||= ::HamlCoffeeAssets::Configuration.new
   end
-  
+
   # Haml Coffee configuration object that contains the default values.
   # It's a plain Ruby object so a Sinatra app doesn't have to depend
   # on ActiveSupport just because of the Rails engine configuration.
@@ -24,6 +24,7 @@ module HamlCoffeeAssets
       self.escapeHtml             = true
       self.escapeAttributes       = true
       self.cleanValue             = true
+      self.placement              = 'global'
       self.customHtmlEscape       = 'window.HAML.escape'
       self.customCleanValue       = 'window.HAML.cleanValue'
       self.customPreserve         = 'window.HAML.preserve'
@@ -65,6 +66,10 @@ module HamlCoffeeAssets
     # Clean inline CoffeeScript values
     #
     attr_accessor :cleanValue
+
+    # Define the function placement, either `global` or `amd`
+    #
+    attr_accessor :placement
 
     # Custom global HTML escaping function
     #

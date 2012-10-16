@@ -20,10 +20,10 @@ module HamlCoffeeAssets
       #
       def compile(name, source, jst = true)
         config = HamlCoffeeAssets.config
-        
+
         runtime.call('HamlCoffeeAssets.compile', name, source, jst,
                      config.namespace, config.format, config.uglify, config.basename,
-                     config.escapeHtml, config.escapeAttributes, config.cleanValue,
+                     config.escapeHtml, config.escapeAttributes, config.cleanValue, config.placement,
                      config.customHtmlEscape, config.customCleanValue,
                      config.customPreserve, config.customFindAndPreserve,
                      config.customSurround, config.customSucceed, config.customPrecede,

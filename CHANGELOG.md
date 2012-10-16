@@ -6,6 +6,11 @@ belongs to.
 
 Please also have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md).
 
+## Master
+
+- Add `placement` option.
+- Upgrade to Haml Coffee 1.6.0
+
 ## 1.5.1 - September 24, 2012
 
 - Upgrade to Haml Coffee 1.5.1
