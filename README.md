@@ -6,6 +6,13 @@ a pure [Sprockets](https://github.com/sstephenson/sprockets) engine without Rail
 
 Tested on MRI Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest version of JRuby.
 
+## Features
+
+* Seamless integration of [Haml-Coffee](https://github.com/netzpirat/haml-coffee) into the Rails asset pipeline or as
+standalone Sprockets engine.
+* Manifold options to configure Haml Coffee Assets to your needs.
+* AMD support.
+
 ## Haml Coffee
 
 Haml Coffee allows you to write inline [CoffeeScript](http://jashkenas.github.com/coffee-script/) in your
