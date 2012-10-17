@@ -150,7 +150,7 @@ If you prefer another HTML format than HTML5, you can set it in your `config/app
 config.hamlcoffee.format = 'xhtml'
 ```
 
-### Template Placement
+### Template placement
 
 By default all Haml Coffee templates are placed under the configured template namespace. You can choose between the
 following placements:
@@ -396,7 +396,7 @@ to, you can set custom functions for:
 * config.hamlcoffee.customPrecede
 
 You can see the [default implementation](https://github.com/netzpirat/haml_coffee_assets/blob/master/vendor/assets/javascripts/hamlcoffee.js.coffee.erb)
-and the [Haml Coffee documentation](https://github.com/netzpirat/haml-coffee#custom-helper-function-compiler-options)
+and the [Haml Coffee documentation](https://github.com/netzpirat/haml-coffee#custom-helper-function-options)
 for more information about each helper function.
 
 ## Author
