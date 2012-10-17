@@ -37,6 +37,8 @@ group :development, :test do
   gem 'growl'
   gem 'coolline'
 
-  gem 'yard'
-  gem 'redcarpet'
+  unless ENV['TRAVIS']
+    gem 'yard'
+    gem 'redcarpet'
+  end
 end
