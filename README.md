@@ -302,11 +302,11 @@ Now you can use the properties from the global context in every template:
 
 ```haml
 .not-found-error
-  %h1= I18n.t('js.app.notfound.error', { route: @route })
+  %h1 Page not found
   - if @isAuthenticated
-    %p= I18n.t('js.app.notfound.homepage')
+    %p Please visit the home page.
   - else
-    %p= I18n.t('js.app.notfound.login')
+    %p Please log into your account.
 ```
 
 If you like to use your own implementation, simply configure your context function in your `config/application.rb`:
