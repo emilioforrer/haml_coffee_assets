@@ -161,6 +161,14 @@ following placements:
 By setting the placement option to `amd`, each template will be wrapped within a `define` function, enabling the usage
 of a module loader.
 
+```ruby
+config.hamlcoffee.placement = 'amd'
+```
+
+Please note, the `placement` option is only applicable if you use the `.hamlc` extension and let Haml Coffee Assets
+handle the JST generation. The global `hamlcoffee` helpers must be loaded normally before making use of any
+templates due to the current template design.
+
 ### Template namespace
 
 By default all Haml Coffee templates are registered under the `JST` namespace. A template
