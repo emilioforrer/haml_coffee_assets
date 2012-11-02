@@ -25,7 +25,7 @@ module HamlCoffeeAssets
       self.escapeAttributes       = true
       self.cleanValue             = true
       self.placement              = 'global'
-      self.dependencies           = { hc: 'hamlcoffee_amd' }
+      self.dependencies           = { :hc => 'hamlcoffee_amd' }
       self.customHtmlEscape       = 'window.HAML.escape'
       self.customCleanValue       = 'window.HAML.cleanValue'
       self.customPreserve         = 'window.HAML.preserve'
