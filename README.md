@@ -32,7 +32,8 @@ Haml Coffee allows you to write inline [CoffeeScript](http://jashkenas.github.co
             %a{ :href => "/cart/item/remove/#{ item.id }" } Remove Item
 ```
 
-You can try Haml Coffee online by visiting [Haml Coffee Online](http://haml-coffee-online.herokuapp.com/).
+You can try Haml Coffee online by visiting [Haml Coffee Online](http://haml-coffee-online.herokuapp.com/) and have a
+look [the AMD example Rails app](https://github.com/netzpirat/haml_coffee_assets_amd).
 
 ## Installation
 
@@ -463,6 +464,9 @@ Of course you can also directly require and render a template like:
 ```haml
 != require("another/other")()
 ```
+
+Please have a look at [the AMD example Rails app](https://github.com/netzpirat/haml_coffee_assets_amd) for a working
+example.
 
 ## Author
 
