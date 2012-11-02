@@ -6,7 +6,7 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
-## Master
+## 1.7.0 - November 2, 2012
 
 - Upgrade to Haml Coffee 1.7.0
 - Add `dependencies` option.
