@@ -299,13 +299,12 @@ describe HamlCoffeeAssets::Compiler do
     end
 
     context 'global amd module dependencies' do
-      it 'adds the module dependencies' do
+      it 'adds the hamlcoffee module context helper' do
         HamlCoffeeAssets.config.placement = 'amd'
-        HamlCoffeeAssets.config.dependencies = { '_' => 'underscore', 'hc' => 'hamlcoffee' }
         HamlCoffeeAssets::Compiler.compile('globals', '%p AMD module dependencies').should eql <<-TEMPLATE
 (function() {
 
-  define(['underscore', 'hamlcoffee'], function(_, hc) {
+  define(['hamlcoffee_amd'], function(hc) {
     return function(context) {
       var render;
       render = function() {
@@ -315,6 +314,29 @@ describe HamlCoffeeAssets::Compiler do
         return $o.join("\\n");
       };
       return render.call(hc.context(context));
+    };
+  });
+
+}).call(this);
+        TEMPLATE
+      end
+      
+      it 'adds the module dependencies' do
+        HamlCoffeeAssets.config.placement = 'amd'
+        HamlCoffeeAssets.config.dependencies = { '_' => 'underscore' }
+        HamlCoffeeAssets::Compiler.compile('globals', '%p AMD module dependencies').should eql <<-TEMPLATE
+(function() {
+
+  define(['underscore'], function(_) {
+    return function(context) {
+      var render;
+      render = function() {
+        var $o;
+        $o = [];
+        $o.push("<p>AMD module dependencies</p>");
+        return $o.join("\\n");
+      };
+      return render.call(context);
     };
   });
 
