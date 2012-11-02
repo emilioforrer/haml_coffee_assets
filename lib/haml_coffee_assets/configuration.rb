@@ -25,6 +25,7 @@ module HamlCoffeeAssets
       self.escapeAttributes       = true
       self.cleanValue             = true
       self.placement              = 'global'
+      self.dependencies           = { hc: 'hamlcoffee_amd' }
       self.customHtmlEscape       = 'window.HAML.escape'
       self.customCleanValue       = 'window.HAML.cleanValue'
       self.customPreserve         = 'window.HAML.preserve'
@@ -70,6 +71,10 @@ module HamlCoffeeAssets
     # Define the function placement, either `global` or `amd`
     #
     attr_accessor :placement
+
+    # Define the global amd module dependencies
+    #
+    attr_accessor :dependencies
 
     # Custom global HTML escaping function
     #

@@ -6,6 +6,12 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- Upgrade to Haml Coffee 1.7.0
+- Add `dependencies` option.
+- Add AMD module version of the Haml Coffee Assets shared helpers.
+
 ## 1.6.2 - October 27, 2012
 
 - Upgrade to Haml Coffee 1.6.2

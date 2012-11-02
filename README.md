@@ -52,6 +52,8 @@ And require the `hamlcoffee.js` in your `app/assets/javascripts/application.js.c
 #= require hamlcoffee
 ```
 
+If you're using AMD support then you do not need to include the above helper, since it will be automatically included.
+
 This provides the default escaping and the global context functions. Read more about it in the configuration section
 below.
 
@@ -63,27 +65,8 @@ If you want to use Haml Coffee with Sinatra, please have a look at the
 
 ## Usage
 
-Haml Coffee Assets allows two different ways of generating your JavaScript templates:
-
-### Sprocket JST processor template generation
-
-* Extension: `.jst.hamlc`
-
-When you give your templates the extension `.jst.hamlc`, Haml Coffee Assets will only generate the template function,
-which then in turn will be further processed by the
-[Sprocket JST processor](https://github.com/sstephenson/sprockets/blob/master/lib/sprockets/jst_processor.rb). Because
-Haml Coffee Assets will not generate the template, you can't use the template name filter and the JST namespace
-definition is more cumbersome compared to the Haml Coffee template generation.
-
-With this approach you should place all your Haml Coffee templates in the `app/assets/templates` directory and include
-all templates from your `app/assets/javascripts/application.js.coffee`:
-
-```coffeescript
-#= require_tree ../templates
-```
-
-If you would place your templates into `app/assets/javascripts/templates`, then all your JST template names would begin
-with `templates/`, which may be not what you want.
+Haml Coffee Assets allows two different ways of generating your JavaScript templates, but the Haml Coffee template
+generation is preferred, since it provides more configuration options and a smoother experience.
 
 ### Haml Coffee template generation
 
@@ -102,6 +85,26 @@ templates from your `app/assets/javascripts/application.js.coffee`:
 
 Because Haml Coffee Assets provides a default template name filter, the `templates/` prefix will be automatically
 removed.
+
+### Sprocket JST processor template generation
+
+* Extension: `.jst.hamlc`
+
+When you give your templates the extension `.jst.hamlc`, Haml Coffee Assets will only generate the template function,
+which then in turn will be further processed by the
+[Sprocket JST processor](https://github.com/sstephenson/sprockets/blob/master/lib/sprockets/jst_processor.rb). Because
+Haml Coffee Assets will not generate the template, you can't use the AMD support, template name filter and the JST namespace
+definition is more cumbersome compared to the Haml Coffee template generation.
+
+With this approach you should place all your Haml Coffee templates in the `app/assets/templates` directory and include
+all templates from your `app/assets/javascripts/application.js.coffee`:
+
+```coffeescript
+#= require_tree ../templates
+```
+
+If you would place your templates into `app/assets/javascripts/templates`, then all your JST template names would begin
+with `templates/`, which may be not what you want.
 
 ## Configuration
 
@@ -169,6 +172,18 @@ Please note, the `placement` option is only applicable if you use the `.hamlc` e
 handle the JST generation. The global `hamlcoffee` helpers must be loaded normally before making use of any
 templates due to the current template design.
 
+### Global template dependencies
+
+Haml Coffee Assets allows you to globally define the module dependencies for all templates. By default, the Haml Coffee
+Assets helper is included, but you can add your own:
+
+```ruby
+config.hamlcoffee.dependencies = { '_' => 'underscore', :hc => 'hamlcoffee_amd' }
+```
+
+If you do not include the `hamlcoffee_amd` module as `hc` in the list, then the helper methods will be included in each
+template, increasing its size. It's recommended to always have the `hamlcoffee` module included.
+
 ### Template namespace
 
 By default all Haml Coffee templates are registered under the `JST` namespace. A template
@@ -234,6 +249,8 @@ By default, `name_filter` strips the leading `templates/` directory off of the n
 applicable if you use the `.hamlc` extension and let Haml Coffee Assets handle the JST generation. If you use the
 `.jst.hamlc` extension, then Sprockets JST processor will name things accordingly (e.g., with `templates/` intact in
 this case).
+
+The template name filter is not used with AMD loader.
 
 ### Basename
 
@@ -406,6 +423,46 @@ to, you can set custom functions for:
 You can see the [default implementation](https://github.com/netzpirat/haml_coffee_assets/blob/master/vendor/assets/javascripts/hamlcoffee.js.coffee.erb)
 and the [Haml Coffee documentation](https://github.com/netzpirat/haml-coffee#custom-helper-function-options)
 for more information about each helper function.
+
+## Partial rendering
+
+With Haml Coffee Assets you can render partials when using plain JST approach and also with AMD support.
+
+### JST partial rendering
+
+With the traditional JST approach, all the templates are globally accessible in your defined namespace, which is `JST`
+by default. This allows you to render a template within another template like:
+
+```
+%h1 Comments for this article
+- for comment in @article.comments 
+  != JST['articles/comment'](comment)
+```
+
+### AMD partial rendering
+
+Haml Coffee parses the template source code for `require` statements and adds them to the template module dependencies.
+This allows you to require other templates like this:
+
+```Haml
+- require 'module'
+- require 'deep/nested/other'
+```
+
+Now your dependencies are available in the template, allowing you to render it with:
+
+```Haml
+!= module()
+!= other()
+```
+
+Please note that only the basename ot the template is used as module variable name.
+
+Of course you can also directly require and render a template like:
+
+```haml
+!= require("another/other")()
+```
 
 ## Author
 

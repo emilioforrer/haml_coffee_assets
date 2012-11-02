@@ -23,7 +23,7 @@ module HamlCoffeeAssets
 
         runtime.call('HamlCoffeeAssets.compile', name, source, jst,
                      config.namespace, config.format, config.uglify, config.basename,
-                     config.escapeHtml, config.escapeAttributes, config.cleanValue, config.placement,
+                     config.escapeHtml, config.escapeAttributes, config.cleanValue, config.placement, config.dependencies,
                      config.customHtmlEscape, config.customCleanValue,
                      config.customPreserve, config.customFindAndPreserve,
                      config.customSurround, config.customSucceed, config.customPrecede,

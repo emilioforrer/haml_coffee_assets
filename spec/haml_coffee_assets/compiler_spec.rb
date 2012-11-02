@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# encoding: utf-8
 
 require 'spec_helper'
 
@@ -280,7 +280,7 @@ describe HamlCoffeeAssets::Compiler do
         HamlCoffeeAssets::Compiler.compile('placement', '%p AMD placement').should eql <<-TEMPLATE
 (function() {
 
-  define(function() {
+  define(['hamlcoffee_amd'], function(hc) {
     return function(context) {
       var render;
       render = function() {
@@ -289,7 +289,55 @@ describe HamlCoffeeAssets::Compiler do
         $o.push("<p>AMD placement</p>");
         return $o.join("\\n");
       };
-      return render.call(window.HAML.context(context));
+      return render.call(hc.context(context));
+    };
+  });
+
+}).call(this);
+        TEMPLATE
+      end
+    end
+
+    context 'global amd module dependencies' do
+      it 'adds the module dependencies' do
+        HamlCoffeeAssets.config.placement = 'amd'
+        HamlCoffeeAssets.config.dependencies = { '_' => 'underscore', 'hc' => 'hamlcoffee' }
+        HamlCoffeeAssets::Compiler.compile('globals', '%p AMD module dependencies').should eql <<-TEMPLATE
+(function() {
+
+  define(['underscore', 'hamlcoffee'], function(_, hc) {
+    return function(context) {
+      var render;
+      render = function() {
+        var $o;
+        $o = [];
+        $o.push("<p>AMD module dependencies</p>");
+        return $o.join("\\n");
+      };
+      return render.call(hc.context(context));
+    };
+  });
+
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'adds the template dependencies' do
+        HamlCoffeeAssets.config.placement = 'amd'
+        HamlCoffeeAssets::Compiler.compile('partials', "%p!= require('shared/partial')()").should eql <<-TEMPLATE
+(function() {
+
+  define(['hamlcoffee_amd', 'shared/partial'], function(hc, partial) {
+    return function(context) {
+      var render;
+      render = function() {
+        var $c, $o;
+        $c = hc.cleanValue;
+        $o = [];
+        $o.push("<p>" + ($c(require('shared/partial')())) + "</p>");
+        return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace\(/\\s(\\w+)='false'/mg, '');
+      };
+      return render.call(hc.context(context));
     };
   });
 
@@ -315,7 +363,7 @@ describe HamlCoffeeAssets::Compiler do
       $c = window.HAML.cleanValue;
       $o = [];
       $o.push("<a title='" + ($e($c(this.title))) + "'></a>");
-      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
+      return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace\(/\\s(\\w+)='false'/mg, '');
     }).call(window.HAML.context(context));
   };
 
