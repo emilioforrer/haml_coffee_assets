@@ -367,7 +367,7 @@ statement. But when you're using Haml Coffee Assets, then you can have the scope
 with the context by enable it in the configuration:
 
 ```ruby
-config.hamlcoffee.extendContext = true
+config.hamlcoffee.extendScope = true
 ```
 
 With this option enabled, you don't need to use `@` or `this` to reference context data:
