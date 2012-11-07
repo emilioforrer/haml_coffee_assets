@@ -6,6 +6,10 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- [#76][]: Fix scope extension for Sprocket JST processor template generation. ([@dhiemstra][])
+
 ## 1.7.1 - November 2, 2012
 
 - Fix context merge when using AMD.
@@ -72,7 +76,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## 1.2.0 - Juli 18, 2012
 
-- Use `&#39;` instead of `&apos;` for supporting IE < 9
+- Use `&[#39][];` instead of `&apos;` for supporting IE < 9
 - Upgrade to Haml Coffee 1.2.0
 
 ## 1.1.3 - Juli 4, 2012
@@ -271,7 +275,9 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [#65]: https://github.com/netzpirat/haml_coffee_assets/issues/65
 [#68]: https://github.com/netzpirat/haml_coffee_assets/issues/68
 [#69]: https://github.com/netzpirat/haml_coffee_assets/issues/69
+[#76]: https://github.com/netzpirat/haml_coffee_assets/issues/76
 [@axs89]: https://github.com/axs89
+[@dhiemstra]: https://github.com/dhiemstra
 [@dzello]: https://github.com/dzello
 [@jayzes]: https://github.com/jayzes
 [@jfirebaugh]: https://github.com/jfirebaugh
