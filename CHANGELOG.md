@@ -6,7 +6,7 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
-## Master
+## 1.7.2 - November 7, 2012
 
 - [#76][]: Fix scope extension for Sprocket JST processor template generation. ([@dhiemstra][])
 
