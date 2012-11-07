@@ -1186,8 +1186,8 @@ describe HamlCoffeeAssets::Compiler do
       
       return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
       
-    };
-  }).call(window.HAML.context(context));
+    }).call(window.HAML.context(context));
+  };
 });
       TEMPLATE
       HamlCoffeeAssets::Compiler.compile('test', '%h2= name', false).should eql template.gsub(/\n$/, '')
