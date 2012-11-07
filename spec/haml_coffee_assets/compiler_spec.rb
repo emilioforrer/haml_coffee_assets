@@ -320,7 +320,7 @@ describe HamlCoffeeAssets::Compiler do
 }).call(this);
         TEMPLATE
       end
-      
+
       it 'adds the module dependencies' do
         HamlCoffeeAssets.config.placement = 'amd'
         HamlCoffeeAssets.config.dependencies = { '_' => 'underscore' }
@@ -1119,21 +1119,16 @@ describe HamlCoffeeAssets::Compiler do
       end
 
       it 'returns only the template function when false' do
-        template = <<-TEMPLATE
+        HamlCoffeeAssets::Compiler.compile('func', '%p', false).should eql <<-TEMPLATE
 (function(context) {
   return (function() {
     var $o;
-    
     $o = [];
-    
     $o.push("<p></p>");
-    
     return $o.join("\\n");
-    
   }).call(window.HAML.context(context));
 });
         TEMPLATE
-        HamlCoffeeAssets::Compiler.compile('func', '%p', false).should eql template.gsub(/\n$/, '')
       end
     end
 
@@ -1170,27 +1165,20 @@ describe HamlCoffeeAssets::Compiler do
 
     it 'uses the context for the scope for a JST function' do
       HamlCoffeeAssets.config.extendScope = true
-      template = <<-TEMPLATE
+      HamlCoffeeAssets::Compiler.compile('test', '%h2= name', false).should eql <<-TEMPLATE
 (function(context) {
   with(context || {}) {
     return (function() {
       var $c, $e, $o;
-      
       $e = window.HAML.escape;
-      
       $c = window.HAML.cleanValue;
-      
       $o = [];
-      
       $o.push("<h2>" + ($e($c(name))) + "</h2>");
-      
       return $o.join("\\n").replace(/\\s(\\w+)='true'/mg, ' $1').replace(/\\s(\\w+)='false'/mg, '');
-      
     }).call(window.HAML.context(context));
   };
 });
       TEMPLATE
-      HamlCoffeeAssets::Compiler.compile('test', '%h2= name', false).should eql template.gsub(/\n$/, '')
     end
   end
 end
