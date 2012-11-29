@@ -6,7 +6,7 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
-## Master
+## 1.8.2 - November 29, 2012
 
 - Upgrade to Haml Coffee 1.8.2
 - [#78][]: Fix nested parenthesis detection within attributes.
