@@ -34,8 +34,7 @@ group :development, :test do
   gem 'rspec'
 
   gem 'rb-fsevent'
-  gem 'growl'
-  gem 'coolline'
+  gem 'ruby_gntp'
 
   unless ENV['TRAVIS']
     gem 'yard'
