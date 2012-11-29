@@ -6,6 +6,11 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- Upgrade to Haml Coffee 1.8.2
+- [#78][]: Fix nested parenthesis detection within attributes.
+
 ## 1.7.2 - November 7, 2012
 
 - [#76][]: Fix scope extension for Sprocket JST processor template generation. ([@dhiemstra][])
