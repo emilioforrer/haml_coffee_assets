@@ -21,7 +21,6 @@ group :development, :test do
   gem 'railties',   '~> 3.2'
   gem 'tzinfo'
 
-  gem 'thin'
   gem 'jasminerice'
   gem 'jquery-rails'
 
@@ -33,11 +32,11 @@ group :development, :test do
 
   gem 'rspec'
 
-  gem 'rb-fsevent'
-  gem 'ruby_gntp'
-
   unless ENV['TRAVIS']
     gem 'yard'
     gem 'redcarpet'
+    gem 'rb-fsevent'
+    gem 'ruby_gntp'
+    gem 'thin'
   end
 end
