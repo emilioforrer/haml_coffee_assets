@@ -5,6 +5,7 @@ source :rubygems
 gemspec
 
 platform :ruby do
+  gem 'libv8'
   gem 'therubyracer'
 end
 
