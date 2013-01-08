@@ -5,12 +5,11 @@ source :rubygems
 gemspec
 
 platform :ruby do
-  gem 'libv8'
-  gem 'therubyracer'
+  gem 'therubyracer', '0.10.2'
 end
 
 platform :jruby do
-  gem 'therubyrhino'
+  gem 'therubyrhino', '1.73.5'
 end
 
 group :assets do
