@@ -26,7 +26,7 @@ module HamlCoffeeAssets
                      config.escapeHtml, config.escapeAttributes, config.cleanValue, config.placement, config.dependencies,
                      config.customHtmlEscape, config.customCleanValue,
                      config.customPreserve, config.customFindAndPreserve,
-                     config.customSurround, config.customSucceed, config.customPrecede,
+                     config.customSurround, config.customSucceed, config.customPrecede, config.customReference,
                      config.preserveTags, config.selfCloseTags,
                      config.context, config.extendScope)
       end

@@ -1095,6 +1095,55 @@ describe HamlCoffeeAssets::Compiler do
       end
     end
 
+    context 'reference function configuration' do
+      it 'uses the default reference function when no custom function is provided' do
+        HamlCoffeeAssets::Compiler.compile('reference', '%div[@user]').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+
+  window.JST['reference'] = function(context) {
+    return (function() {
+      var $o, $r;
+      $r = window.HAML.reference;
+      $o = [];
+      $o.push("<div " + ($r(this.user)) + "></div>");
+      return $o.join("\\n");
+    }).call(window.HAML.context(context));
+  };
+
+}).call(this);
+        TEMPLATE
+      end
+
+      it 'uses a configured reference function' do
+        HamlCoffeeAssets.config.customReference = 'SomeWhere.reference'
+        HamlCoffeeAssets::Compiler.compile('reference', '%div[@user]').should eql <<-TEMPLATE
+(function() {
+  var _ref;
+
+  if ((_ref = window.JST) == null) {
+    window.JST = {};
+  }
+
+  window.JST['reference'] = function(context) {
+    return (function() {
+      var $o, $r;
+      $r = SomeWhere.reference;
+      $o = [];
+      $o.push("<div " + ($r(this.user)) + "></div>");
+      return $o.join("\\n");
+    }).call(window.HAML.context(context));
+  };
+
+}).call(this);
+        TEMPLATE
+      end
+    end
+
     describe 'the template creation function' do
       it 'returns the JavaScript template when true' do
         HamlCoffeeAssets::Compiler.compile('func', '%p', true).should eql <<-TEMPLATE

@@ -21,6 +21,7 @@ describe HamlCoffeeAssets do
         helpers.should =~ /HAML.surround/
         helpers.should =~ /HAML.succeed/
         helpers.should =~ /HAML.precede/
+        helpers.should =~ /HAML.reference/
       end
     end
 
@@ -37,6 +38,7 @@ describe HamlCoffeeAssets do
         helpers.should =~ /@surround/
         helpers.should =~ /@succeed/
         helpers.should =~ /@precede/
+        helpers.should =~ /@reference/
       end
     end
   end

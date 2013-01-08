@@ -33,6 +33,7 @@ module HamlCoffeeAssets
       self.customSurround         = 'window.HAML.surround'
       self.customSucceed          = 'window.HAML.succeed'
       self.customPrecede          = 'window.HAML.precede'
+      self.customReference        = 'window.HAML.reference'
       self.preserveTags           = 'textarea,pre'
       self.selfCloseTags          = 'meta,img,link,br,hr,input,area,param,col,base'
       self.context                = 'window.HAML.context'
@@ -99,6 +100,10 @@ module HamlCoffeeAssets
     # Custom preserve function
     #
     attr_accessor :customPreserve
+
+    # Custom object reference function
+    #
+    attr_accessor :customReference
 
     # Custom find and preserve function
     #

@@ -108,3 +108,43 @@ describe 'HAML', ->
   describe '.precede', ->
     it 'prepends the text to the function result', ->
       expect(HAML.precede('Prefix', -> '<p>text</p>')).toEqual 'Prefix<p>text</p>'
+
+  describe '.reference', ->
+    describe 'class generation', ->
+      it 'uses the constructor name as name', ->
+        class MyUser
+          id: 42
+        expect(HAML.reference(new MyUser())).toEqual "class='my_user' id='my_user_42'"
+
+      it 'uses the custom name from #hamlObjectRef', ->
+        class MyUser
+          id: 23
+          hamlObjectRef: -> 'custom_name'
+        expect(HAML.reference(new MyUser())).toEqual "class='custom_name' id='custom_name_23'"
+
+      it 'defaults to `object` without consturctor name', ->
+        expect(HAML.reference({ id: 666 })).toEqual "class='object' id='object_666'"
+
+      it 'prepends a given prefix', ->
+        class MyUser
+          id: 42
+        expect(HAML.reference(new MyUser(), 'prefix')).toEqual "class='prefix_my_user' id='prefix_my_user_42'"
+
+    describe 'id generation', ->
+      it 'uses the object #id property', ->
+        class FromIdProp
+          id: 42
+        expect(HAML.reference(new FromIdProp())).toEqual "class='from_id_prop' id='from_id_prop_42'"
+
+      it 'uses the object #to_key function', ->
+        class FromToKeyFunc
+          to_key: -> 23
+        expect(HAML.reference(new FromToKeyFunc())).toEqual "class='from_to_key_func' id='from_to_key_func_23'"
+
+      it 'uses the object #id function', ->
+        class FromIdFunc
+          id: -> 123
+        expect(HAML.reference(new FromIdFunc())).toEqual "class='from_id_func' id='from_id_func_123'"
+
+      it 'uses the object itself', ->
+        expect(HAML.reference(123)).toEqual "class='number' id='number_123'"

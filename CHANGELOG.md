@@ -6,6 +6,10 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- Upgrade to Haml Coffee 1.9.0
+
 ## 1.8.2 - November 29, 2012
 
 - Upgrade to Haml Coffee 1.8.2

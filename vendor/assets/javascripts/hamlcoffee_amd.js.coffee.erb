@@ -89,3 +89,30 @@ define ->
   # @return [Object] the merged context
   #
   context: (locals) -> locals
+
+  # The reference helper creates id and class attributes
+  # for an object reference.
+  #
+  # @param [Object] object the referenced object
+  # @param [String] prefix the optional id and class prefix
+  # @return [String] the id and class attributes
+  #
+  reference: (object, prefix) ->
+    name = if prefix then prefix + '_' else ''
+
+    if typeof(object.hamlObjectRef) is 'function'
+      name += object.hamlObjectRef()
+    else
+      name += (object.constructor?.name || 'object').replace(/\W+/g, '_').replace(/([a-z\d])([A-Z])/g, '$1_$2').toLowerCase()
+
+    id = if typeof(object.to_key) is 'function'
+           object.to_key()
+         else if typeof(object.id) is 'function'
+           object.id()
+         else if object.id
+           object.id
+         else
+           object
+
+    result  = "class='#{ name }'"
+    result += " id='#{ name }_#{ id }'" if i
