@@ -436,7 +436,7 @@ by default. This allows you to render a template within another template like:
 
 ```
 %h1 Comments for this article
-- for comment in @article.comments 
+- for comment in @article.comments
   != JST['articles/comment'](comment)
 ```
 
@@ -508,7 +508,7 @@ See the [CHANGELOG](https://github.com/netzpirat/haml_coffee_assets/blob/master/
 
 (The MIT License)
 
-Copyright (c) 2011-2012 Michael Kessler
+Copyright (c) 2011-2013 Michael Kessler
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
