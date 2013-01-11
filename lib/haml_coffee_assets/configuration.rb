@@ -39,6 +39,7 @@ module HamlCoffeeAssets
       self.context                = 'window.HAML.context'
       self.extendScope            = false
       self.name_filter            = lambda { |n| n.sub /^templates\//, '' }
+      self.shared_template_path   = "app/templates"
     end
 
     # Template namespace
@@ -130,6 +131,10 @@ module HamlCoffeeAssets
     # return the modified name (or unmodified) name.
     #
     attr_accessor :name_filter
+
+    # Path to templates shared by Rails and JS.
+    #
+    attr_accessor :shared_template_path
 
   end
 
