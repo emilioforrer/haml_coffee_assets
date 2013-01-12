@@ -5,7 +5,12 @@ require 'haml_coffee_assets/action_view/template_handler'
 
 describe HamlCoffeeAssets::ActionView::TemplateHandler do
   def new_template(body)
-    ::ActionView::Template.new(body, "template", described_class, {})
+    ::ActionView::Template.new(
+      body,
+      "template",
+      described_class,
+      :virtual_path => "path/to/_template"
+    )
   end
 
   let(:context) { Object.new }
