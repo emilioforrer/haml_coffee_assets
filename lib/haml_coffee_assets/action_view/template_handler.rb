@@ -14,6 +14,8 @@ module HamlCoffeeAssets
         "ExecJS.compile(#{compilation_string}).eval(#{evaluation_string}).html_safe"
       end
 
+      protected
+
       def compilation_string
         string = ""
 
