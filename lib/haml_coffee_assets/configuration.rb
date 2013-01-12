@@ -38,7 +38,12 @@ module HamlCoffeeAssets
       self.selfCloseTags          = 'meta,img,link,br,hr,input,area,param,col,base'
       self.context                = 'window.HAML.context'
       self.extendScope            = false
-      self.name_filter            = lambda { |n| n.sub /^templates\//, '' }
+      self.shared_template_path   = 'app/assets/javascripts/templates'
+      self.name_filter            = lambda { |n|
+        parts = n.sub(/^templates\//, '').split('/')
+        parts.last.sub!(/^_/, '')
+        parts.join('/')
+      }
     end
 
     # Template namespace
@@ -130,6 +135,10 @@ module HamlCoffeeAssets
     # return the modified name (or unmodified) name.
     #
     attr_accessor :name_filter
+
+    # Path to templates shared by Rails and JS.
+    #
+    attr_accessor :shared_template_path
 
   end
 
