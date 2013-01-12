@@ -108,9 +108,9 @@ with `templates/`, which may be not what you want.
 
 ### Server-side rendering in Rails
 
-Haml Coffee Assets registers the `.hamlc` extension with Action View, so that Rails templates can be written in Haml Coffee. Place these templates in the shared directory (`app/templates` by default), and the same template files can be rendered via Rails or via JavaScript on the client.
+Haml Coffee Assets registers the `.hamlc` extension with Action View, so that Rails templates can be written in Haml Coffee. Rails will see templates placed in `app/assets/javascripts/templates` (though this path can be changed if you store your templates in another directory), and the same template files can be rendered via Rails or via JavaScript on the client.
 
-Given a Haml Coffee template at `app/templates/_book.hamlc`:
+Given a Haml Coffee template at `app/assets/javascripts/templates/books/_book.hamlc`:
 
 ```haml
 %dl
@@ -120,23 +120,21 @@ Given a Haml Coffee template at `app/templates/_book.hamlc`:
   %dd= @author
 ```
 
-Render within Rails:
+Rendering `books#index`:
 
-```Haml
-= render :partial => "product", :name => "A Tale of Two Cities", :author => "Charles Dickens"
+```haml
+= render "book", :name => "A Tale of Two Cities", :author => "Charles Dickens"
 ```
 
 Require and render the same file on the client using the asset pipeline:
 
 ```coffeescript
-#= require _book
+#= require templates/books/_book
 
-JST["book"](name: "A Tale of Two Cities", author: "Charles Dickens")
+JST["books/book"](name: "A Tale of Two Cities", author: "Charles Dickens")
 ```
 
-Note that the template is required as `_book` because it refers to the file relative to `app/templates`, but the template name on the client is simply `book`.
-
-Shared templates currently do not support partials, though this is planned.
+Note that the template is required as `books/_book` because it refers to the actual file, but the template name on the client is simply `books/book`. If you require all templates at once with `#= require_tree ./templates`, you won't need to remember this distinction.
 
 ## Configuration
 
@@ -458,9 +456,7 @@ for more information about each helper function.
 
 ### Shared template path
 
-If you want to share the same template files between Rails and JavaScript, you can put them in a separate shared directory. This directory is added to the Sprockets load path and to Action View's load path.
-
-By default, the shared templates directory is `app/templates`, but this can be configured:
+Rails will look for templates in `app/assets/javascripts/templates` when rendering on the server side. If you store your templates in another directory, you can change this location:
 
 ```ruby
 config.hamlcoffee.shared_template_path = "custom/template/path"
