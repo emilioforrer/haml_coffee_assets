@@ -38,7 +38,7 @@ module HamlCoffeeAssets
       self.selfCloseTags          = 'meta,img,link,br,hr,input,area,param,col,base'
       self.context                = 'window.HAML.context'
       self.extendScope            = false
-      self.shared_template_path   = 'app/templates'
+      self.shared_template_path   = 'app/assets/javascripts/templates'
       self.name_filter            = lambda { |n|
         parts = n.sub(/^templates\//, '').split('/')
         parts.last.sub!(/^_/, '')

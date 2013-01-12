@@ -29,9 +29,6 @@ module HamlCoffeeAssets
 
         # Register Tilt template (for Sprockets)
         app.assets.register_engine '.hamlc', ::HamlCoffeeAssets::Tilt::TemplateHandler
-
-        # Add shared template path to Sprockets's load path
-        app.assets.append_path(config.hamlcoffee.shared_template_path)
       end
 
     end
