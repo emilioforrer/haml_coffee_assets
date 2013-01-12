@@ -1,8 +1,6 @@
 # Haml Coffee Assets [![Build Status](https://secure.travis-ci.org/netzpirat/haml_coffee_assets.png)](http://travis-ci.org/netzpirat/haml_coffee_assets)
 
-Haml Coffee Assets compiles [Haml Coffee](https://github.com/netzpirat/haml-coffee) templates in the Rails 3.1
-asset pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application. It also works as
-a pure [Sprockets](https://github.com/sstephenson/sprockets) engine without Rails.
+Haml Coffee Assets compiles [Haml Coffee](https://github.com/netzpirat/haml-coffee) templates in the Rails 3.1 asset pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application. Server-side rendering of templates is also possible, allowing you to share the same template files for Rails and JavaScript templates. It also works as a pure [Sprockets](https://github.com/sstephenson/sprockets) engine without Rails.
 
 Tested on MRI Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest version of JRuby.
 
@@ -12,6 +10,7 @@ Tested on MRI Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest version of JRuby.
 standalone Sprockets engine.
 * Manifold options to configure Haml Coffee Assets to your needs.
 * AMD support.
+* Server-side rendering of templates in Rails.
 
 ## Haml Coffee
 
@@ -106,6 +105,38 @@ all templates from your `app/assets/javascripts/application.js.coffee`:
 
 If you would place your templates into `app/assets/javascripts/templates`, then all your JST template names would begin
 with `templates/`, which may be not what you want.
+
+### Server-side rendering in Rails
+
+Haml Coffee Assets registers the `.hamlc` extension with Action View, so that Rails templates can be written in Haml Coffee. Place these templates in the shared directory (`app/templates` by default), and the same template files can be rendered via Rails or via JavaScript on the client.
+
+Given a Haml Coffee template at `app/templates/_book.hamlc`:
+
+```haml
+%dl
+  %dt Name
+  %dd= @name
+  %dt Author
+  %dd= @author
+```
+
+Render within Rails:
+
+```Haml
+= render :partial => "product", :name => "A Tale of Two Cities", :author => "Charles Dickens"
+```
+
+Require and render the same file on the client using the asset pipeline:
+
+```coffeescript
+#= require _book
+
+JST["book"](name: "A Tale of Two Cities", author: "Charles Dickens")
+```
+
+Note that the template is required as `_book` because it refers to the file relative to `app/templates`, but the template name on the client is simply `book`.
+
+Shared templates currently do not support partials, though this is planned.
 
 ## Configuration
 
@@ -424,6 +455,16 @@ to, you can set custom functions for:
 You can see the [default implementation](https://github.com/netzpirat/haml_coffee_assets/blob/master/vendor/assets/javascripts/hamlcoffee.js.coffee.erb)
 and the [Haml Coffee documentation](https://github.com/netzpirat/haml-coffee#custom-helper-function-options)
 for more information about each helper function.
+
+### Shared template path
+
+If you want to share the same template files between Rails and JavaScript, you can put them in a separate shared directory. This directory is added to the Sprockets load path and to Action View's load path.
+
+By default, the shared templates directory is `app/templates`, but this can be configured:
+
+```ruby
+config.hamlcoffee.shared_template_path = "custom/template/path"
+```
 
 ## Partial rendering
 
