@@ -38,8 +38,17 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
   end
 
   describe "partial rendering" do
+    let(:basic_template) { "= @foo" }
+    let(:nested_template) { "!= JST['path/to/partial'](foo: @foo)" }
+
+    def stub_partial_source
+      described_class.any_instance.stub(:partial_source)
+    end
+
     before do
-      described_class.any_instance.stub(:partial_source) { "= @foo" }
+      stub_partial_source.with("path/to/partial") { basic_template }
+      stub_partial_source.with("my_partial_01") { basic_template }
+      stub_partial_source.with("nested/partial") { nested_template }
     end
 
     it "renders partials with bracket notation" do
@@ -49,13 +58,19 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
     end
 
     it "renders partials with dot notation" do
-      template = new_template("!= window.JST.my_partial_03(foo: 'Foo')")
+      template = new_template("!= window.JST.my_partial_01(foo: 'Foo')")
       output = template.render(context, :foo => "Foo")
       output.should == "Foo"
     end
 
     it "doesn't require JST to be called on window" do
       template = new_template("!= JST['path/to/partial'](foo: 'Foo')")
+      output = template.render(context, :foo => "Foo")
+      output.should == "Foo"
+    end
+
+    it "renders nested templates" do
+      template = new_template("!= JST['nested/partial'](foo: 'Foo')")
       output = template.render(context, :foo => "Foo")
       output.should == "Foo"
     end
