@@ -57,6 +57,10 @@ module HamlCoffeeAssets
           @template.source
         )
 
+        include_dependencies(compiled)
+      end
+
+      def include_dependencies(compiled)
         compiled.dup.scan(DEPENDENCY_PATTERN) do |match|
           match.compact!
 
