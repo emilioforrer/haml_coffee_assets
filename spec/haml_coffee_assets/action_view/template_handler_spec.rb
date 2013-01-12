@@ -36,4 +36,22 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
     output = template.render(context, locals)
     output.should == "(<span>Foo</span>)"
   end
+
+  describe "partial rendering" do
+    before do
+      described_class.any_instance.stub(:partial_source) { "= @foo" }
+    end
+
+    it "renders partials with bracket notation" do
+      template = new_template("!= window.JST['path/to/partial'](foo: 'Foo')")
+      output = template.render(context, :foo => "Foo")
+      output.should == "Foo"
+    end
+
+    it "doesn't require JST to be called on window" do
+      template = new_template("!= JST['path/to/partial'](foo: 'Foo')")
+      output = template.render(context, :foo => "Foo")
+      output.should == "Foo"
+    end
+  end
 end

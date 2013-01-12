@@ -36,12 +36,12 @@ module HamlCoffeeAssets
       private
 
       def evaluation_string
-        string = "window.JST['#{logical_path}'](\#{local_assigns.to_json})"
+        string = "JST['#{logical_path}'](\#{local_assigns.to_json})"
         string.inspect.sub(/\\#/, "#")
       end
 
       def preamble
-        "var window = {};\n"
+        "var window = { JST: {} }, JST = window.JST;\n"
       end
 
       def helpers
@@ -54,7 +54,7 @@ module HamlCoffeeAssets
           @template.source
         )
 
-        compiled.dup.scan(/window.JST\[["']([\w\/]+)["']\]/) do |match|
+        compiled.dup.scan(/(?:window\.)?JST\[["']([\w\/]+)["']\]/) do |match|
           path = match[0]
 
           next if path == logical_path
