@@ -1,6 +1,8 @@
 module HamlCoffeeAssets
   module ActionView
     class TemplateHandler
+      DEPENDENCY_PATTERN = /(?:window\.)?JST(?:\[["']([\w\/]+)["']\]|\.(\w+))/
+
       def self.call(template)
         new(template).render
       end
@@ -54,7 +56,9 @@ module HamlCoffeeAssets
           @template.source
         )
 
-        compiled.dup.scan(/(?:window\.)?JST\[["']([\w\/]+)["']\]/) do |match|
+        compiled.dup.scan(DEPENDENCY_PATTERN) do |match|
+          match.compact!
+
           path = match[0]
 
           next if path == logical_path

@@ -48,6 +48,12 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
       output.should == "Foo"
     end
 
+    it "renders partials with dot notation" do
+      template = new_template("!= window.JST.my_partial_03(foo: 'Foo')")
+      output = template.render(context, :foo => "Foo")
+      output.should == "Foo"
+    end
+
     it "doesn't require JST to be called on window" do
       template = new_template("!= JST['path/to/partial'](foo: 'Foo')")
       output = template.render(context, :foo => "Foo")
