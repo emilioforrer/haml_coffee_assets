@@ -7,9 +7,10 @@ module HamlCoffeeAssets
         new(template).render
       end
 
-      def initialize(template, partial = false)
+      def initialize(template, partial = false, dependencies = [])
         @template = template
         @partial = partial
+        @dependencies = dependencies
       end
 
       def render
@@ -61,7 +62,11 @@ module HamlCoffeeAssets
 
           path = match[0]
 
-          next if path == logical_path
+          if path == logical_path || @dependencies.include?(path)
+            next
+          else
+            @dependencies << path
+          end
 
           partial = ::ActionView::Template.new(
             partial_source(path),
@@ -70,7 +75,11 @@ module HamlCoffeeAssets
             :virtual_path => partial_path(path)
           )
 
-          compiled << self.class.new(partial, true).compilation_string
+          compiled << self.class.new(
+            partial,
+            true,
+            @dependencies
+          ).compilation_string
         end
 
         compiled
