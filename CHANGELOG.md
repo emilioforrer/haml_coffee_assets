@@ -6,6 +6,10 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- [#79][]: Add ActionView::Template handler for hamlc files. ([@jimmycuadra][])
+
 ## 1.9.1 - January 8, 2013
 
 - Upgrade to Haml Coffee 1.9.0
@@ -285,11 +289,14 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [#68]: https://github.com/netzpirat/haml_coffee_assets/issues/68
 [#69]: https://github.com/netzpirat/haml_coffee_assets/issues/69
 [#76]: https://github.com/netzpirat/haml_coffee_assets/issues/76
+[#78]: https://github.com/netzpirat/haml_coffee_assets/issues/78
+[#79]: https://github.com/netzpirat/haml_coffee_assets/issues/79
 [@axs89]: https://github.com/axs89
 [@dhiemstra]: https://github.com/dhiemstra
 [@dzello]: https://github.com/dzello
 [@jayzes]: https://github.com/jayzes
 [@jfirebaugh]: https://github.com/jfirebaugh
+[@jimmycuadra]: https://github.com/jimmycuadra
 [@jingoro]: https://github.com/jingoro
 [@paulyoung]: https://github.com/paulyoung
 [@whitequark]: https://github.com/whitequark
