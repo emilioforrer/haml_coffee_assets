@@ -6,7 +6,7 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
-## Master
+## 1.10.0 - January 13, 2013
 
 - [#79][]: Add ActionView::Template handler for hamlc files. ([@jimmycuadra][])
 
