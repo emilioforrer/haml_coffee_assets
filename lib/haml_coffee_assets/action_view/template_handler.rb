@@ -8,19 +8,19 @@ module HamlCoffeeAssets
       end
 
       def initialize(template, partial = false, dependencies = [])
-        @template = template
-        @partial = partial
+        @template     = template
+        @partial      = partial
         @dependencies = dependencies
       end
 
       def render
-        "ExecJS.compile(#{compilation_string}).eval(#{evaluation_string}).html_safe"
+        "ExecJS.compile(#{ compilation_string }).eval(#{ evaluation_string }).html_safe"
       end
 
       protected
 
       def compilation_string
-        string = ""
+        string = ''
 
         unless @partial
           string << preamble
@@ -39,8 +39,8 @@ module HamlCoffeeAssets
       private
 
       def evaluation_string
-        string = "JST['#{logical_path}'](\#{local_assigns.to_json})"
-        string.inspect.sub(/\\#/, "#")
+        string = "JST['#{ logical_path }'](\#{local_assigns.to_json})"
+        string.inspect.sub(/\\#/, '#')
       end
 
       def preamble
@@ -92,22 +92,22 @@ module HamlCoffeeAssets
       def logical_path
         return @logical_path if defined?(@logical_path)
 
-        path = @template.virtual_path.split("/")
-        path.last.sub!(/^_/, "")
-        @logical_path = path.join("/")
+        path = @template.virtual_path.split('/')
+        path.last.sub!(/^_/, '')
+        @logical_path = path.join('/')
       end
 
       def partial_source(path)
         ::Rails.root.join(
           ::HamlCoffeeAssets.config.shared_template_path,
-          partial_path(path) + ".hamlc"
+          partial_path(path) + '.hamlc'
         ).read
       end
 
       def partial_path(path)
-        parts = path.split("/")
-        parts[-1] = "_#{parts[-1]}"
-        parts.join("/")
+        parts     = path.split('/')
+        parts[-1] = "_#{ parts[-1] }"
+        parts.join('/')
       end
     end
   end

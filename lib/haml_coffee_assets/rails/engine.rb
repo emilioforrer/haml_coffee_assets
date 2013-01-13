@@ -12,7 +12,7 @@ module HamlCoffeeAssets
 
       # Add shared template path to ActionView's load path
       config.before_configuration do |app|
-        app.paths["app/views"] << config.hamlcoffee.shared_template_path
+        app.paths['app/views'] << config.hamlcoffee.shared_template_path
       end
 
       # Initialize Haml Coffee Assets after Sprockets
