@@ -14,11 +14,11 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.3.6'
   s.rubyforge_project         = 'haml_coffee_assets'
 
-  s.files         = Dir.glob('{app,lib,vendor}/**/*') + %w[LICENSE README.md]
+  s.files = Dir.glob('{app,lib,vendor}/**/*') + %w[LICENSE README.md]
 
-  s.add_runtime_dependency "coffee-script", ">= 1.0.0"
-  s.add_runtime_dependency "tilt", ">= 1.3.3"
-  s.add_runtime_dependency "sprockets", ">= 2.0.3"
+  s.add_runtime_dependency 'coffee-script', '>= 1.0.0'
+  s.add_runtime_dependency 'tilt', '>= 1.3.3'
+  s.add_runtime_dependency 'sprockets', '>= 2.0.3'
 
   s.add_development_dependency 'bundler'
 end
