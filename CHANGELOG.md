@@ -8,6 +8,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## 1.10.0 - January 13, 2013
 
+- The default name filter removes a leading underscore `_` from the template name. 
 - [#79][]: Add ActionView::Template handler for hamlc files. ([@jimmycuadra][])
 
 ## 1.9.1 - January 8, 2013

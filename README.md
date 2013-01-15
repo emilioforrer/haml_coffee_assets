@@ -275,10 +275,10 @@ If you wish to put the templates in a different location, you may want to change
 config.hamlcoffee.name_filter = lambda { |n| n.sub /^templates\//, '' }
 ```
 
-By default, `name_filter` strips the leading `templates/` directory off of the name. Please note, `name_filter` is only
-applicable if you use the `.hamlc` extension and let Haml Coffee Assets handle the JST generation. If you use the
-`.jst.hamlc` extension, then Sprockets JST processor will name things accordingly (e.g., with `templates/` intact in
-this case).
+By default, `name_filter` strips the leading `templates/` directory off of the name and also a leading `_` from the
+template name. Please note, `name_filter` is only applicable if you use the `.hamlc` extension and let Haml Coffee
+Assets handle the JST generation. If you use the `.jst.hamlc` extension, then Sprockets JST processor will name
+things accordingly (e.g., with `templates/` intact in this case).
 
 The template name filter is not used with AMD loader.
 
