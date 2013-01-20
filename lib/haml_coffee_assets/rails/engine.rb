@@ -1,5 +1,7 @@
 # coding: UTF-8
 
+require 'haml_coffee_assets/action_view/resolver'
+
 module HamlCoffeeAssets
   module Rails
 
@@ -10,11 +12,6 @@ module HamlCoffeeAssets
 
       config.hamlcoffee = ::HamlCoffeeAssets.config
 
-      # Add shared template path to ActionView's load path
-      config.before_configuration do |app|
-        app.paths['app/views'] << config.hamlcoffee.shared_template_path
-      end
-
       # Initialize Haml Coffee Assets after Sprockets
       #
       initializer 'sprockets.hamlcoffeeassets', :group => :all, :after => 'sprockets.environment' do |app|
@@ -23,6 +20,13 @@ module HamlCoffeeAssets
         # Register Tilt template (for ActionView)
         ActiveSupport.on_load(:action_view) do
           ::ActionView::Template.register_template_handler(:hamlc, ::HamlCoffeeAssets::ActionView::TemplateHandler)
+        end
+
+        # Add template path to ActionController's view paths.
+        ActiveSupport.on_load(:action_controller) do
+          path = ::HamlCoffeeAssets.config.shared_template_path
+          resolver = ::HamlCoffeeAssets::ActionView::Resolver.new(path)
+          ::ActionController::Base.append_view_path(resolver)
         end
 
         next unless app.assets
