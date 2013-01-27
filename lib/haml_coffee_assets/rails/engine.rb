@@ -17,16 +17,20 @@ module HamlCoffeeAssets
       initializer 'sprockets.hamlcoffeeassets', :group => :all, :after => 'sprockets.environment' do |app|
         require 'haml_coffee_assets/action_view/template_handler'
 
-        # Register Tilt template (for ActionView)
-        ActiveSupport.on_load(:action_view) do
-          ::ActionView::Template.register_template_handler(:hamlc, ::HamlCoffeeAssets::ActionView::TemplateHandler)
-        end
+        # No server side template support with AMD
+        if ::HamlCoffeeAssets.config.placement == 'global'
 
-        # Add template path to ActionController's view paths.
-        ActiveSupport.on_load(:action_controller) do
-          path = ::HamlCoffeeAssets.config.shared_template_path
-          resolver = ::HamlCoffeeAssets::ActionView::Resolver.new(path)
-          ::ActionController::Base.append_view_path(resolver)
+          # Register Tilt template (for ActionView)
+          ActiveSupport.on_load(:action_view) do
+            ::ActionView::Template.register_template_handler(:hamlc, ::HamlCoffeeAssets::ActionView::TemplateHandler)
+          end
+
+          # Add template path to ActionController's view paths.
+          ActiveSupport.on_load(:action_controller) do
+            path = ::HamlCoffeeAssets.config.shared_template_path
+            resolver = ::HamlCoffeeAssets::ActionView::Resolver.new(path)
+            ::ActionController::Base.append_view_path(resolver)
+          end
         end
 
         next unless app.assets

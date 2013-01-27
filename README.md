@@ -1,6 +1,9 @@
 # Haml Coffee Assets [![Build Status](https://secure.travis-ci.org/netzpirat/haml_coffee_assets.png)](http://travis-ci.org/netzpirat/haml_coffee_assets)
 
-Haml Coffee Assets compiles [Haml Coffee](https://github.com/netzpirat/haml-coffee) templates in the Rails 3.1 asset pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application. Server-side rendering of templates is also possible, allowing you to share the same template files for Rails and JavaScript templates. It also works as a pure [Sprockets](https://github.com/sstephenson/sprockets) engine without Rails.
+Haml Coffee Assets compiles [Haml Coffee](https://github.com/netzpirat/haml-coffee) templates in the Rails 3.1 asset
+pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application. Server-side rendering
+of templates is also possible, allowing you to share the same template files for Rails and JavaScript templates. It also
+works as a pure [Sprockets](https://github.com/sstephenson/sprockets) engine without Rails.
 
 Tested on MRI Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest version of JRuby.
 
@@ -93,8 +96,8 @@ removed.
 When you give your templates the extension `.jst.hamlc`, Haml Coffee Assets will only generate the template function,
 which then in turn will be further processed by the
 [Sprocket JST processor](https://github.com/sstephenson/sprockets/blob/master/lib/sprockets/jst_processor.rb). Because
-Haml Coffee Assets will not generate the template, you can't use the AMD support, template name filter and the JST namespace
-definition is more cumbersome compared to the Haml Coffee template generation.
+Haml Coffee Assets will not generate the template, you can't use the AMD support, template name filter and the JST
+namespace definition is more cumbersome compared to the Haml Coffee template generation.
 
 With this approach you should place all your Haml Coffee templates in the `app/assets/templates` directory and include
 all templates from your `app/assets/javascripts/application.js.coffee`:
@@ -108,7 +111,10 @@ with `templates/`, which may be not what you want.
 
 ### Server-side rendering in Rails
 
-Haml Coffee Assets registers the `.hamlc` extension with Action View, so that Rails templates can be written in Haml Coffee. Rails will see templates placed in `app/assets/javascripts/templates` (though this path can be changed if you store your templates in another directory), and the same template files can be rendered via Rails or via JavaScript on the client.
+Haml Coffee Assets registers the `.hamlc` extension with Action View, so that Rails templates can be written in Haml
+Coffee. Rails will see templates placed in `app/assets/javascripts/templates` (though this path can be changed if you
+store your templates in another directory), and the same template files can be rendered via Rails or via JavaScript on
+the client. Server-side rendering is only available when using the global placement and not with the AMD placement.
 
 Given a Haml Coffee template at `app/assets/javascripts/templates/books/_book.hamlc`:
 
@@ -134,7 +140,9 @@ Require and render the same file on the client using the asset pipeline:
 JST["books/book"](name: "A Tale of Two Cities", author: "Charles Dickens")
 ```
 
-Note that the template is required as `books/_book` because it refers to the actual file, but the template name on the client is simply `books/book`. If you require all templates at once with `#= require_tree ./templates`, you won't need to remember this distinction.
+Note that the template is required as `books/_book` because it refers to the actual file, but the template name on the
+client is simply `books/book`. If you require all templates at once with `#= require_tree ./templates`, you won't need
+to remember this distinction.
 
 ## Configuration
 
@@ -456,7 +464,8 @@ for more information about each helper function.
 
 ### Shared template path
 
-Rails will look for templates in `app/assets/javascripts/templates` when rendering on the server side. If you store your templates in another directory, you can change this location:
+Rails will look for templates in `app/assets/javascripts/templates` when rendering on the server side. If you store your
+ templates in another directory, you can change this location:
 
 ```ruby
 config.hamlcoffee.shared_template_path = "custom/template/path"
@@ -509,8 +518,8 @@ example.
 
 Developed by Michael Kessler, [mksoft.ch](https://mksoft.ch).
 
-If you like Haml Coffee Assets, you can watch the repository at [GitHub](https://github.com/netzpirat/haml_coffee_assets) and
-follow [@netzpirat](https://twitter.com/#!/netzpirat) on Twitter for project updates.
+If you like Haml Coffee Assets, you can watch the repository at [GitHub](https://github.com/netzpirat/haml_coffee_assets)
+and follow [@netzpirat](https://twitter.com/#!/netzpirat) on Twitter for project updates.
 
 ## Development
 
