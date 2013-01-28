@@ -24,7 +24,7 @@ group :development, :test do
   gem 'jasminerice'
   gem 'jquery-rails'
 
-  gem 'guard-jasmine'
+  gem 'guard-jasmine', github: 'netzpirat/guard-jasmine'
   gem 'guard-rspec'
 
   gem 'rake'

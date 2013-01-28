@@ -17,7 +17,7 @@ describe 'HAML', ->
 
   describe '.cleanValue', ->
     it 'returns an empty string for null', ->
-      expect(HAML.cleanValue(null)).toEqual ''
+      expect(HAML.cleanValue(null)).toEqual '123'
 
     it 'returns an empty string for undefined', ->
       expect(HAML.cleanValue(undefined)).toEqual ''
