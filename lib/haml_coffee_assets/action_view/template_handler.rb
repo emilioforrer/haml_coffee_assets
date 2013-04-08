@@ -76,7 +76,7 @@ module HamlCoffeeAssets
             partial_source(path),
             path,
             self.class,
-            :virtual_path => partial_path(path)
+            virtual_path: partial_path(path)
           )
 
           compiled << self.class.new(

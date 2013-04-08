@@ -9,7 +9,7 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
       body,
       "template",
       described_class,
-      :virtual_path => "path/to/_template"
+      virtual_path: "path/to/_template"
     )
   end
 
@@ -27,7 +27,7 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
   end
 
   it "renders CoffeeScript" do
-    output = new_template("= @foo").render(context, :foo => "Foo")
+    output = new_template("= @foo").render(context, foo: "Foo")
     output.should == "Foo"
   end
 
@@ -53,25 +53,25 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
 
     it "renders partials with bracket notation" do
       template = new_template("!= window.JST['basic/partial'](foo: 'Foo')")
-      output = template.render(context, :foo => "Foo")
+      output = template.render(context, foo: "Foo")
       output.should == "Foo"
     end
 
     it "renders partials with dot notation" do
       template = new_template("!= window.JST.basic_partial_01(foo: 'Foo')")
-      output = template.render(context, :foo => "Foo")
+      output = template.render(context, foo: "Foo")
       output.should == "Foo"
     end
 
     it "doesn't require JST to be called on window" do
       template = new_template("!= JST['basic/partial'](foo: 'Foo')")
-      output = template.render(context, :foo => "Foo")
+      output = template.render(context, foo: "Foo")
       output.should == "Foo"
     end
 
     it "renders nested templates" do
       template = new_template("!= JST['nested/partial'](foo: 'Foo')")
-      output = template.render(context, :foo => "Foo")
+      output = template.render(context, foo: "Foo")
       output.should == "Foo"
     end
 
@@ -83,7 +83,7 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
       compiled = described_class.new(template).send(:compilation_string)
       compiled.scan(/JST\['basic\/partial'\] =/).size.should == 1
 
-      output = template.render(context, :foo => "Foo")
+      output = template.render(context, foo: "Foo")
       output.should == "Foo\nFoo"
     end
   end

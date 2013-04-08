@@ -12,8 +12,8 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
     context 'for a JST template' do
       let(:scope) do
         double('scope', {
-          :pathname => 'templates/foo/bar.jst.hamlc',
-          :logical_path => 'templates/foo/bar'
+          pathname: 'templates/foo/bar.jst.hamlc',
+          logical_path: 'templates/foo/bar'
         })
       end
 
@@ -28,8 +28,8 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
         context 'with a template that matches' do
           let(:scope) do
             double('scope', {
-              :pathname => 'templates/foo/bar.hamlc',
-              :logical_path => 'templates/foo/bar'
+              pathname: 'templates/foo/bar.hamlc',
+              logical_path: 'templates/foo/bar'
             })
           end
   
@@ -42,8 +42,8 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
         context 'with a template that does matches' do
           let(:scope) do
             double('scope', {
-              :pathname => 'other/templates/foo/bar.hamlc',
-              :logical_path => 'other/templates/foo/bar'
+              pathname: 'other/templates/foo/bar.hamlc',
+              logical_path: 'other/templates/foo/bar'
             })
           end
   
@@ -60,8 +60,8 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
         context 'with a template that matches' do
           let(:scope) do
             double('scope', {
-              :pathname => 'other/templates/foo/bar.hamlc',
-              :logical_path => 'other/templates/foo/bar'
+              pathname: 'other/templates/foo/bar.hamlc',
+              logical_path: 'other/templates/foo/bar'
             })
           end
 
@@ -74,8 +74,8 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
         context 'with a template that does matches' do
           let(:scope) do
             double('scope', {
-              :pathname => 'templates/foo/bar.hamlc',
-              :logical_path => 'templates/foo/bar'
+              pathname: 'templates/foo/bar.hamlc',
+              logical_path: 'templates/foo/bar'
             })
           end
 
@@ -89,8 +89,8 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
       context 'without a name filter' do
         let(:scope) do
           double('scope', {
-            :pathname => 'templates/foo/bar.hamlc',
-            :logical_path => 'templates/foo/bar'
+            pathname: 'templates/foo/bar.hamlc',
+            logical_path: 'templates/foo/bar'
           })
         end
 

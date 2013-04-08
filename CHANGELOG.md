@@ -8,6 +8,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+- Drop Ruby 1.8.7 support.
 - Upgrade to Haml-Coffee 1.11.0
 
 ## 1.10.0 - January 13, 2013
