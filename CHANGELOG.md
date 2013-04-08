@@ -6,10 +6,18 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
-## Master
+## 1.12.0 - April 8, 2013
 
 - Drop Ruby 1.8.7 support.
 - Upgrade to Haml-Coffee 1.11.0
+
+## 1.11.1 - January 27, 2013
+
+- [#81][]: Disable server side templates when using AMD placement.
+
+## 1.11.0 - January 20, 2013
+
+- [#80][]: Add custom resolver to prevent Rails from rendering Haml Coffee templates for non-HTML formats. ([@jimmycuadra][])
 
 ## 1.10.0 - January 13, 2013
 
@@ -297,6 +305,8 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [#76]: https://github.com/netzpirat/haml_coffee_assets/issues/76
 [#78]: https://github.com/netzpirat/haml_coffee_assets/issues/78
 [#79]: https://github.com/netzpirat/haml_coffee_assets/issues/79
+[#80]: https://github.com/netzpirat/haml_coffee_assets/issues/80
+[#81]: https://github.com/netzpirat/haml_coffee_assets/issues/81
 [@axs89]: https://github.com/axs89
 [@dhiemstra]: https://github.com/dhiemstra
 [@dzello]: https://github.com/dzello
