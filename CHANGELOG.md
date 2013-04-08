@@ -6,6 +6,10 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- Upgrade to Haml-Coffee 1.11.0
+
 ## 1.10.0 - January 13, 2013
 
 - The default name filter removes a leading underscore `_` from the template name. 

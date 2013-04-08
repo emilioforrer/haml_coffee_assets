@@ -8,7 +8,7 @@ describe HamlCoffeeAssets::Compiler do
     HamlCoffeeAssets.instance_variable_set '@config', HamlCoffeeAssets::Configuration.new
   end
 
-  describe "#compile" do
+  describe '#compile' do
     context 'template name' do
       it 'uses the provided template name' do
         HamlCoffeeAssets::Compiler.compile('template_name', '%h2').should eql <<-TEMPLATE
