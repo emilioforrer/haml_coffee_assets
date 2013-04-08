@@ -13,7 +13,8 @@ platform :jruby do
 end
 
 group :assets do
-  gem 'coffee-script', '1.6.2'
+  gem 'coffee-script'
+  gem 'coffee-script-source', '1.6.2'
 end
 
 group :development, :test do
