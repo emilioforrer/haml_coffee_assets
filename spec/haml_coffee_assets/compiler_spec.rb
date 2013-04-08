@@ -22,6 +22,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['template_name'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<h2></h2>");
       return $o.join("\\n");
@@ -46,6 +47,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['script'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<script>\\n  var i = 1;\\n</script>");
       return $o.join("\\n");
@@ -69,6 +71,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['script'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<script type='text/javascript'>\\n  var i = 1;\\n</script>");
       return $o.join("\\n");
@@ -92,6 +95,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['script'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<script type='text/javascript'>\\n  //<![CDATA[\\n    var i = 1;\\n  //]]>\\n</script>");
       return $o.join("\\n");
@@ -116,6 +120,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['header'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<h2></h2>");
       return $o.join("\\n");
@@ -139,6 +144,7 @@ describe HamlCoffeeAssets::Compiler do
   window.HAML['header'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<h2></h2>");
       return $o.join("\\n");
@@ -163,6 +169,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['title'] = function(context) {
     return (function() {
       var $c, $e, $o;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       $o = [];
@@ -188,6 +195,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['title'] = function(context) {
     return (function() {
       var $c, $e, $o;
+
       $e = SomeWhere.escape;
       $c = window.HAML.cleanValue;
       $o = [];
@@ -214,6 +222,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['title'] = function(context) {
     return (function() {
       var $c, $e, $o;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       $o = [];
@@ -239,6 +248,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['title'] = function(context) {
     return (function() {
       var $c, $e, $o;
+
       $e = window.HAML.escape;
       $c = SomeWhere.cleanValue;
       $o = [];
@@ -265,6 +275,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['placement'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<p>Global placement</p>");
       return $o.join("\\n");
@@ -279,12 +290,13 @@ describe HamlCoffeeAssets::Compiler do
         HamlCoffeeAssets.config.placement = 'amd'
         HamlCoffeeAssets::Compiler.compile('placement', '%p AMD placement').should eql <<-TEMPLATE
 (function() {
-
   define(['hamlcoffee_amd'], function(hc) {
     return function(context) {
       var render;
+
       render = function() {
         var $o;
+
         $o = [];
         $o.push("<p>AMD placement</p>");
         return $o.join("\\n");
@@ -303,12 +315,13 @@ describe HamlCoffeeAssets::Compiler do
         HamlCoffeeAssets.config.placement = 'amd'
         HamlCoffeeAssets::Compiler.compile('globals', '%p AMD module dependencies').should eql <<-TEMPLATE
 (function() {
-
   define(['hamlcoffee_amd'], function(hc) {
     return function(context) {
       var render;
+
       render = function() {
         var $o;
+
         $o = [];
         $o.push("<p>AMD module dependencies</p>");
         return $o.join("\\n");
@@ -326,12 +339,13 @@ describe HamlCoffeeAssets::Compiler do
         HamlCoffeeAssets.config.dependencies = { '_' => 'underscore' }
         HamlCoffeeAssets::Compiler.compile('globals', '%p AMD module dependencies').should eql <<-TEMPLATE
 (function() {
-
   define(['underscore'], function(_) {
     return function(context) {
       var render;
+
       render = function() {
         var $o;
+
         $o = [];
         $o.push("<p>AMD module dependencies</p>");
         return $o.join("\\n");
@@ -348,12 +362,13 @@ describe HamlCoffeeAssets::Compiler do
         HamlCoffeeAssets.config.placement = 'amd'
         HamlCoffeeAssets::Compiler.compile('partials', "%p!= require('shared/partial')()").should eql <<-TEMPLATE
 (function() {
-
   define(['hamlcoffee_amd', 'shared/partial'], function(hc, partial) {
     return function(context) {
       var render;
+
       render = function() {
         var $c, $o;
+
         $c = hc.cleanValue;
         $o = [];
         $o.push("<p>" + ($c(require('shared/partial')())) + "</p>");
@@ -381,6 +396,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['attributes'] = function(context) {
     return (function() {
       var $c, $e, $o;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       $o = [];
@@ -406,6 +422,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['attributes'] = function(context) {
     return (function() {
       var $c, $o;
+
       $c = window.HAML.cleanValue;
       $o = [];
       $o.push("<a title='" + ($c(this.title)) + "'></a>");
@@ -431,6 +448,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['values'] = function(context) {
     return (function() {
       var $c, $e, $o;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       $o = [];
@@ -456,6 +474,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['values'] = function(context) {
     return (function() {
       var $e, $o;
+
       $e = window.HAML.escape;
       $o = [];
       $o.push("<h1>" + ($e(this.title)) + "</h1>");
@@ -481,6 +500,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['htmlE'] = function(context) {
     return (function() {
       var $c, $e, $o;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       $o = [];
@@ -506,6 +526,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['htmlE'] = function(context) {
     return (function() {
       var $c, $o;
+
       $c = window.HAML.cleanValue;
       $o = [];
       $o.push("<p>" + ($c(this.info)) + "</p>");
@@ -531,6 +552,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['link'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<a href='/'></a>");
       return $o.join("\\n");
@@ -554,6 +576,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['link'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<a href='/'></a>");
       return $o.join("\\n");
@@ -577,6 +600,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['link'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<a href='/'></a>");
       return $o.join("\\n");
@@ -601,6 +625,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['ugly'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<html>\\n  <body>\\n    <form>\\n      <input>\\n    </form>\\n  </body>\\n</html>");
       return $o.join("\\n");
@@ -624,6 +649,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['ugly'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<html>\\n<body>\\n<form>\\n<input>\\n</form>\\n</body>\\n</html>");
       return $o.join("\\n");
@@ -648,6 +674,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['path/to/file'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<p>Basename</p>");
       return $o.join("\\n");
@@ -671,6 +698,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['file'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<p>Basename</p>");
       return $o.join("\\n");
@@ -695,6 +723,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['ws'] = function(context) {
     return (function() {
       var $c, $e, $o, $p;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       $p = window.HAML.preserve;
@@ -721,6 +750,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['ws'] = function(context) {
     return (function() {
       var $c, $e, $o, $p;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       $p = window.HAML.preserve;
@@ -749,6 +779,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['close'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<img />\\n<br />\\n<p></p>");
       return $o.join("\\n");
@@ -773,6 +804,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['close'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<img></img>\\n<br />\\n<p />");
       return $o.join("\\n");
@@ -797,6 +829,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['pres'] = function(context) {
     return (function() {
       var $fp, $o, $p;
+
       $p = window.HAML.preserve;
       $fp = window.HAML.findAndPreserve;
       $o = [];
@@ -822,6 +855,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['pres'] = function(context) {
     return (function() {
       var $fp, $o, $p;
+
       $p = SomeWhere.preserve;
       $fp = window.HAML.findAndPreserve;
       $o = [];
@@ -848,6 +882,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['find'] = function(context) {
     return (function() {
       var $fp, $o, $p;
+
       $p = window.HAML.preserve;
       $fp = window.HAML.findAndPreserve;
       $o = [];
@@ -873,6 +908,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['find'] = function(context) {
     return (function() {
       var $fp, $o, $p;
+
       $p = window.HAML.preserve;
       $fp = SomeWhere.findAndPreserve;
       $o = [];
@@ -900,6 +936,7 @@ describe HamlCoffeeAssets::Compiler do
     return (function() {
       var $c, $e, $o, surround,
         _this = this;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       surround = function(start, end, fn) {
@@ -908,6 +945,7 @@ describe HamlCoffeeAssets::Compiler do
       $o = [];
       $o.push("" + $e($c(surround('(', ')', function() {
         var $o1;
+
         $o1 = [];
         $o1.push("<a href='food'>chicken</a>");
         return $o1.join("\\n");
@@ -934,6 +972,7 @@ describe HamlCoffeeAssets::Compiler do
     return (function() {
       var $c, $e, $o, surround,
         _this = this;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       surround = function(start, end, fn) {
@@ -942,6 +981,7 @@ describe HamlCoffeeAssets::Compiler do
       $o = [];
       $o.push("" + $e($c(surround('(', ')', function() {
         var $o1;
+
         $o1 = [];
         $o1.push("<a href='food'>chicken</a>");
         return $o1.join("\\n");
@@ -969,6 +1009,7 @@ describe HamlCoffeeAssets::Compiler do
     return (function() {
       var $c, $e, $o, succeed,
         _this = this;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       succeed = function(start, end, fn) {
@@ -978,6 +1019,7 @@ describe HamlCoffeeAssets::Compiler do
       $o.push("click");
       $o.push("" + $e($c(succeed('.', function() {
         var $o1;
+
         $o1 = [];
         $o1.push("<a href='thing'>here</a>");
         return $o1.join("\\n");
@@ -1004,6 +1046,7 @@ describe HamlCoffeeAssets::Compiler do
     return (function() {
       var $c, $e, $o, succeed,
         _this = this;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       succeed = function(start, end, fn) {
@@ -1013,6 +1056,7 @@ describe HamlCoffeeAssets::Compiler do
       $o.push("click");
       $o.push("" + $e($c(succeed('.', function() {
         var $o1;
+
         $o1 = [];
         $o1.push("<a href='thing'>here</a>");
         return $o1.join("\\n");
@@ -1040,6 +1084,7 @@ describe HamlCoffeeAssets::Compiler do
     return (function() {
       var $c, $e, $o, precede,
         _this = this;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       precede = function(start, end, fn) {
@@ -1048,6 +1093,7 @@ describe HamlCoffeeAssets::Compiler do
       $o = [];
       $o.push("" + $e($c(precede('*', function() {
         var $o1;
+
         $o1 = [];
         $o1.push("<span class='small'>Not really</span>");
         return $o1.join("\\n");
@@ -1074,6 +1120,7 @@ describe HamlCoffeeAssets::Compiler do
     return (function() {
       var $c, $e, $o, precede,
         _this = this;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       precede = function(start, end, fn) {
@@ -1082,6 +1129,7 @@ describe HamlCoffeeAssets::Compiler do
       $o = [];
       $o.push("" + $e($c(precede('*', function() {
         var $o1;
+
         $o1 = [];
         $o1.push("<span class='small'>Not really</span>");
         return $o1.join("\\n");
@@ -1108,6 +1156,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['reference'] = function(context) {
     return (function() {
       var $o, $r;
+
       $r = window.HAML.reference;
       $o = [];
       $o.push("<div " + ($r(this.user)) + "></div>");
@@ -1132,6 +1181,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['reference'] = function(context) {
     return (function() {
       var $o, $r;
+
       $r = SomeWhere.reference;
       $o = [];
       $o.push("<div " + ($r(this.user)) + "></div>");
@@ -1157,6 +1207,7 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['func'] = function(context) {
     return (function() {
       var $o;
+
       $o = [];
       $o.push("<p></p>");
       return $o.join("\\n");
@@ -1197,8 +1248,8 @@ describe HamlCoffeeAssets::Compiler do
   window.JST['test'] = function(context) {
     return (function() {
       with (context || {}) {;
-
       var $c, $e, $o;
+
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
       $o = [];

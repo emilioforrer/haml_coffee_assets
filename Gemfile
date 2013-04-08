@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gemspec
 
 platform :ruby do
-  gem 'therubyracer', '0.10.2'
+  gem 'therubyracer'
 end
 
 platform :jruby do
@@ -13,7 +13,7 @@ platform :jruby do
 end
 
 group :assets do
-  gem 'coffee-script'
+  gem 'coffee-script', '1.6.2'
 end
 
 group :development, :test do
