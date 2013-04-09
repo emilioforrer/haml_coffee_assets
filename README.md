@@ -372,6 +372,14 @@ Now you can use the properties from the global context in every template:
     %p Please log into your account.
 ```
 
+When rendering on the server, haml_coffee_assets will expect the global context to be overriden with the `global_context_asset`. Located by default at `templates/context`.
+
+You can configure the path to this asset in your `config/application.rb`:
+
+```ruby
+config.hamlcoffee.global_context_asset = 'templates/context'
+```
+
 If you like to use your own implementation, simply configure your context function in your `config/application.rb`:
 
 ```ruby

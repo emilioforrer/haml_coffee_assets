@@ -6,9 +6,10 @@ require 'tilt'
 require 'sprockets'
 require 'execjs'
 
-require 'haml_coffee_assets/version'
+require 'haml_coffee_assets/global_context'
 require 'haml_coffee_assets/configuration'
 require 'haml_coffee_assets/compiler'
+require 'haml_coffee_assets/version'
 
 require 'haml_coffee_assets/tilt/template_handler'
 
@@ -49,6 +50,7 @@ module HamlCoffeeAssets
       script = CoffeeScript.compile(script)
     end
 
+    script << GlobalContext.body
     script
   end
 

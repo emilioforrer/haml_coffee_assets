@@ -8,6 +8,12 @@ describe HamlCoffeeAssets do
   end
 
   describe '.helpers' do
+    it "includes custom helpers from asset pipeline" do
+      HamlCoffeeAssets::GlobalContext.stub(:body) { "foo" }
+      helpers = HamlCoffeeAssets.helpers
+      helpers.should =~ /foo/
+    end
+
     context 'with compilation enabled' do
       it 'returns the helpers as JavaScript' do
         helpers = HamlCoffeeAssets.helpers
