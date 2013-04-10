@@ -462,13 +462,13 @@ You can see the [default implementation](https://github.com/netzpirat/haml_coffe
 and the [Haml Coffee documentation](https://github.com/netzpirat/haml-coffee#custom-helper-function-options)
 for more information about each helper function.
 
-### Shared template path
+### Templates path
 
 Rails will look for templates in `app/assets/javascripts/templates` when rendering on the server side. If you store your
  templates in another directory, you can change this location:
 
 ```ruby
-config.hamlcoffee.shared_template_path = "custom/template/path"
+config.hamlcoffee.templates_path = "custom/template/path"
 ```
 
 ## Partial rendering
