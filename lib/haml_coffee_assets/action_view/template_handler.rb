@@ -7,6 +7,10 @@ module HamlCoffeeAssets
         new(template).render
       end
 
+      def self.stale?(last_compile_time)
+        GlobalContext.mtime > last_compile_time
+      end
+
       def initialize(template, partial = false, dependencies = [])
         @template     = template
         @partial      = partial

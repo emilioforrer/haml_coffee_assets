@@ -37,6 +37,22 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
     output.should == "(<span>Foo</span>)"
   end
 
+  it "has access to global context" do
+    custom = <<EOF
+window.HAML.globals = function() {
+  return {
+    foo: function() {
+      return "bar";
+    }
+  };
+};
+EOF
+    HamlCoffeeAssets::GlobalContext.stub(:body) { custom }
+    template = new_template("= @foo()")
+    output = template.render(context, locals)
+    output.should == "bar"
+  end
+
   describe "partial rendering" do
     let(:basic_partial) { "= @foo" }
     let(:nested_partial) { "!= JST['basic/partial'](foo: @foo)" }

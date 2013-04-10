@@ -39,6 +39,7 @@ module HamlCoffeeAssets
       self.context                = 'window.HAML.context'
       self.extendScope            = false
       self.shared_template_path   = 'app/assets/javascripts/templates'
+      self.global_context_asset   = 'templates/context'
       self.name_filter            = lambda { |n|
         parts = n.sub(/^templates\//, '').split('/')
         parts.last.sub!(/^_/, '')
@@ -139,6 +140,10 @@ module HamlCoffeeAssets
     # Path to templates shared by Rails and JS.
     #
     attr_accessor :shared_template_path
+
+    # Path to custom helpers shared by Rails and JS.
+    #
+    attr_accessor :global_context_asset
 
   end
 
