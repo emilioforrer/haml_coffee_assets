@@ -47,7 +47,7 @@ window.HAML.globals = function() {
   };
 };
 EOF
-    HamlCoffeeAssets::GlobalContext.stub(:body) { custom }
+    HamlCoffeeAssets::GlobalContext.stub(:to_s) { custom }
     template = new_template("= @foo()")
     output = template.render(context, locals)
     output.should == "bar"
