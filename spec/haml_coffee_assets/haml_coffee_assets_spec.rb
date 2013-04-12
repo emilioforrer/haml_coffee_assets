@@ -9,7 +9,7 @@ describe HamlCoffeeAssets do
 
   describe '.helpers' do
     it "includes custom helpers from asset pipeline" do
-      HamlCoffeeAssets::GlobalContext.stub(:body) { "foo" }
+      HamlCoffeeAssets::GlobalContext.stub(:to_s) { "foo" }
       helpers = HamlCoffeeAssets.helpers
       helpers.should =~ /foo/
     end

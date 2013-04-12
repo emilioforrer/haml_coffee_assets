@@ -50,7 +50,7 @@ module HamlCoffeeAssets
       script = CoffeeScript.compile(script)
     end
 
-    script << GlobalContext.body
+    script << GlobalContext.to_s
     script
   end
 

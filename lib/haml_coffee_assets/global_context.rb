@@ -18,6 +18,11 @@ module HamlCoffeeAssets
       asset.body
     end
 
+    def self.to_s
+      return "" if asset.blank?
+      asset.to_s
+    end
+
     private
 
     def self.env
