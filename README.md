@@ -49,7 +49,7 @@ group :assets do
 end
 ```
 
-And require the `hamlcoffee.js` in your `app/assets/javascripts/application.js.coffee`:
+And require the `hamlcoffee.js` in your `app/assets/javascripts/templates/context.js.coffee`:
 
 ```coffeescript
 #= require hamlcoffee
@@ -126,15 +126,22 @@ Given a Haml Coffee template at `app/assets/javascripts/templates/books/_book.ha
   %dd= @author
 ```
 
-Rendering `books#index`:
+And a Haml Coffee context at `app/assets/javascripts/templates/context.js`:
+
+```javascript
+//= require hamlcoffee
+```
+
+To render on server in `books#index`:
 
 ```haml
 = render "book", :name => "A Tale of Two Cities", :author => "Charles Dickens"
 ```
 
-Require and render the same file on the client using the asset pipeline:
+To render and render the same file on the client using the asset pipeline:
 
 ```coffeescript
+#= require hamlcoffee
 #= require templates/books/_book
 
 JST["books/book"](name: "A Tale of Two Cities", author: "Charles Dickens")
