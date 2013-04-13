@@ -38,7 +38,7 @@ module HamlCoffeeAssets
       self.selfCloseTags          = 'meta,img,link,br,hr,input,area,param,col,base'
       self.context                = 'window.HAML.context'
       self.extendScope            = false
-      self.shared_template_path   = 'app/assets/javascripts/templates'
+      self.templates_path         = 'app/assets/javascripts/templates'
       self.global_context_asset   = 'templates/context'
       self.name_filter            = lambda { |n|
         parts = n.sub(/^templates\//, '').split('/')
@@ -139,7 +139,20 @@ module HamlCoffeeAssets
 
     # Path to templates shared by Rails and JS.
     #
-    attr_accessor :shared_template_path
+    attr_accessor :templates_path
+
+    # TODO: Remove this deprecated api
+    # @deprecated use {#templates_path} instead
+    def shared_template_path
+      warn "[DEPRECATION] `shared_template_path` is deprecated. Use `templates_path` instead."
+      templates_path
+    end
+
+    # @deprecated use {#templates_path=} instead
+    def shared_template_path=(value)
+      warn "[DEPRECATION] `shared_template_path=` is deprecated. Use `templates_path=` instead."
+      templates_path=(value)
+    end
 
     # Path to custom helpers shared by Rails and JS.
     #
