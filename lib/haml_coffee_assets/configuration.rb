@@ -142,12 +142,14 @@ module HamlCoffeeAssets
     attr_accessor :templates_path
 
     # TODO: Remove this deprecated api
-    # <b>DEPRECATED:</b> Please use <tt>templates_path</tt> instead.
+    # @deprecated use {#templates_path} instead
     def shared_template_path
       warn "[DEPRECATION] `shared_template_path` is deprecated. Use `templates_path` instead."
       templates_path
     end
-    def shared_template_path(value)
+
+    # @deprecated use {#templates_path=} instead
+    def shared_template_path=(value)
       warn "[DEPRECATION] `shared_template_path=` is deprecated. Use `templates_path=` instead."
       templates_path=(value)
     end
