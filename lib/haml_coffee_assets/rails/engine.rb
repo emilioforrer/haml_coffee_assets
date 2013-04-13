@@ -27,7 +27,7 @@ module HamlCoffeeAssets
 
           # Add template path to ActionController's view paths.
           ActiveSupport.on_load(:action_controller) do
-            path = ::HamlCoffeeAssets.config.shared_template_path
+            path = ::HamlCoffeeAssets.config.templates_path
             resolver = ::HamlCoffeeAssets::ActionView::Resolver.new(path)
             ::ActionController::Base.append_view_path(resolver)
           end

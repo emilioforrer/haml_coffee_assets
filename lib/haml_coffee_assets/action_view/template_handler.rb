@@ -103,7 +103,7 @@ module HamlCoffeeAssets
 
       def partial_source(path)
         ::Rails.root.join(
-          ::HamlCoffeeAssets.config.shared_template_path,
+          ::HamlCoffeeAssets.config.templates_path,
           partial_path(path) + '.hamlc'
         ).read
       end
