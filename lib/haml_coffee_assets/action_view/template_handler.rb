@@ -52,7 +52,7 @@ module HamlCoffeeAssets
       end
 
       def helpers
-        ::HamlCoffeeAssets.helpers
+        GlobalContext.to_s
       end
 
       def compiled_template
