@@ -39,6 +39,7 @@ module HamlCoffeeAssets
       self.context                = 'window.HAML.context'
       self.extendScope            = false
       self.templates_path         = 'app/assets/javascripts/templates'
+      self.global_context_asset   = 'templates/context'
       self.name_filter            = lambda { |n|
         parts = n.sub(/^templates\//, '').split('/')
         parts.last.sub!(/^_/, '')
@@ -150,6 +151,10 @@ module HamlCoffeeAssets
       warn "[DEPRECATION] `shared_template_path=` is deprecated. Use `templates_path=` instead."
       templates_path=(value)
     end
+
+    # Path to custom helpers shared by Rails and JS.
+    #
+    attr_accessor :global_context_asset
 
   end
 

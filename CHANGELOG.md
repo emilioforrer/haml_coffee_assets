@@ -6,6 +6,10 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- [#87][]: Add global context server mixin feature. ([@thedeeno][])
+
 ## 1.12.0 - April 8, 2013
 
 - Drop Ruby 1.8.7 support.
@@ -307,6 +311,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [#79]: https://github.com/netzpirat/haml_coffee_assets/issues/79
 [#80]: https://github.com/netzpirat/haml_coffee_assets/issues/80
 [#81]: https://github.com/netzpirat/haml_coffee_assets/issues/81
+[#87]: https://github.com/netzpirat/haml_coffee_assets/issues/87
 [@axs89]: https://github.com/axs89
 [@dhiemstra]: https://github.com/dhiemstra
 [@dzello]: https://github.com/dzello
@@ -315,4 +320,5 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [@jimmycuadra]: https://github.com/jimmycuadra
 [@jingoro]: https://github.com/jingoro
 [@paulyoung]: https://github.com/paulyoung
+[@thedeeno]: https://github.com/thedeeno
 [@whitequark]: https://github.com/whitequark

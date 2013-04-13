@@ -16,6 +16,15 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
   let(:context) { Object.new }
   let(:locals) { Hash.new }
 
+  let(:global_context) do
+    path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'hamlcoffee_baseline.js'))
+    File.read(path)
+  end
+
+  before do
+    HamlCoffeeAssets::GlobalContext.stub(:to_s) { global_context }
+  end
+
   it "renders basic templates" do
     output = new_template("Foo").render(context, locals)
     output.should == "Foo"
@@ -29,12 +38,6 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
   it "renders CoffeeScript" do
     output = new_template("= @foo").render(context, foo: "Foo")
     output.should == "Foo"
-  end
-
-  it "has access to the helpers" do
-    template = new_template("!= surround '(', ')', ->\n  %span Foo")
-    output = template.render(context, locals)
-    output.should == "(<span>Foo</span>)"
   end
 
   describe "partial rendering" do
