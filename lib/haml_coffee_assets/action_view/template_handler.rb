@@ -43,7 +43,7 @@ module HamlCoffeeAssets
       private
 
       def evaluation_string
-        string = "JST['#{ logical_path }'](" + evaluation_object_string+ ")"
+        string = "JST['#{ logical_path }'](" + evaluation_object_string + ")"
         string.inspect.sub(/\\#/, '#')
       end
 

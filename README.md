@@ -417,11 +417,11 @@ use the global context.
 By default, haml_coffee_assets will evaluate templates against a view context's `local_assigns.to_json`. You can customize this by configuring the `evaluation_object_string` (which defaults to
 `#{local_assigns.to_json}`.
 
-This is a string (which runs in the scope of a view_context) that return a json object.
+This is a string (which runs in the scope of a view_context) that return a json object. Note the single quotes are important.
 
 ```ruby
 config.hamlcofee.evaluation_object_string =
-"#{MyJsonSerializer.encode(local_assigns)}"
+'#{MyJsonSerializer.encode(local_assigns)}'
 ```
 
 ### Customize the tag lists
