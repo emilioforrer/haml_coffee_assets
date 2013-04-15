@@ -28,7 +28,7 @@ module HamlCoffeeAssets
                      config.customPreserve, config.customFindAndPreserve,
                      config.customSurround, config.customSucceed, config.customPrecede, config.customReference,
                      config.preserveTags, config.selfCloseTags,
-                     config.context, config.extendScope)
+                     config.context, false)
       end
 
       private
