@@ -38,7 +38,6 @@ module HamlCoffeeAssets
       self.preserveTags           = 'textarea,pre'
       self.selfCloseTags          = 'meta,img,link,br,hr,input,area,param,col,base'
       self.context                = 'window.HAML.context'
-      self.extendScope            = false
       self.templates_path         = 'app/assets/javascripts/templates'
       self.global_context_asset   = 'templates/context'
       self.name_filter            = lambda { |n|
@@ -131,10 +130,6 @@ module HamlCoffeeAssets
     # Custom global context to merge
     #
     attr_accessor :context
-
-    # Extend the template scope with the context
-    #
-    attr_accessor :extendScope
 
     # A proc that is called to modify the template name used as the
     # JST key. The proc is passed the name as an argument and should
