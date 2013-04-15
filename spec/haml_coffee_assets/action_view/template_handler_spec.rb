@@ -60,6 +60,12 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
       output.should == "Foo"
     end
 
+    it "has a customizable evaluation object string" do
+      ::HamlCoffeeAssets.config.stub(:evaluation_object_string) { '{ foo: "bar" }' }
+      template = new_template("= @foo")
+      template.render(context, {}).should == "bar"
+    end
+
     it "renders partials with dot notation" do
       template = new_template("!= window.JST.basic_partial_01(foo: 'Foo')")
       output = template.render(context, foo: "Foo")
