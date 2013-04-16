@@ -13,7 +13,7 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
     )
   end
 
-  let(:context) { Object.new }
+  let(:context) { double('view') }
   let(:locals) { Hash.new }
 
   let(:global_context) do
@@ -22,6 +22,8 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
   end
 
   before do
+    context.stub(:logger) { }
+    context.stub(:assigns) { Hash.new }
     HamlCoffeeAssets::GlobalContext.stub(:to_s) { global_context }
   end
 
@@ -30,9 +32,34 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
     output.should == "Foo"
   end
 
+  it "has a customizable evaluation context" do
+    ::HamlCoffeeAssets.config.stub(:evaluation_context) { "{ foo: 'bar' }.to_json" }
+    template = new_template("= @foo")
+    template.render(context, {}).should == "bar"
+  end
+
+  it "gives precedence to local assigns over context assigns" do
+    context.stub(:assigns) { { foo: "Bar" } }
+    locals = { foo: "Foo" }
+
+    template = new_template("= @foo")
+    template.render(context, locals).should == "Foo"
+  end
+
   it "renders Haml" do
     output = new_template("%h1 Foo").render(context, locals)
     output.should == "<h1>Foo</h1>"
+  end
+
+  it "has access to context assigns" do
+    context.stub(:assigns) { { foo: "Bar" } }
+    output = new_template("= @foo").render(context, locals)
+    output.should == "Bar"
+  end
+
+  it "has access to local assigns" do
+    output = new_template("= @foo").render(context, foo: "Foo")
+    output.should == "Foo"
   end
 
   it "renders CoffeeScript" do
@@ -58,12 +85,6 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
       template = new_template("!= window.JST['basic/partial'](foo: 'Foo')")
       output = template.render(context, foo: "Foo")
       output.should == "Foo"
-    end
-
-    it "has a customizable evaluation object string" do
-      ::HamlCoffeeAssets.config.stub(:evaluation_object_string) { '{ foo: "bar" }' }
-      template = new_template("= @foo")
-      template.render(context, {}).should == "bar"
     end
 
     it "renders partials with dot notation" do
