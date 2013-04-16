@@ -412,16 +412,14 @@ App.globalTemplateContext = (locals) -> HAML.extend({}, {
 Please have a look at the wiki for [further examples](https://github.com/netzpirat/haml_coffee_assets/wiki) on how to
 use the global context.
 
-### Evaluation Object String (server side)
+### Evaluation Context (server side)
 
-By default, haml_coffee_assets will evaluate templates against a view context's `local_assigns.to_json`. You can customize this by configuring the `evaluation_object_string` (which defaults to
-`#{local_assigns.to_json}`.
-
-This is a string (which runs in the scope of a view_context) that return a json object. Note the single quotes are important.
+By default, haml_coffee_assets will evaluate templates against a json serialization of the view context's 
+`assigns` + `local_assigns`. You can customize this by configuring the `evaluation_context`. 
+(This is a string of ruby which returns a json object)
 
 ```ruby
-config.hamlcofee.evaluation_object_string =
-'#{MyJsonSerializer.encode(local_assigns)}'
+config.hamlcofee.evaluation_context = '#{MyJsonSerializer.encode(local_assigns)}'
 ```
 
 ### Customize the tag lists
