@@ -43,8 +43,12 @@ module HamlCoffeeAssets
       private
 
       def evaluation_string
-        string = "JST['#{ logical_path }'](\#{local_assigns.to_json})"
+        string = "JST['#{ logical_path }'](\#{" + evaluation_context + "})"
         string.inspect.sub(/\\#/, '#')
+      end
+
+      def evaluation_context
+        ::HamlCoffeeAssets.config.evaluation_context
       end
 
       def preamble
