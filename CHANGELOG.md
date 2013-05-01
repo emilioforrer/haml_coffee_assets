@@ -8,6 +8,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+- `findAndPreserve` helper deletes all line feed (LF) characters.
 - [#87][]: Add global context server mixin feature. ([@thedeeno][])
 
 ## 1.12.0 - April 8, 2013
