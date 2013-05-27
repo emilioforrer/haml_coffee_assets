@@ -9,6 +9,7 @@ module HamlCoffeeAssets
     class Resolver < ::ActionView::FileSystemResolver
       def find_templates(name, prefix, partial, details)
         if details[:formats].include?(:html)
+          clear_cache if ::Rails.env == "development"
           super
         else
           []
