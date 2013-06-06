@@ -136,19 +136,6 @@ module HamlCoffeeAssets
     #
     attr_accessor :templates_path
 
-    # TODO: Remove this deprecated api
-    # @deprecated use {#templates_path} instead
-    def shared_template_path
-      warn "[DEPRECATION] `shared_template_path` is deprecated. Use `templates_path` instead."
-      templates_path
-    end
-
-    # @deprecated use {#templates_path=} instead
-    def shared_template_path=(value)
-      warn "[DEPRECATION] `shared_template_path=` is deprecated. Use `templates_path=` instead."
-      templates_path=(value)
-    end
-
     # Path to custom helpers shared by Rails and JS.
     #
     attr_accessor :global_context_asset
