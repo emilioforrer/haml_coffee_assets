@@ -8,6 +8,8 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+- [#102][]: Add support for Rails 2.3. ([@vlmonk][])
+- [#95][]: Remove deprecated `shared_templates_api`. ([@thedeeno][])
 - `findAndPreserve` helper deletes all line feed (LF) characters.
 - [#87][]: Add global context server mixin feature. ([@thedeeno][])
 
