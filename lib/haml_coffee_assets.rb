@@ -13,7 +13,7 @@ require 'haml_coffee_assets/version'
 
 require 'haml_coffee_assets/tilt/template_handler'
 
-if defined?(Rails)
+if defined?(Rails) && Rails.version >= '3.0.0'
   require 'rails'
   require 'haml_coffee_assets/rails/engine'
   require 'haml_coffee_assets/action_view/patches'
