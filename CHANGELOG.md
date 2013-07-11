@@ -2,6 +2,10 @@
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- Support Rails 4. ([@thedeeno][])
+
 ## 1.14.1 - October 2, 2013
 
 - [#114][]: Make `findAndPreserve` helper compatible with IE8.

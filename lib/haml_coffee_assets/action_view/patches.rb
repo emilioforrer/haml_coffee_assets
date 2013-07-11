@@ -25,15 +25,11 @@ class ::ActionView::Template
         template = refresh(view)
         template.encode!
       end
-      if ::ActionView::Template::Error.instance_method(:initialize).arity == 3
-        # Rails < 4.0 expects three arguments here
+
+      if Rails::VERSION::STRING < "4"
         raise ::ActionView::Template::Error.new(template, assigns, e)
-      elsif ::ActionView::Template::Error.instance_method(:initialize).arity == 2
-        # and Rails >= 4.0 expects two arguments
-        raise ::ActionView::Template::Error.new(template, e)
       else
-        # try and fail graciously if this changes in the future
-        raise e
+        raise ::ActionView::Template::Error.new(template, e)
       end
     end
   end
