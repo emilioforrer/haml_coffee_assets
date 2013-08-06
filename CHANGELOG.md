@@ -6,7 +6,7 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
-## Master
+## 1.13.0 - August 6, 2013
 
 - Update to Haml-Coffee 1.11.3
 - [#104][]: Add support for Rails 4 ([@magnusvk][])
