@@ -8,6 +8,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+- Update to Haml-Coffee 1.11.3
 - [#104][]: Add support for Rails 4 ([@magnusvk][])
 - [#102][]: Add support for Rails 2.3. ([@vlmonk][])
 - [#95][]: Remove deprecated `shared_templates_api`. ([@thedeeno][])
