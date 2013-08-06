@@ -317,6 +317,8 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [#80]: https://github.com/netzpirat/haml_coffee_assets/issues/80
 [#81]: https://github.com/netzpirat/haml_coffee_assets/issues/81
 [#87]: https://github.com/netzpirat/haml_coffee_assets/issues/87
+[#95]: https://github.com/netzpirat/haml_coffee_assets/issues/95
+[#102]: https://github.com/netzpirat/haml_coffee_assets/issues/102
 [#104]: https://github.com/netzpirat/haml_coffee_assets/issues/104
 [@axs89]: https://github.com/axs89
 [@dhiemstra]: https://github.com/dhiemstra
