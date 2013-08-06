@@ -8,6 +8,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+- [#104][]: Add support for Rails 4 ([@magnusvk][])
 - [#102][]: Add support for Rails 2.3. ([@vlmonk][])
 - [#95][]: Remove deprecated `shared_templates_api`. ([@thedeeno][])
 - `findAndPreserve` helper deletes all line feed (LF) characters.
@@ -315,6 +316,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [#80]: https://github.com/netzpirat/haml_coffee_assets/issues/80
 [#81]: https://github.com/netzpirat/haml_coffee_assets/issues/81
 [#87]: https://github.com/netzpirat/haml_coffee_assets/issues/87
+[#104]: https://github.com/netzpirat/haml_coffee_assets/issues/104
 [@axs89]: https://github.com/axs89
 [@dhiemstra]: https://github.com/dhiemstra
 [@dzello]: https://github.com/dzello
@@ -322,6 +324,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [@jfirebaugh]: https://github.com/jfirebaugh
 [@jimmycuadra]: https://github.com/jimmycuadra
 [@jingoro]: https://github.com/jingoro
+[@magnusvk]: https://github.com/magnusvk
 [@paulyoung]: https://github.com/paulyoung
 [@thedeeno]: https://github.com/thedeeno
 [@whitequark]: https://github.com/whitequark
