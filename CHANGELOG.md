@@ -330,4 +330,5 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [@magnusvk]: https://github.com/magnusvk
 [@paulyoung]: https://github.com/paulyoung
 [@thedeeno]: https://github.com/thedeeno
+[@vlmonk]: https://github.com/vlmonk
 [@whitequark]: https://github.com/whitequark
