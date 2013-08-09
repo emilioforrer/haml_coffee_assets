@@ -26,4 +26,7 @@ end
 # its configuration settings.
 #
 module HamlCoffeeAssets
+  def self.helpers
+    GlobalContext.to_s
+  end
 end
