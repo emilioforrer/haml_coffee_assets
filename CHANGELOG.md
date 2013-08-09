@@ -2,7 +2,7 @@
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
-## Master
+## 1.13.1 - August 9, 2013
 
 - [#108][]: Re-add helper path API to make it easy to integrate into Sinatra.
 
