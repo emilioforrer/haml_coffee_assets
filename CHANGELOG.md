@@ -6,6 +6,10 @@ belongs to.
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- [#108][]: Re-add helper path API to make it easy to integrate into Sinatra.
+
 ## 1.13.0 - August 6, 2013
 
 - Update to Haml-Coffee 1.11.3
@@ -320,6 +324,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [#95]: https://github.com/netzpirat/haml_coffee_assets/issues/95
 [#102]: https://github.com/netzpirat/haml_coffee_assets/issues/102
 [#104]: https://github.com/netzpirat/haml_coffee_assets/issues/104
+[#108]: https://github.com/netzpirat/haml_coffee_assets/issues/108
 [@axs89]: https://github.com/axs89
 [@dhiemstra]: https://github.com/dhiemstra
 [@dzello]: https://github.com/dzello
