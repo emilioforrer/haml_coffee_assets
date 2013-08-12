@@ -2,7 +2,7 @@
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
-## Master
+## 1.13.2 - August 12, 2013
 
 - [#109][]: Make helpers API not dependant on Rails.
 
