@@ -2,7 +2,7 @@
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
-## Master
+## 1.14.0 - September 22, 2013
 
 - Update to Haml-Coffee 1.12.0
 
