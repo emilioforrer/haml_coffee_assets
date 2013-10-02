@@ -2,6 +2,10 @@
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- [#114][]: Make `findAndPreserve` helper compatible with IE8.
+
 ## 1.14.0 - September 22, 2013
 
 - Update to Haml-Coffee 1.12.0
@@ -38,7 +42,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## 1.10.0 - January 13, 2013
 
-- The default name filter removes a leading underscore `_` from the template name. 
+- The default name filter removes a leading underscore `_` from the template name.
 - [#79][]: Add ActionView::Template handler for hamlc files. ([@jimmycuadra][])
 
 ## 1.9.1 - January 8, 2013
