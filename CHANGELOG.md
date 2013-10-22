@@ -2,7 +2,7 @@
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
-## Master
+## 1.15.0 - October 22, 2013
 
 - Support Rails 4. ([@thedeeno][])
 - Update to Haml-Coffee 1.13.3
