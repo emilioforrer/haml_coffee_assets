@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe HamlCoffeeAssets::Tilt::TemplateHandler do
-  
+
   let(:template) { HamlCoffeeAssets::Tilt::TemplateHandler.new { |t| '%h2' } }
 
   before do
@@ -32,13 +32,13 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
               logical_path: 'templates/foo/bar'
             })
           end
-  
+
           it 'does filter the template directory' do
             HamlCoffeeAssets::Compiler.should_receive(:compile).with('foo/bar', '%h2', true)
             template.render(scope)
           end
         end
-  
+
         context 'with a template that does matches' do
           let(:scope) do
             double('scope', {
@@ -46,7 +46,7 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
               logical_path: 'other/templates/foo/bar'
             })
           end
-  
+
           it 'does not filter the template directory' do
             HamlCoffeeAssets::Compiler.should_receive(:compile).with('other/templates/foo/bar', '%h2', true)
             template.render(scope)
@@ -95,7 +95,7 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
         end
 
         before { HamlCoffeeAssets.config.name_filter = nil }
-        
+
         it 'does not filter the template name' do
           HamlCoffeeAssets::Compiler.should_receive(:compile).with('templates/foo/bar', '%h2', true)
           template.render(scope)
