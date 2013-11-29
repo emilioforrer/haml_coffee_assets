@@ -5,7 +5,7 @@ pipeline, so you can use them as JavaScript templates in your JavaScript heavy R
 of templates is also possible, allowing you to share the same template files for Rails and JavaScript templates. It also
 works as a pure [Sprockets](https://github.com/sstephenson/sprockets) engine without Rails.
 
-Tested on MRI Ruby 1.9.2, 1.9.3, 2.0.0 and the latest version of JRuby.
+Tested on MRI Ruby 1.9.3, 2.0.0 and the latest version of JRuby.
 
 ## Features
 
