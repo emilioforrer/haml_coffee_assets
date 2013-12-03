@@ -2,6 +2,10 @@
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## 1.16.0 - December 3, 2013
+
+- [#118][]: Change Gem dependencies.
+
 ## 1.15.1 - November 27, 2013
 
 - Update to Haml-Coffee 1.13.5
@@ -342,6 +346,7 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 [#102]: https://github.com/netzpirat/haml_coffee_assets/issues/102
 [#104]: https://github.com/netzpirat/haml_coffee_assets/issues/104
 [#108]: https://github.com/netzpirat/haml_coffee_assets/issues/108
+[#118]: https://github.com/netzpirat/haml_coffee_assets/issues/118
 [@axs89]: https://github.com/axs89
 [@dhiemstra]: https://github.com/dhiemstra
 [@dzello]: https://github.com/dzello
