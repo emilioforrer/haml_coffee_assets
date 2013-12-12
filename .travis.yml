@@ -14,7 +14,7 @@ matrix:
 branches:
   only:
     - master
-script: 'rake spec && bundle exec guard-jasmine'
+script: 'bundle exec rake spec && bundle exec guard-jasmine'
 notifications:
   recipients:
     - michi@netzpiraten.ch
