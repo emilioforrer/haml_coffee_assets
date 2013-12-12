@@ -2,6 +2,10 @@
 
 Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/haml-coffee/blob/master/CHANGELOG.md) also.
 
+## Master
+
+- Update to Haml-Coffee 1.13.6
+
 ## 1.16.0 - December 3, 2013
 
 - [#118][]: Change Gem dependencies.
