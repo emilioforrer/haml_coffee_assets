@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version     = HamlCoffeeAssets::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Michael Kessler']
-  s.email       = ['michi@netzpiraten.ch']
+  s.email       = ['michi@flinkfinger.com']
   s.homepage    = 'https://github.com/netzpirat/haml_coffee_assets'
   s.summary     = 'Haml CoffeeScript templates'
   s.description = 'Compile Haml CoffeeScript templates in the Rails asset pipeline.'
