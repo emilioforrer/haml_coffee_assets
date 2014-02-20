@@ -828,13 +828,14 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['surround'] = function(context) {
     return (function() {
-      var $c, $e, $o, surround,
-        _this = this;
+      var $c, $e, $o, surround;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      surround = function(start, end, fn) {
-        return window.HAML.surround.call(_this, start, end, fn);
-      };
+      surround = (function(_this) {
+        return function(start, end, fn) {
+          return window.HAML.surround.call(_this, start, end, fn);
+        };
+      })(this);
       $o = [];
       $o.push("" + $e($c(surround('(', ')', function() {
         var $o1;
@@ -860,13 +861,14 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['surround'] = function(context) {
     return (function() {
-      var $c, $e, $o, surround,
-        _this = this;
+      var $c, $e, $o, surround;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      surround = function(start, end, fn) {
-        return SomeWhere.surround.call(_this, start, end, fn);
-      };
+      surround = (function(_this) {
+        return function(start, end, fn) {
+          return SomeWhere.surround.call(_this, start, end, fn);
+        };
+      })(this);
       $o = [];
       $o.push("" + $e($c(surround('(', ')', function() {
         var $o1;
@@ -893,13 +895,14 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['succeed'] = function(context) {
     return (function() {
-      var $c, $e, $o, succeed,
-        _this = this;
+      var $c, $e, $o, succeed;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      succeed = function(start, end, fn) {
-        return window.HAML.succeed.call(_this, start, end, fn);
-      };
+      succeed = (function(_this) {
+        return function(start, end, fn) {
+          return window.HAML.succeed.call(_this, start, end, fn);
+        };
+      })(this);
       $o = [];
       $o.push("click");
       $o.push("" + $e($c(succeed('.', function() {
@@ -926,13 +929,14 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['succeed'] = function(context) {
     return (function() {
-      var $c, $e, $o, succeed,
-        _this = this;
+      var $c, $e, $o, succeed;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      succeed = function(start, end, fn) {
-        return SomeWhere.succeed.call(_this, start, end, fn);
-      };
+      succeed = (function(_this) {
+        return function(start, end, fn) {
+          return SomeWhere.succeed.call(_this, start, end, fn);
+        };
+      })(this);
       $o = [];
       $o.push("click");
       $o.push("" + $e($c(succeed('.', function() {
@@ -960,13 +964,14 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['precede'] = function(context) {
     return (function() {
-      var $c, $e, $o, precede,
-        _this = this;
+      var $c, $e, $o, precede;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      precede = function(start, end, fn) {
-        return window.HAML.precede.call(_this, start, end, fn);
-      };
+      precede = (function(_this) {
+        return function(start, end, fn) {
+          return window.HAML.precede.call(_this, start, end, fn);
+        };
+      })(this);
       $o = [];
       $o.push("" + $e($c(precede('*', function() {
         var $o1;
@@ -992,13 +997,14 @@ describe HamlCoffeeAssets::Compiler do
 
   window.JST['precede'] = function(context) {
     return (function() {
-      var $c, $e, $o, precede,
-        _this = this;
+      var $c, $e, $o, precede;
       $e = window.HAML.escape;
       $c = window.HAML.cleanValue;
-      precede = function(start, end, fn) {
-        return SomeWhere.precede.call(_this, start, end, fn);
-      };
+      precede = (function(_this) {
+        return function(start, end, fn) {
+          return SomeWhere.precede.call(_this, start, end, fn);
+        };
+      })(this);
       $o = [];
       $o.push("" + $e($c(precede('*', function() {
         var $o1;

@@ -14,7 +14,7 @@ end
 
 group :assets do
   gem 'coffee-script'
-  gem 'coffee-script-source', '1.6.2'
+  gem 'coffee-script-source'
 end
 
 group :development, :test do
@@ -36,8 +36,6 @@ group :development, :test do
   unless ENV['TRAVIS']
     gem 'yard'
     gem 'redcarpet'
-    gem 'rb-fsevent'
-    gem 'ruby_gntp'
     gem 'thin'
   end
 end
