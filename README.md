@@ -48,8 +48,7 @@ group :assets do
   gem 'execjs'
 end
 ```
-
-And require the `hamlcoffee.js` in your `app/assets/javascripts/templates/context.js.coffee`:
+(note that Rails 4.0 [removed the assets group](https://github.com/rails/rails/commit/49c4af43ec5819d8f5c1a91f9b84296c927ce6e7) from Gemfile and so you don't need that line) and require the `hamlcoffee.js` in your `app/assets/javascripts/templates/context.js.coffee`:
 
 ```coffeescript
 #= require hamlcoffee
