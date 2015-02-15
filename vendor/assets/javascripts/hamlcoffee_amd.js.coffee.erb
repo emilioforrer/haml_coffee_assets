@@ -48,7 +48,7 @@ define ->
   #
   findAndPreserve: (text) ->
     tags = '<%= ::HamlCoffeeAssets.config.preserveTags %>'.split(',').join('|')
-    text = text.replace(/\r/g, '').replace ///<(#{ tags })>([\s\S]*?)<\/\1>/// g, (str, tag, content) ->
+    text = text.replace(/\r/g, '').replace ///<(#{ tags })>([\s\S]*?)<\/\1>///g, (str, tag, content) ->
       "<#{ tag }>#{ <%= ::HamlCoffeeAssets.config.customPreserve %>(content) }</#{ tag }>"
 
   # The surround helper surrounds the function output
