@@ -12,6 +12,19 @@ module HamlCoffeeAssets
 
       config.hamlcoffee = ::HamlCoffeeAssets.config
 
+      # https://github.com/tricknotes/ember-rails/blob/c45c5d23755ef9f8ab51d9f611cdd3517a11badf/lib/ember_rails.rb#L30
+      def configure_assets(app)
+        if config.respond_to?(:assets) && config.assets.respond_to?(:configure)
+          # Rails 4.x
+          config.assets.configure do |env|
+            yield env
+          end
+        else
+          # Rails 3.2
+          yield app.assets
+        end
+      end
+
       # Initialize Haml Coffee Assets after Sprockets
       #
       initializer 'sprockets.hamlcoffeeassets', group: :all, after: 'sprockets.environment' do |app|
@@ -77,10 +90,10 @@ module HamlCoffeeAssets
           end
         end
 
-        next unless app.assets
-
         # Register Tilt template (for Sprockets)
-        app.assets.register_engine '.hamlc', ::HamlCoffeeAssets::Tilt::TemplateHandler
+        configure_assets(app) do |env|
+          env.register_engine '.hamlc', ::HamlCoffeeAssets::Tilt::TemplateHandler
+        end
       end
 
     end
