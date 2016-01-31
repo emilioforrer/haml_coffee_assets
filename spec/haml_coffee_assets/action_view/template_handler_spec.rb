@@ -1,6 +1,10 @@
 require 'spec_helper'
 require 'action_view'
-require 'active_support/core_ext/object/to_json'
+if defined?(ActiveSupport) && ActiveSupport::VERSION::MAJOR.to_i >= 3
+  require 'active_support/core_ext/object/json'
+else
+  require 'active_support/core_ext/object/to_json'
+end
 require 'haml_coffee_assets/action_view/template_handler'
 
 describe HamlCoffeeAssets::ActionView::TemplateHandler do
