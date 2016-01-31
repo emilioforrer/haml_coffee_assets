@@ -8,7 +8,7 @@ module HamlCoffeeAssets
     # in it would normally be a fallback for all formats.
     #
     class Resolver < ::ActionView::FileSystemResolver
-      def find_templates(name, prefix, partial, details)
+      def find_templates(name, prefix, partial, details, outside_app_allowed = false)
         if details[:formats].include?(:html)
           clear_cache if ::Rails.env == "development"
           super
