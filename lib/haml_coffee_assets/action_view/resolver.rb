@@ -11,7 +11,11 @@ module HamlCoffeeAssets
       def find_templates(name, prefix, partial, details, outside_app_allowed = false)
         if details[:formats].include?(:html)
           clear_cache if ::Rails.env == "development"
-          super
+          if ::Rails::VERSION::STRING < "4.2.5.1"
+            super(name, prefix, partial, details)
+          else
+            super(name, prefix, partial, details, outside_app_allowed)
+          end
         else
           []
         end
