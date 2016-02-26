@@ -6,6 +6,11 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 - Update to Haml-Coffee 1.13.6
 
+## 1.16.2 - February 25, 2016
+
+- Fixing compatibility with older versions of rails.
+- [#146][]: Incompatibility with Rails 4.2.5.1 from a change to find_templates
+
 ## 1.16.1 - January 30, 2016
 
 - Change Gem dependencies.
