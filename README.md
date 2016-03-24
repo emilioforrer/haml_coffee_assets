@@ -1,4 +1,4 @@
-# Haml Coffee Assets [![Build Status](https://secure.travis-ci.org/netzpirat/haml_coffee_assets.png)](http://travis-ci.org/netzpirat/haml_coffee_assets)
+# Haml Coffee Assets [![Build Status](https://secure.travis-ci.org/emilioforrer/haml_coffee_assets.png)](http://travis-ci.org/emilioforrer/haml_coffee_assets)
 
 Haml Coffee Assets compiles [Haml Coffee](https://github.com/netzpirat/haml-coffee) templates in the Rails 3.1 asset
 pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application. Server-side rendering
@@ -59,7 +59,7 @@ If you're using AMD support then you do not need to include the above helper, si
 This provides the default escaping and the global context functions. Read more about it in the configuration section
 below.
 
-Please have a look at the [CHANGELOG](https://github.com/netzpirat/haml_coffee_assets/blob/master/CHANGELOG.md) when
+Please have a look at the [CHANGELOG](https://github.com/emilioforrer/haml_coffee_assets/blob/master/CHANGELOG.md) when
 upgrading to a newer Haml Coffee Assets version.
 
 If you want to use Haml Coffee with Sinatra, please have a look at the
@@ -408,7 +408,7 @@ App.globalTemplateContext = (locals) -> HAML.extend({}, {
 }, locals)
 ```
 
-Please have a look at the wiki for [further examples](https://github.com/netzpirat/haml_coffee_assets/wiki) on how to
+Please have a look at the wiki for [further examples](https://github.com/emilioforrer/haml_coffee_assets/wiki) on how to
 use the global context.
 
 ### Customize the tag lists
@@ -456,7 +456,7 @@ to, you can set custom functions for:
 * config.hamlcoffee.customSucceed
 * config.hamlcoffee.customPrecede
 
-You can see the [default implementation](https://github.com/netzpirat/haml_coffee_assets/blob/master/vendor/assets/javascripts/hamlcoffee.js.coffee.erb)
+You can see the [default implementation](https://github.com/emilioforrer/haml_coffee_assets/blob/master/vendor/assets/javascripts/hamlcoffee.js.coffee.erb)
 and the [Haml Coffee documentation](https://github.com/netzpirat/haml-coffee#custom-helper-function-options)
 for more information about each helper function.
 
@@ -516,14 +516,14 @@ example.
 
 Developed by Michael Kessler, [FlinkFinger](http://www.flinkfinger.com).
 
-If you like Haml Coffee Assets, you can watch the repository at [GitHub](https://github.com/netzpirat/haml_coffee_assets)
+If you like Haml Coffee Assets, you can watch the repository at [GitHub](https://github.com/emilioforrer/haml_coffee_assets)
 and follow [@netzpirat](https://twitter.com/#!/netzpirat) on Twitter for project updates.
 
 ## Development
 
-* Issues and feature request hosted at [GitHub Issues](https://github.com/netzpirat/haml_coffee_assets/issues).
-* Documentation hosted at [RubyDoc](http://rubydoc.info/github/netzpirat/haml_coffee_assets/master/frames).
-* Source hosted at [GitHub](https://github.com/netzpirat/haml_coffee_assets).
+* Issues and feature request hosted at [GitHub Issues](https://github.com/emilioforrer/haml_coffee_assets/issues).
+* Documentation hosted at [RubyDoc](http://rubydoc.info/github/emilioforrer/haml_coffee_assets/master/frames).
+* Source hosted at [GitHub](https://github.com/emilioforrer/haml_coffee_assets).
 
 Pull requests are very welcome! Please try to follow these simple rules if applicable:
 
@@ -548,8 +548,8 @@ Please try to follow these simple rules:
 
 ## Contributors
 
-See the [CHANGELOG](https://github.com/netzpirat/haml_coffee_assets/blob/master/CHANGELOG.md) and the GitHub list of
-[contributors](https://github.com/netzpirat/haml_coffee_assets/contributors).
+See the [CHANGELOG](https://github.com/emilioforrer/haml_coffee_assets/blob/master/CHANGELOG.md) and the GitHub list of
+[contributors](https://github.com/emilioforrer/haml_coffee_assets/contributors).
 
 ## Acknowledgement
 

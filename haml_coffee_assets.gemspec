@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Michael Kessler']
   s.email       = ['michi@flinkfinger.com']
-  s.homepage    = 'https://github.com/netzpirat/haml_coffee_assets'
+  s.homepage    = 'https://github.com/emilioforrer/haml_coffee_assets'
   s.summary     = 'Haml CoffeeScript templates'
   s.description = 'Compile Haml CoffeeScript templates in the Rails asset pipeline.'
   s.license     = 'MIT'
