@@ -11,7 +11,7 @@ describe HamlCoffeeAssets::Compiler do
   describe '#compile' do
     context 'template name' do
       it 'uses the provided template name' do
-        HamlCoffeeAssets::Compiler.compile('template_name', '%h2').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('template_name', '%h2')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -33,7 +33,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'format configuration' do
       it 'uses HTML5 as the default format' do
-        HamlCoffeeAssets::Compiler.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('script', ":javascript\n  var i = 1;")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -54,7 +54,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'generates HTML4 documents when configured' do
         HamlCoffeeAssets.config.format = 'html4'
-        HamlCoffeeAssets::Compiler.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('script', ":javascript\n  var i = 1;")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -75,7 +75,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'generates XHTML documents when configured' do
         HamlCoffeeAssets.config.format = 'xhtml'
-        HamlCoffeeAssets::Compiler.compile('script', ":javascript\n  var i = 1;").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('script', ":javascript\n  var i = 1;")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -97,7 +97,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'namespace configuration' do
       it 'uses the default HAML namespace' do
-        HamlCoffeeAssets::Compiler.compile('header', '%h2').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('header', '%h2')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -118,7 +118,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses a configured namespace' do
         HamlCoffeeAssets.config.namespace = 'window.HAML'
-        HamlCoffeeAssets::Compiler.compile('header', '%h2').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('header', '%h2')).to eql <<-TEMPLATE
 (function() {
   if (window.HAML == null) {
     window.HAML = {};
@@ -140,7 +140,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'escape function configuration' do
       it 'uses the default escape function when no custom function is provided' do
-        HamlCoffeeAssets::Compiler.compile('title', '%h2= title').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('title', '%h2= title')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -163,7 +163,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses a configured escape function' do
         HamlCoffeeAssets.config.customHtmlEscape = 'SomeWhere.escape'
-        HamlCoffeeAssets::Compiler.compile('title', '%h2= title').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('title', '%h2= title')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -187,7 +187,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'clean value function configuration' do
       it 'uses the default clean value function when no custom function is provided' do
-        HamlCoffeeAssets::Compiler.compile('title', '%h2= title').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('title', '%h2= title')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -210,7 +210,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses a configured clean value function' do
         HamlCoffeeAssets.config.customCleanValue = 'SomeWhere.cleanValue'
-        HamlCoffeeAssets::Compiler.compile('title', '%h2= title').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('title', '%h2= title')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -234,7 +234,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'placement configuration' do
       it 'uses the global placement by default' do
-        HamlCoffeeAssets::Compiler.compile('placement', '%p Global placement').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('placement', '%p Global placement')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -255,7 +255,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'wraps the function within a define function with the amd placement' do
         HamlCoffeeAssets.config.placement = 'amd'
-        HamlCoffeeAssets::Compiler.compile('placement', '%p AMD placement').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('placement', '%p AMD placement')).to eql <<-TEMPLATE
 (function() {
   define(['hamlcoffee_amd'], function(hc) {
     return function(context) {
@@ -278,7 +278,7 @@ describe HamlCoffeeAssets::Compiler do
     context 'global amd module dependencies' do
       it 'adds the hamlcoffee module context helper' do
         HamlCoffeeAssets.config.placement = 'amd'
-        HamlCoffeeAssets::Compiler.compile('globals', '%p AMD module dependencies').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('globals', '%p AMD module dependencies')).to eql <<-TEMPLATE
 (function() {
   define(['hamlcoffee_amd'], function(hc) {
     return function(context) {
@@ -300,7 +300,7 @@ describe HamlCoffeeAssets::Compiler do
       it 'adds the module dependencies' do
         HamlCoffeeAssets.config.placement = 'amd'
         HamlCoffeeAssets.config.dependencies = { '_' => 'underscore' }
-        HamlCoffeeAssets::Compiler.compile('globals', '%p AMD module dependencies').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('globals', '%p AMD module dependencies')).to eql <<-TEMPLATE
 (function() {
   define(['underscore'], function(_) {
     return function(context) {
@@ -321,7 +321,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'adds the template dependencies' do
         HamlCoffeeAssets.config.placement = 'amd'
-        HamlCoffeeAssets::Compiler.compile('partials', "%p!= require('shared/partial')()").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('partials', "%p!= require('shared/partial')()")).to eql <<-TEMPLATE
 (function() {
   define(['hamlcoffee_amd', 'shared/partial'], function(hc, partial) {
     return function(context) {
@@ -344,7 +344,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'Attribute escaping configuration' do
       it 'does escape the attributes by default' do
-        HamlCoffeeAssets::Compiler.compile('attributes', '%a{ :title => @title }').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('attributes', '%a{ :title => @title }')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -367,7 +367,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'does not escape the attributes when set to false' do
         HamlCoffeeAssets.config.escapeAttributes = false
-        HamlCoffeeAssets::Compiler.compile('attributes', '%a{ :title => @title }').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('attributes', '%a{ :title => @title }')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -390,7 +390,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'Clean value configuration' do
       it 'does clean the values by default' do
-        HamlCoffeeAssets::Compiler.compile('values', '%h1= @title').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('values', '%h1= @title')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -413,7 +413,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'does not clean the values when set to false' do
         HamlCoffeeAssets.config.cleanValue = false
-        HamlCoffeeAssets::Compiler.compile('values', '%h1= @title').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('values', '%h1= @title')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -436,7 +436,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'HTML escaping configuration' do
       it 'does escape the html by default' do
-        HamlCoffeeAssets::Compiler.compile('htmlE', '%p= @info').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('htmlE', '%p= @info')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -459,7 +459,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'does not escape the html when set to false' do
         HamlCoffeeAssets.config.escapeHtml = false
-        HamlCoffeeAssets::Compiler.compile('htmlE', '%p= @info').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('htmlE', '%p= @info')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -482,7 +482,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'context configuration' do
       it 'uses the default context function' do
-        HamlCoffeeAssets::Compiler.compile('link', '%a{ :href => "/" }').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('link', '%a{ :href => "/" }')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -503,7 +503,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'does not use the global context without a merge function' do
         HamlCoffeeAssets.config.context = false
-        HamlCoffeeAssets::Compiler.compile('link', '%a{ :href => "/" }').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('link', '%a{ :href => "/" }')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -524,7 +524,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses a configured context function' do
         HamlCoffeeAssets.config.context = 'SomeWhere.context'
-        HamlCoffeeAssets::Compiler.compile('link', '%a{ :href => "/" }').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('link', '%a{ :href => "/" }')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -546,7 +546,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'uglify configuration' do
       it 'does not uglify by default' do
-        HamlCoffeeAssets::Compiler.compile('ugly', "%html\n  %body\n    %form\n      %input").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('ugly', "%html\n  %body\n    %form\n      %input")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -567,7 +567,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'does uglify the output when configured' do
         HamlCoffeeAssets.config.uglify = true
-        HamlCoffeeAssets::Compiler.compile('ugly', "%html\n  %body\n    %form\n      %input").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('ugly', "%html\n  %body\n    %form\n      %input")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -589,7 +589,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'basename configuration' do
       it 'does not strip the path by default' do
-        HamlCoffeeAssets::Compiler.compile('path/to/file', "%p Basename").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('path/to/file', "%p Basename")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -610,7 +610,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'does strip the path' do
         HamlCoffeeAssets.config.basename = true
-        HamlCoffeeAssets::Compiler.compile('path/to/file', "%p Basename").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('path/to/file', "%p Basename")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -632,7 +632,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'whitespace tag list configuration' do
       it 'uses textarea and pre by default' do
-        HamlCoffeeAssets::Compiler.compile('ws', "%textarea= 'Test\\nMe'\n%pre= 'Test\\nMe'\n%p= 'Test\\nMe'\n").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('ws', "%textarea= 'Test\\nMe'\n%pre= 'Test\\nMe'\n%p= 'Test\\nMe'\n")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -656,7 +656,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses any element configured' do
         HamlCoffeeAssets.config.preserveTags = 'textarea,p'
-        HamlCoffeeAssets::Compiler.compile('ws', "%textarea= 'Test\\nMe'\n%pre= 'Test\\nMe'\n%p= 'Test\\nMe'\n").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('ws', "%textarea= 'Test\\nMe'\n%pre= 'Test\\nMe'\n%p= 'Test\\nMe'\n")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -682,7 +682,7 @@ describe HamlCoffeeAssets::Compiler do
     context 'autoclose tag list configuration' do
       it 'uses the default list' do
         HamlCoffeeAssets.config.format = 'xhtml'
-        HamlCoffeeAssets::Compiler.compile('close', "%img\n%br\n%p\n").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('close', "%img\n%br\n%p\n")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -704,7 +704,7 @@ describe HamlCoffeeAssets::Compiler do
       it 'uses any element configured' do
         HamlCoffeeAssets.config.selfCloseTags = 'br,p'
         HamlCoffeeAssets.config.format = 'xhtml'
-        HamlCoffeeAssets::Compiler.compile('close', "%img\n%br\n%p\n").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('close', "%img\n%br\n%p\n")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -726,7 +726,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'preserve function configuration' do
       it 'uses the default preserve function when no custom function is provided' do
-        HamlCoffeeAssets::Compiler.compile('pres', '%h2~ title').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('pres', '%h2~ title')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -749,7 +749,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses a configured preserve function' do
         HamlCoffeeAssets.config.customPreserve = 'SomeWhere.preserve'
-        HamlCoffeeAssets::Compiler.compile('pres', '%h2~ title').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('pres', '%h2~ title')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -773,7 +773,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'findAndPreserve function configuration' do
       it 'uses the default findAndPreserve function when no custom function is provided' do
-        HamlCoffeeAssets::Compiler.compile('find', '%h2~ title').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('find', '%h2~ title')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -796,7 +796,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses a configured findAndPreserve function' do
         HamlCoffeeAssets.config.customFindAndPreserve = 'SomeWhere.findAndPreserve'
-        HamlCoffeeAssets::Compiler.compile('find', '%h2~ title').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('find', '%h2~ title')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -820,7 +820,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'surround function configuration' do
       it 'uses the default surround function when no custom function is provided' do
-        HamlCoffeeAssets::Compiler.compile('surround', "= surround '(', ')', ->\n  %a{:href => 'food'} chicken").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('surround', "= surround '(', ')', ->\n  %a{:href => 'food'} chicken")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -853,7 +853,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses a configured surround function' do
         HamlCoffeeAssets.config.customSurround = 'SomeWhere.surround'
-        HamlCoffeeAssets::Compiler.compile('surround', "= surround '(', ')', ->\n  %a{:href => 'food'} chicken").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('surround', "= surround '(', ')', ->\n  %a{:href => 'food'} chicken")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -887,7 +887,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'succeed function configuration' do
       it 'uses the default succeed function when no custom function is provided' do
-        HamlCoffeeAssets::Compiler.compile('succeed', "click\n= succeed '.', ->\n  %a{:href=>'thing'} here").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('succeed', "click\n= succeed '.', ->\n  %a{:href=>'thing'} here")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -921,7 +921,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses a configured succeed function' do
         HamlCoffeeAssets.config.customSucceed = 'SomeWhere.succeed'
-        HamlCoffeeAssets::Compiler.compile('succeed', "click\n= succeed '.', ->\n  %a{:href=>'thing'} here").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('succeed', "click\n= succeed '.', ->\n  %a{:href=>'thing'} here")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -956,7 +956,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'precede function configuration' do
       it 'uses the default precede function when no custom function is provided' do
-        HamlCoffeeAssets::Compiler.compile('precede', "= precede '*', ->\n  %span.small Not really").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('precede', "= precede '*', ->\n  %span.small Not really")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -989,7 +989,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses a configured precede function' do
         HamlCoffeeAssets.config.customPrecede = 'SomeWhere.precede'
-        HamlCoffeeAssets::Compiler.compile('precede', "= precede '*', ->\n  %span.small Not really").should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('precede', "= precede '*', ->\n  %span.small Not really")).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -1023,7 +1023,7 @@ describe HamlCoffeeAssets::Compiler do
 
     context 'reference function configuration' do
       it 'uses the default reference function when no custom function is provided' do
-        HamlCoffeeAssets::Compiler.compile('reference', '%div[@user]').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('reference', '%div[@user]')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -1045,7 +1045,7 @@ describe HamlCoffeeAssets::Compiler do
 
       it 'uses a configured reference function' do
         HamlCoffeeAssets.config.customReference = 'SomeWhere.reference'
-        HamlCoffeeAssets::Compiler.compile('reference', '%div[@user]').should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('reference', '%div[@user]')).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -1068,7 +1068,7 @@ describe HamlCoffeeAssets::Compiler do
 
     describe 'the template creation function' do
       it 'returns the JavaScript template when true' do
-        HamlCoffeeAssets::Compiler.compile('func', '%p', true).should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('func', '%p', true)).to eql <<-TEMPLATE
 (function() {
   if (window.JST == null) {
     window.JST = {};
@@ -1088,7 +1088,7 @@ describe HamlCoffeeAssets::Compiler do
       end
 
       it 'returns only the template function when false' do
-        HamlCoffeeAssets::Compiler.compile('func', '%p', false).should eql <<-TEMPLATE
+        expect(HamlCoffeeAssets::Compiler.compile('func', '%p', false)).to eql <<-TEMPLATE
 (function(context) {
   return (function() {
     var $o;
