@@ -11,8 +11,6 @@
 #   - dist/**/*.js
 #
 src_files:
-  - jquery 
-  - hamlcoffee
 
 # stylesheets
 #

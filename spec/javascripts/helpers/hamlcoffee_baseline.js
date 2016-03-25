@@ -1,0 +1,1 @@
+../../haml_coffee_assets/support/hamlcoffee_baseline.js
