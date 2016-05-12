@@ -18,7 +18,7 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
       end
 
       it 'does not filter the template name' do
-        HamlCoffeeAssets::Compiler.should_receive(:compile).with('templates/foo/bar', '%h2', false)
+        expect(HamlCoffeeAssets::Compiler).to receive(:compile).with('templates/foo/bar', '%h2', false)
         template.render(scope)
       end
     end
@@ -34,7 +34,7 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
           end
 
           it 'does filter the template directory' do
-            HamlCoffeeAssets::Compiler.should_receive(:compile).with('foo/bar', '%h2', true)
+            expect(HamlCoffeeAssets::Compiler).to receive(:compile).with('foo/bar', '%h2', true)
             template.render(scope)
           end
         end
@@ -48,7 +48,7 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
           end
 
           it 'does not filter the template directory' do
-            HamlCoffeeAssets::Compiler.should_receive(:compile).with('other/templates/foo/bar', '%h2', true)
+            expect(HamlCoffeeAssets::Compiler).to receive(:compile).with('other/templates/foo/bar', '%h2', true)
             template.render(scope)
           end
         end
@@ -66,7 +66,7 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
           end
 
           it 'does filter the template directory' do
-            HamlCoffeeAssets::Compiler.should_receive(:compile).with('foo/bar', '%h2', true)
+            expect(HamlCoffeeAssets::Compiler).to receive(:compile).with('foo/bar', '%h2', true)
             template.render(scope)
           end
         end
@@ -80,7 +80,7 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
           end
 
           it 'does not filter the template directory' do
-            HamlCoffeeAssets::Compiler.should_receive(:compile).with('templates/foo/bar', '%h2', true)
+            expect(HamlCoffeeAssets::Compiler).to receive(:compile).with('templates/foo/bar', '%h2', true)
             template.render(scope)
           end
         end
@@ -97,7 +97,7 @@ describe HamlCoffeeAssets::Tilt::TemplateHandler do
         before { HamlCoffeeAssets.config.name_filter = nil }
 
         it 'does not filter the template name' do
-          HamlCoffeeAssets::Compiler.should_receive(:compile).with('templates/foo/bar', '%h2', true)
+          expect(HamlCoffeeAssets::Compiler).to receive(:compile).with('templates/foo/bar', '%h2', true)
           template.render(scope)
         end
       end

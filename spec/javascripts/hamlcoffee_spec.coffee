@@ -61,7 +61,7 @@ describe 'HAML', ->
 
   describe '.context', ->
     it 'merges the locals into the globals', ->
-      spyOn(HAML, 'globals').andCallFake -> { b: 2, d: 4 }
+      spyOn(HAML, 'globals').and.callFake -> { b: 2, d: 4 }
       context = HAML.context({ a: 1, c: 3 })
 
       expect(context.a).toEqual 1

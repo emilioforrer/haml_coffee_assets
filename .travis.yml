@@ -1,21 +1,23 @@
 language: ruby
 rvm:
-  - 1.9.3
   - 2.0.0
-  - 2.1.1
+  - 2.1.8
+  - 2.2.4
+  - 2.3.0
   - ruby-head
-  - jruby-19mode
+  - jruby-9.0.5.0
   - jruby-head
-  - rbx-19mode
+  - rbx-2
+gemfile:
+  - Gemfile
+  - gemfiles/Gemfile-4-0-stable
+  - gemfiles/Gemfile-4-1-stable
+  - gemfiles/Gemfile-4-2-stable
 matrix:
+  exclude:
+    - gemfile: Gemfile
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-head
-    - rvm: rbx-19mode
-branches:
-  only:
-    - master
-script: 'bundle exec rake spec && bundle exec guard-jasmine'
 notifications:
-  recipients:
-    - michi@netzpiraten.ch
+  email: false
