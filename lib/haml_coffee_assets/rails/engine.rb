@@ -80,7 +80,15 @@ module HamlCoffeeAssets
         next unless app.assets
 
         # Register Tilt template (for Sprockets)
-        app.assets.register_engine '.hamlc', ::HamlCoffeeAssets::Tilt::TemplateHandler
+        # Sprockets 4 deprecate register_engine
+        if app.assets.respond_to?(:register_transformer)
+          app.assets.register_mime_type 'text/hamlc', extensions: ['.hamlc']
+          app.assets.register_preprocessor 'text/hamlc', ::HamlCoffeeAssets::Tilt::TemplateHandler
+        end
+
+        if app.assets.respond_to?(:register_engine)
+          app.assets.register_engine '.hamlc', ::HamlCoffeeAssets::Tilt::TemplateHandler
+        end
       end
 
     end
