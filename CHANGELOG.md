@@ -6,6 +6,10 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 - Update to Haml-Coffee 1.13.6
 
+## 1.17.0 - October 26, 2016
+
+- [#159][]: Get rid of sprockets deprecation warnings
+
 ## 1.16.2 - February 25, 2016
 
 - Fixing compatibility with older versions of rails.
