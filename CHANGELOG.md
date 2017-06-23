@@ -4,10 +4,11 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
-- Update to Haml-Coffee 1.13.6
+## 1.18.0
+- [#164][]: Fix interop error with Rails 5.1 Template Errors
 
 ## 1.17.0 - October 26, 2016
-
+- Update to Haml-Coffee 1.13.6
 - [#159][]: Get rid of sprockets deprecation warnings
 
 ## 1.16.2 - February 25, 2016
