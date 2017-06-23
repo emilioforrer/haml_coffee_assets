@@ -64,5 +64,24 @@ describe HamlCoffeeAssets::ActionView::Patches do
         expect(template).to receive(:raise).with("An Error #2")
       end
     end
+
+    context "Rails >= 5.1.0" do
+      before do
+        stub_const("Rails::VERSION::STRING", "5.1.1")
+      end
+
+      it "should #refresh template" do
+        expect(template).to receive(:refresh).with(view)
+      end
+
+      it "should #encode! template" do
+        expect(template).to receive(:encode!)
+      end
+
+      it "should raise an error" do
+        expect(ActionView::Template::Error).to receive(:new).with(template).and_return("An Error #3")
+        expect(template).to receive(:raise).with("An Error #3")
+      end
+    end
   end
 end
