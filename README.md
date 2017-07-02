@@ -94,7 +94,7 @@ removed.
 
 When you give your templates the extension `.jst.hamlc`, Haml Coffee Assets will only generate the template function,
 which then in turn will be further processed by the
-[Sprocket JST processor](https://github.com/sstephenson/sprockets/blob/master/lib/sprockets/jst_processor.rb). Because
+[Sprocket JST processor](https://github.com/rails/sprockets/blob/master/lib/sprockets/jst_processor.rb). Because
 Haml Coffee Assets will not generate the template, you can't use the AMD support, template name filter and the JST
 namespace definition is more cumbersome compared to the Haml Coffee template generation.
 
