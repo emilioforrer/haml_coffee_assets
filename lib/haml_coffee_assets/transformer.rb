@@ -22,7 +22,7 @@ module HamlCoffeeAssets
     end
 
     def self.call(input)
-      filename = input[:name]
+      filename = input[:filename]
       source   = input[:data]
       context  = input[:environment].context_class.new(input)
 
