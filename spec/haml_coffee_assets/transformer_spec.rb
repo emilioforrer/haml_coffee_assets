@@ -15,6 +15,17 @@ describe HamlCoffeeAssets::Transformer do
         expect(HamlCoffeeAssets::Compiler).to receive(:compile).with('templates/foo/bar.jst.hamlc', '%h2', false)
         transformer.render(nil, {})
       end
+
+      context '#call' do
+        let(:filepath) { '/path/to/templates/foo/bar.jst.hamlc' }
+        let(:environment) { double(context_class: double(new: double(metadata: {}))) }
+        let(:input) { { data: '%h2', name: 'foo/bar', filename: filepath, environment: environment } }
+
+        it 'works with sprockets inputs' do
+          expect(HamlCoffeeAssets::Compiler).to receive(:compile).with(filepath, '%h2', false)
+          HamlCoffeeAssets::Transformer.call(input)
+        end
+      end
     end
 
     context 'for a HAMLC template' do
