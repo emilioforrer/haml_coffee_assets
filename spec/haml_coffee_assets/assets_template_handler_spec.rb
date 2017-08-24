@@ -36,4 +36,11 @@ describe HamlCoffeeAssets do
     expect(asset).not_to be_nil
     expect(asset.pathname.basename.to_s).to eq 'test.hamlc'
   end
+
+  it 'adds hamlc files into assets pipeline' do
+    jst = true
+    name = Dir.pwd + '/spec/haml_coffee_assets/support/testj.jst.hamlc'
+    expect(HamlCoffeeAssets::Compiler).to receive(:compile).with(name, "alert 'hi'\n", !jst).and_call_original
+    init_rails_app.assets.find_asset('testj')
+  end
 end
