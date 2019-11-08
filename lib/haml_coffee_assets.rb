@@ -17,7 +17,7 @@ if defined?(Rails) && Rails.version >= '3.0.0'
   require 'haml_coffee_assets/rails/engine'
   require 'haml_coffee_assets/action_view/patches'
 else
-  require 'sprockets/engines'
+  require 'sprockets'
   Sprockets.register_engine '.hamlc', ::HamlCoffeeAssets::Transformer
 end
 
