@@ -1,0 +1,20 @@
+source 'https://rubygems.org'
+
+gemspec path: '..'
+
+gem 'rails', github: 'rails/rails', branch: '6-0-stable'
+
+platform :ruby do
+  gem 'therubyracer'
+  gem 'redcarpet'
+end
+
+platform :jruby do
+  gem 'therubyrhino'
+  gem 'kramdown'
+end
+
+gem 'pry', '~> 0.12.2'
+%w[rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
+    gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+end

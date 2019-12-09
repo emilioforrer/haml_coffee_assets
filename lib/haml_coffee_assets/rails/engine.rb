@@ -48,33 +48,33 @@ module HamlCoffeeAssets
           # Do this ONLY in development.
           #
           # TODO: Don't monkey patch rails.
-          module ::ActionView
-            class Template
-              def stale?
-                return false unless ::Rails.env == "development"
-                return false unless handler.respond_to?(:stale?)
-                handler.stale?(updated_at)
-              end
+          # module ::ActionView
+          #   class Template
+          #     def stale?
+          #       return false unless ::Rails.env == "development"
+          #       return false unless handler.respond_to?(:stale?)
+          #       handler.stale?(updated_at)
+          #     end
 
-              alias_method :old_render, :render
+          #     alias_method :old_render, :render
 
-              # by default, rails will only compile a template once
-              # path render so it recompiles the template if 'stale'
-              def render(view, locals, buffer=nil, &block)
-                if @compiled and stale?
-                  now = Time.now
-                  File.utime(now, now, identifier) # touch file
-                  ::Rails.logger.info "Busted cache for #{identifier} by touching it"
+          #     # by default, rails will only compile a template once
+          #     # path render so it recompiles the template if 'stale'
+          #     def render(view, locals, buffer=nil, &block)
+          #       if @compiled and stale?
+          #         now = Time.now
+          #         File.utime(now, now, identifier) # touch file
+          #         ::Rails.logger.info "Busted cache for #{identifier} by touching it"
 
-                  view = refresh(view)
-                  @source = view.source
-                  @compiled = false
-                end
-                old_render(view, locals, buffer, &block)
-              end
+          #         view = refresh(view)
+          #         @source = view.source
+          #         @compiled = false
+          #       end
+          #       old_render(view, locals, buffer, &block)
+          #     end
 
-            end
-          end
+          #   end
+          # end
         end
 
         config.assets.configure do |env|
