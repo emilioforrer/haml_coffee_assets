@@ -34,6 +34,6 @@ describe HamlCoffeeAssets do
   it 'adds hamlc files into assets pipeline' do
     asset = init_rails_app.assets.find_asset('test')
     expect(asset).not_to be_nil
-    expect(asset.pathname.basename.to_s).to eq 'test.hamlc'
+    expect(asset.filename.to_s.split('/').last).to eq 'test.hamlc'
   end
 end
