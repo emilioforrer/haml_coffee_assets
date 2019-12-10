@@ -8,12 +8,13 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
       body,
       "template",
       described_class,
-      virtual_path: "path/to/_template"
+      virtual_path: "path/to/_template",
+      locals: locals
     )
   end
 
-  let(:context) { Object.new }
-  let(:locals) { Hash.new }
+  let(:context) { ActionView::Base.new }
+  let(:locals) { Array.new }
 
   let(:global_context) do
     path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'hamlcoffee_baseline.js'))

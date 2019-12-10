@@ -3,7 +3,7 @@ module HamlCoffeeAssets
     class TemplateHandler
       DEPENDENCY_PATTERN = /(?:window\.)?JST(?:\[["']([\w\/]+)["']\]|\.(\w+))/
 
-      def self.call(template)
+      def self.call(template, _body = nil)
         new(template).render
       end
 

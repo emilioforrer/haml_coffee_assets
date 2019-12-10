@@ -3,6 +3,8 @@ rvm:
   - 2.2.7
   - 2.3.4
   - 2.4.1
+  - 2.5.7
+  - 2.6.5
   - ruby-head
   - jruby-9.0.5.0
   - jruby-9.1.9.0
@@ -13,6 +15,7 @@ gemfile:
   - gemfiles/Gemfile-4-2-stable
   - gemfiles/Gemfile-5-0-stable
   - gemfiles/Gemfile-5-1-stable
+  - gemfiles/Gemfile-6-0-stable
 matrix:
   exclude:
     - rvm: 2.4.1
