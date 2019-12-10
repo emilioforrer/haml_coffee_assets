@@ -18,4 +18,3 @@ platform :jruby do
   gem 'therubyrhino'
   gem 'kramdown'
 end
-
