@@ -1,0 +1,20 @@
+source 'https://rubygems.org'
+
+# Rails 6 needs rspec > 4.0.0
+%w[rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
+    gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+end
+
+gemspec path: '..'
+
+gem 'rails', github: 'rails/rails', branch: '6-0-stable'
+
+platform :ruby do
+  gem 'therubyracer'
+  gem 'redcarpet'
+end
+
+platform :jruby do
+  gem 'therubyrhino'
+  gem 'kramdown'
+end
