@@ -60,7 +60,7 @@ module HamlCoffeeAssets
 
               # by default, rails will only compile a template once
               # path render so it recompiles the template if 'stale'
-              def render(view, locals, buffer=nil, &block)
+              def render(view, locals, buffer = ::ActionView::OutputBuffer.new, &block)
                 if @compiled and stale?
                   now = Time.now
                   File.utime(now, now, identifier) # touch file
