@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec path: '..'
 
-gem 'rails', github: 'rails/rails', branch: '5-0-stable'
+gem 'rails', '~> 5.0.7'
 
 platform :ruby do
   gem 'therubyracer'

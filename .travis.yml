@@ -11,30 +11,11 @@ rvm:
   - jruby-9.2.14.0
   - jruby-head
 gemfile:
-  - gemfiles/Gemfile-4-0-stable
-  - gemfiles/Gemfile-4-1-stable
   - gemfiles/Gemfile-4-2-stable
   - gemfiles/Gemfile-5-0-stable
   - gemfiles/Gemfile-5-1-stable
   - gemfiles/Gemfile-5-2-stable
 matrix:
-  exclude:
-    - rvm: 2.4.9
-      gemfile: gemfiles/Gemfile-4-0-stable
-    - rvm: 2.4.9
-      gemfile: gemfiles/Gemfile-4-1-stable
-    - rvm: 2.5.8
-      gemfile: gemfiles/Gemfile-4-0-stable
-    - rvm: 2.5.8
-      gemfile: gemfiles/Gemfile-4-1-stable
-    - rvm: 2.6.6
-      gemfile: gemfiles/Gemfile-4-0-stable
-    - rvm: 2.6.6
-      gemfile: gemfiles/Gemfile-4-1-stable
-    - rvm: ruby-head
-      gemfile: gemfiles/Gemfile-4-0-stable
-    - rvm: ruby-head
-      gemfile: gemfiles/Gemfile-4-1-stable
   allow_failures:
     - rvm: 2.6.6
     - rvm: 2.7.2
