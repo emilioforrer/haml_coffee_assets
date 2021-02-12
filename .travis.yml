@@ -24,8 +24,6 @@ matrix:
     - rvm: jruby-9.2.14.0
       gemfile: gemfiles/Gemfile-4-2-stable
   allow_failures:
-    - rvm: 2.5.8
-    - rvm: 2.6.6
     - rvm: 2.7.2
     - rvm: 3.0.0
     - rvm: ruby-head
