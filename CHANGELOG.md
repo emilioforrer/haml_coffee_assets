@@ -4,6 +4,9 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+## 1.19.0
+- [#169][]: Fix transformation for JST templates
+ 
 ## 1.18.0
 - [#164][]: Fix interop error with Rails 5.1 Template Errors
 
