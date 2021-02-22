@@ -1,5 +1,4 @@
 require 'rails'
-require 'rspec'
 require 'haml_coffee_assets'
 
 RSpec.configure do |config|

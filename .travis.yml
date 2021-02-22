@@ -15,6 +15,7 @@ gemfile:
   - gemfiles/Gemfile-5-0-stable
   - gemfiles/Gemfile-5-1-stable
   - gemfiles/Gemfile-5-2-stable
+  - gemfiles/Gemfile-6-0-stable
 matrix:
   exclude:
     - rvm: 2.2.9
