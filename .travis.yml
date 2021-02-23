@@ -11,6 +11,9 @@ gemfile:
   - gemfiles/Gemfile-5-2-stable
   - gemfiles/Gemfile-6-0-stable
 matrix:
+  exclude:
+    - rvm: jruby-9.1.17.0
+      gemfile: gemfiles/Gemfile-6-0-stable
   allow_failures:
     - rvm: 2.7.2
     - rvm: 3.0.0
