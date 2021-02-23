@@ -3,16 +3,19 @@ module HamlCoffeeAssets
     class TemplateHandler
       DEPENDENCY_PATTERN = /(?:window\.)?JST(?:\[["']([\w\/]+)["']\]|\.(\w+))/
 
-      def self.call(template)
-        new(template).render
+      def self.call(template, source = nil)
+        source ||= template.source
+
+        new(template, source).render
       end
 
       def self.stale?(last_compile_time)
         GlobalContext.mtime > last_compile_time
       end
 
-      def initialize(template, partial = false, dependencies = [])
+      def initialize(template, source = nil, partial = false, dependencies = [])
         @template     = template
+        @source       = source
         @partial      = partial
         @dependencies = dependencies
       end
@@ -58,7 +61,7 @@ module HamlCoffeeAssets
       def compiled_template
         compiled = ::HamlCoffeeAssets::Compiler.compile(
           logical_path,
-          @template.source
+          @source
         )
 
         include_dependencies(compiled)
