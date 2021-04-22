@@ -18,6 +18,15 @@ gemfile:
   - gemfiles/Gemfile-6-1-sprockets-4
 matrix:
   exclude:
+    - rvm: 3.0.1
+      gemfile: gemfiles/Gemfile-5-1-sprockets-4
+    - rvm: 3.0.1
+      gemfile: gemfiles/Gemfile-5-1-sprockets-3
+    - rvm: 3.0.1
+      gemfile: gemfiles/Gemfile-5-2-sprockets-4
+    - rvm: 3.0.1
+      gemfile: gemfiles/Gemfile-5-2-sprockets-3
+
     - rvm: ruby-head
       gemfile: gemfiles/Gemfile-5-1-sprockets-4
     - rvm: ruby-head
