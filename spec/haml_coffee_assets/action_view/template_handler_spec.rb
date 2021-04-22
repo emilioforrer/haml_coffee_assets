@@ -8,12 +8,21 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
       body,
       "template",
       described_class,
-      virtual_path: "path/to/_template"
+      virtual_path: "path/to/_template",
+      locals: []
     )
   end
 
-  let(:context) { Object.new }
-  let(:locals) { Hash.new }
+  let(:context) do
+    if ActionView.gem_version >= Gem::Version.new('6')
+      lookup_context = ActionView::LookupContext.new([])
+      assigns = {}
+      controller = nil
+      ActionView::Base.with_empty_template_cache.new(lookup_context, assigns, controller)
+    else
+      Object.new
+    end
+  end
 
   let(:global_context) do
     path = File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'hamlcoffee_baseline.js'))
@@ -25,17 +34,17 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
   end
 
   it "renders basic templates" do
-    output = new_template("Foo").render(context, locals)
+    output = new_template("Foo").render(context, {})
     expect(output).to eq "Foo"
   end
 
   it "renders Haml" do
-    output = new_template("%h1 Foo").render(context, locals)
+    output = new_template("%h1 Foo").render(context, {})
     expect(output).to eq "<h1>Foo</h1>"
   end
 
   it "renders CoffeeScript" do
-    output = new_template("= @foo").render(context, foo: "Foo")
+    output = new_template("= @foo").render(context, { foo: "Foo" })
     expect(output).to eq "Foo"
   end
 
@@ -55,25 +64,25 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
 
     it "renders partials with bracket notation" do
       template = new_template("!= window.JST['basic/partial'](foo: 'Foo')")
-      output = template.render(context, foo: "Foo")
+      output = template.render(context, { foo: "Foo" })
       expect(output).to eq "Foo"
     end
 
     it "renders partials with dot notation" do
       template = new_template("!= window.JST.basic_partial_01(foo: 'Foo')")
-      output = template.render(context, foo: "Foo")
+      output = template.render(context, { foo: "Foo" })
       expect(output).to eq "Foo"
     end
 
     it "doesn't require JST to be called on window" do
       template = new_template("!= JST['basic/partial'](foo: 'Foo')")
-      output = template.render(context, foo: "Foo")
+      output = template.render(context, { foo: "Foo" })
       expect(output).to eq "Foo"
     end
 
     it "renders nested templates" do
       template = new_template("!= JST['nested/partial'](foo: 'Foo')")
-      output = template.render(context, foo: "Foo")
+      output = template.render(context, { foo: "Foo" })
       expect(output).to eq "Foo"
     end
 
@@ -85,7 +94,7 @@ describe HamlCoffeeAssets::ActionView::TemplateHandler do
       compiled = described_class.new(template).send(:compilation_string)
       expect(compiled.scan(/JST\['basic\/partial'\] =/).size).to eq 1
 
-      output = template.render(context, foo: "Foo")
+      output = template.render(context, { foo: "Foo" })
       expect(output).to eq "Foo\nFoo"
     end
   end

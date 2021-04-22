@@ -3,7 +3,7 @@ module HamlCoffeeAssets
     class TemplateHandler
       DEPENDENCY_PATTERN = /(?:window\.)?JST(?:\[["']([\w\/]+)["']\]|\.(\w+))/
 
-      def self.call(template)
+      def self.call(template, _body = nil)
         new(template).render
       end
 
@@ -80,7 +80,8 @@ module HamlCoffeeAssets
             partial_source(path),
             path,
             self.class,
-            virtual_path: partial_path(path)
+            virtual_path: partial_path(path),
+            locals: []
           )
 
           compiled << self.class.new(
