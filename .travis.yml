@@ -17,6 +17,33 @@ gemfile:
   - gemfiles/Gemfile-6-1-sprockets-3
   - gemfiles/Gemfile-6-1-sprockets-4
 matrix:
+  exclude:
+    - rvm: ruby-head
+      gemfile: gemfiles/Gemfile-5-1-sprockets-4
+    - rvm: ruby-head
+      gemfile: gemfiles/Gemfile-5-1-sprockets-3
+    - rvm: ruby-head
+      gemfile: gemfiles/Gemfile-5-2-sprockets-4
+    - rvm: ruby-head
+      gemfile: gemfiles/Gemfile-5-2-sprockets-3
+    - rvm: ruby-head
+      gemfile: gemfiles/Gemfile-6-0-sprockets-4
+    - rvm: ruby-head
+      gemfile: gemfiles/Gemfile-6-0-sprockets-3
+
+    - rvm: jruby-head
+      gemfile: gemfiles/Gemfile-5-1-sprockets-4
+    - rvm: jruby-head
+      gemfile: gemfiles/Gemfile-5-1-sprockets-3
+    - rvm: jruby-head
+      gemfile: gemfiles/Gemfile-5-2-sprockets-4
+    - rvm: jruby-head
+      gemfile: gemfiles/Gemfile-5-2-sprockets-3
+    - rvm: jruby-head
+      gemfile: gemfiles/Gemfile-6-0-sprockets-4
+    - rvm: jruby-head
+      gemfile: gemfiles/Gemfile-6-0-sprockets-3
+
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-head
