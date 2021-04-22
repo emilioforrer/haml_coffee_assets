@@ -8,8 +8,10 @@ rvm:
   - jruby-9.2.17.0
   - jruby-head
 gemfile:
-  - gemfiles/Gemfile-5-1-stable
-  - gemfiles/Gemfile-5-2-stable
+  - gemfiles/Gemfile-5-1-sprockets-3
+  - gemfiles/Gemfile-5-1-sprockets-4
+  - gemfiles/Gemfile-5-2-sprockets-3
+  - gemfiles/Gemfile-5-2-sprockets-4
 matrix:
   allow_failures:
     - rvm: ruby-head
