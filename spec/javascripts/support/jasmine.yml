@@ -49,8 +49,8 @@ helpers:
 #   - **/*[sS]pec.js
 #
 spec_files:
-  - '**/*[sS]pec.js'
-  - '**/*[sS]pec.coffee'
+  # use js instead of coffee here to support sprockets 4
+  - 'hamlcoffee_spec.js'
 
 # src_dir
 #
