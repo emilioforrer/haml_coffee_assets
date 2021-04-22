@@ -15,6 +15,8 @@ describe HamlCoffeeAssets do
 
       config.logger = Logger.new('/dev/null')
 
+      config.root = File.expand_path("../../fixtures", __FILE__)
+
       config.assets.tap do |assets|
         assets.enabled = true
         assets.version = '1.0'
@@ -34,6 +36,6 @@ describe HamlCoffeeAssets do
   it 'adds hamlc files into assets pipeline' do
     asset = init_rails_app.assets.find_asset('test')
     expect(asset).not_to be_nil
-    expect(asset.pathname.basename.to_s).to eq 'test.hamlc'
+    expect(Pathname.new(asset.filename).basename.to_s).to eq 'test.hamlc'
   end
 end
