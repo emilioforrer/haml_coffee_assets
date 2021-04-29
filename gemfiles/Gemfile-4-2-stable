@@ -1,0 +1,15 @@
+source 'https://rubygems.org'
+
+gemspec path: '..'
+
+gem 'rails', git: 'https://github.com/mathieujobin/rails', branch: 'rails4-2-bundler-2'
+
+platform :ruby do
+  gem 'therubyracer'
+  gem 'redcarpet'
+end
+
+platform :jruby do
+  gem 'therubyrhino'
+  gem 'kramdown'
+end
