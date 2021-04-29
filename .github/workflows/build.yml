@@ -24,24 +24,31 @@ jobs:
           - truffleruby
           - jruby-9.2.15.0
         gemfile:
-          - Gemfile-4.2
-          - Gemfile-5.0
-          - Gemfile-5.1
-          - Gemfile-5.2
-          - Gemfile-6.0
-          - Gemfile-6.1
+          - Gemfile-4-2-stable
+          - Gemfile-5-0-stable
+          - Gemfile-5-1-sprockets-3
+          - Gemfile-5-2-sprockets-3
+          - Gemfile-5-2-sprockets-4
+          - Gemfile-6-0-sprockets-3
+          - Gemfile-6-0-sprockets-4
+          - Gemfile-6-1-sprockets-3
+          - Gemfile-6-1-sprockets-4
         exclude:
-        - gemfile: Gemfile-4.2
+        - gemfile: Gemfile-4-2-stable
           ruby: 3.0
-        - gemfile: Gemfile-5.0
+        - gemfile: Gemfile-5-0-stable
           ruby: 3.0
-        - gemfile: Gemfile-5.1
+        - gemfile: Gemfile-5-1-sprockets-3
           ruby: 3.0
-        - gemfile: Gemfile-5.2
+        - gemfile: Gemfile-5-2-sprockets-3
+          ruby: 3.0
+        - gemfile: Gemfile-5-1-sprockets-4
+          ruby: 3.0
+        - gemfile: Gemfile-5-2-sprockets-4
           ruby: 3.0
 
     env:
-      BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}-stable
+      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}
     steps:
     - uses: actions/checkout@v2
     - uses: ruby/setup-ruby@v1
