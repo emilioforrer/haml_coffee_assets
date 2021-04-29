@@ -4,10 +4,16 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
-## 1.19.0
+## 1.20.0 - Apr 29th, 2021
+- [#181][]: Fix supported version to Rails >= 4.2 && < 6.2, Ruby >= 2.5, 
+- [#179][]: Run test on Github Actions
+- [#180][]: Add support for Rails 6.0 and 6.1 and Sprockets 4
+- [#172][]: Fix tests with Rails 5.2 and latest rubies
+
+## 1.19.0 - Feb 23rd, 2021
 - [#169][]: Fix transformation for JST templates
  
-## 1.18.0
+## 1.18.0 - June 23rd, 2017
 - [#164][]: Fix interop error with Rails 5.1 Template Errors
 
 ## 1.17.0 - October 26, 2016

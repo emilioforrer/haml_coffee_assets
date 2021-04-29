@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description = 'Compile Haml CoffeeScript templates in the Rails asset pipeline.'
   s.license     = 'MIT'
 
-  s.required_ruby_version = '>= 2.5.3'
+  s.required_ruby_version = '>= 2.5'
   s.required_rubygems_version = '>= 2.5.2'
 
   s.files = Dir.glob('{app,lib,vendor}/**/*') + %w[LICENSE README.md]
