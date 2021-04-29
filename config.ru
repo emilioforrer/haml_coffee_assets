@@ -14,6 +14,7 @@ class HamlCoffeeAssetsJasmineTest < Rails::Application
   config.assets.enabled = true
   config.assets.version = '1.0'
   config.secret_token = '9696be98e32a5f213730cb7ed6161c79'
+  config.root = File.expand_path("../spec/fixtures", __FILE__)
 end
 
 HamlCoffeeAssetsJasmineTest.initialize!

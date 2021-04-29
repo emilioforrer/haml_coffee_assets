@@ -27,6 +27,7 @@ namespace(:spec) do
       config.eager_load = false
       config.logger = Logger.new('/dev/null')
       config.assets.enabled = true
+      config.root = File.expand_path("../spec/fixtures", __FILE__)
     end.initialize!
 
     Rake::Task['jasmine:ci'].invoke

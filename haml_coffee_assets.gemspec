@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.2.4'
   s.required_rubygems_version = '>= 1.3.6'
-  s.rubyforge_project         = 'haml_coffee_assets'
 
   s.files = Dir.glob('{app,lib,vendor}/**/*') + %w[LICENSE README.md]
 
@@ -33,4 +32,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'yard'
   s.add_development_dependency 'pry'
   s.add_development_dependency 'rb-readline'
+  s.add_development_dependency 'puma'
 end
