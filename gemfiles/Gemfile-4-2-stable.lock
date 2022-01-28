@@ -1,0 +1,235 @@
+GIT
+  remote: https://github.com/mathieujobin/rails
+  revision: 43096a9305fb965e103a87d937d802a3821ba97a
+  branch: rails4-2-bundler-2
+  specs:
+    actionmailer (4.2.11.3)
+      actionpack (= 4.2.11.3)
+      actionview (= 4.2.11.3)
+      activejob (= 4.2.11.3)
+      mail (~> 2.5, >= 2.5.4)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+    actionpack (4.2.11.3)
+      actionview (= 4.2.11.3)
+      activesupport (= 4.2.11.3)
+      rack (~> 1.6)
+      rack-test (~> 0.6.2)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionview (4.2.11.3)
+      activesupport (= 4.2.11.3)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    activejob (4.2.11.3)
+      activesupport (= 4.2.11.3)
+      globalid (>= 0.3.0)
+    activemodel (4.2.11.3)
+      activesupport (= 4.2.11.3)
+      builder (~> 3.1)
+    activerecord (4.2.11.3)
+      activemodel (= 4.2.11.3)
+      activesupport (= 4.2.11.3)
+      arel (~> 6.0)
+    activesupport (4.2.11.3)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    rails (4.2.11.3)
+      actionmailer (= 4.2.11.3)
+      actionpack (= 4.2.11.3)
+      actionview (= 4.2.11.3)
+      activejob (= 4.2.11.3)
+      activemodel (= 4.2.11.3)
+      activerecord (= 4.2.11.3)
+      activesupport (= 4.2.11.3)
+      bundler (>= 1.15, < 2.3)
+      railties (= 4.2.11.3)
+      sprockets-rails
+    railties (4.2.11.3)
+      actionpack (= 4.2.11.3)
+      activesupport (= 4.2.11.3)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+
+PATH
+  remote: ..
+  specs:
+    haml_coffee_assets (1.20.0)
+      coffee-script (>= 2)
+      railties (>= 4.2, < 7.1)
+      sprockets (>= 3.7)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    arel (6.0.4)
+    builder (3.2.4)
+    childprocess (1.0.0)
+    coderay (1.1.3)
+    coffee-rails (4.2.2)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
+    concurrent-ruby (1.1.9)
+    crass (1.0.6)
+    diff-lcs (1.5.0)
+    erubis (2.7.0)
+    execjs (2.8.1)
+    ffi (1.15.5)
+    formatador (1.1.0)
+    globalid (0.4.2)
+      activesupport (>= 4.2.0)
+    guard (2.18.0)
+      formatador (>= 0.2.4)
+      listen (>= 2.7, < 4.0)
+      lumberjack (>= 1.0.12, < 2.0)
+      nenv (~> 0.1)
+      notiffany (~> 0.0)
+      pry (>= 0.13.0)
+      shellany (~> 0.0)
+      thor (>= 0.18.1)
+    guard-compat (1.2.1)
+    guard-jasmine (3.1.0)
+      childprocess (~> 1.0)
+      guard (~> 2.14)
+      guard-compat (~> 1.2)
+      jasmine (~> 3.1)
+      multi_json (~> 1.12)
+      thor (~> 0.19)
+      tilt
+    guard-rspec (4.7.3)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
+    jasmine (3.8.0)
+      jasmine-core (~> 3.8.0)
+      phantomjs
+      rack (>= 1.2.1)
+      rake
+      webrick
+    jasmine-core (3.8.0)
+    jasmine-rails (0.15.0)
+      jasmine-core (>= 1.3, < 4.0)
+      phantomjs (>= 1.9)
+      railties (>= 3.2.0)
+      sprockets-rails
+    jquery-rails (4.4.0)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
+    libv8 (3.16.14.19)
+    listen (3.7.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
+    loofah (2.13.0)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.5.9)
+    lumberjack (1.2.8)
+    mail (2.7.1)
+      mini_mime (>= 0.1.1)
+    method_source (1.0.0)
+    mini_mime (1.1.2)
+    mini_portile2 (2.7.1)
+    minitest (5.15.0)
+    multi_json (1.15.0)
+    nenv (0.3.0)
+    nio4r (2.5.8)
+    nokogiri (1.13.1)
+      mini_portile2 (~> 2.7.0)
+      racc (~> 1.4)
+    notiffany (0.1.3)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
+    phantomjs (2.1.1.0)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    puma (5.6.1)
+      nio4r (~> 2.0)
+    racc (1.6.0)
+    rack (1.6.13)
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rails-deprecated_sanitizer (1.0.4)
+      activesupport (>= 4.2.0.alpha)
+    rails-dom-testing (1.0.9)
+      activesupport (>= 4.2.0, < 5.0)
+      nokogiri (~> 1.6)
+      rails-deprecated_sanitizer (>= 1.0.1)
+    rails-html-sanitizer (1.4.2)
+      loofah (~> 2.3)
+    rake (13.0.6)
+    rb-fsevent (0.11.0)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
+    rb-readline (0.5.5)
+    redcarpet (3.5.1)
+    ref (2.0.0)
+    rspec (3.10.0)
+      rspec-core (~> 3.10.0)
+      rspec-expectations (~> 3.10.0)
+      rspec-mocks (~> 3.10.0)
+    rspec-core (3.10.2)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.10.0)
+    rspec-support (3.10.3)
+    shellany (0.0.1)
+    sprockets (4.0.2)
+      concurrent-ruby (~> 1.0)
+      rack (> 1, < 3)
+    sprockets-rails (3.2.2)
+      actionpack (>= 4.0)
+      activesupport (>= 4.0)
+      sprockets (>= 3.0.0)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
+      ref
+    thor (0.20.3)
+    thread_safe (0.3.6)
+    tilt (2.0.10)
+    tzinfo (1.2.9)
+      thread_safe (~> 0.1)
+    webrick (1.7.0)
+    yard (0.9.27)
+      webrick (~> 1.7.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler
+  coffee-rails
+  guard
+  guard-jasmine
+  guard-rspec
+  haml_coffee_assets!
+  jasmine
+  jasmine-rails
+  jquery-rails
+  kramdown
+  pry
+  puma
+  rails!
+  rake
+  rb-readline
+  redcarpet
+  rspec
+  therubyracer
+  therubyrhino
+  yard
+
+BUNDLED WITH
+   1.17.3
