@@ -4,6 +4,7 @@ gemspec path: '..'
 
 gem 'rails', '~> 7.0.1'
 gem 'sprockets', '~> 3.7.2'
+gem 'sprockets-rails'
 
 platform :ruby do
   gem 'therubyracer'
