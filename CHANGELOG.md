@@ -4,6 +4,9 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+## 1.21.0 - Jul 9th, 2022
+- [#184][]: Support for rails 7.0, and fix tests on CI.
+
 ## 1.20.0 - Apr 29th, 2021
 - [#181][]: Fix supported version to Rails >= 4.2 && < 6.2, Ruby >= 2.5, 
 - [#179][]: Run test on Github Actions
