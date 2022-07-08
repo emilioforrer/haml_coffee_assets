@@ -20,7 +20,8 @@ jobs:
           - 2.7
           - 2.6
           - 2.5
-          - jruby-9.2.17.0
+          - jruby-9.2
+          - jruby-9.3
         gemfile:
           - Gemfile-4-2-stable
           - Gemfile-5-0-stable
@@ -34,6 +35,10 @@ jobs:
           - Gemfile-7-0-sprockets-3
           - Gemfile-7-0-sprockets-4
         exclude:
+        - gemfile: Gemfile-4-2-stable
+          ruby: jruby-9.2
+        - gemfile: Gemfile-4-2-stable
+          ruby: jruby-9.3
         - gemfile: Gemfile-4-2-stable
           ruby: 2.7
         - gemfile: Gemfile-4-2-stable
@@ -53,13 +58,17 @@ jobs:
         - gemfile: Gemfile-7-0-sprockets-3
           ruby: 2.6
         - gemfile: Gemfile-7-0-sprockets-3
-          ruby: jruby-9.2.17.0
+          ruby: jruby-9.2
+        - gemfile: Gemfile-7-0-sprockets-3
+          ruby: jruby-9.3
         - gemfile: Gemfile-7-0-sprockets-4
           ruby: 2.5
         - gemfile: Gemfile-7-0-sprockets-4
           ruby: 2.6
         - gemfile: Gemfile-7-0-sprockets-4
-          ruby: jruby-9.2.17.0
+          ruby: jruby-9.2
+        - gemfile: Gemfile-7-0-sprockets-4
+          ruby: jruby-9.3
 
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}
