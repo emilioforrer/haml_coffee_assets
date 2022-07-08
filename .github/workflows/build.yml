@@ -16,11 +16,12 @@ jobs:
       fail-fast: false
       matrix:
         ruby:
-          - 3.0
+          - '3.0'
           - 2.7
           - 2.6
           - 2.5
-          - jruby-9.2.17.0
+          - jruby-9.2
+          - jruby-9.3
         gemfile:
           - Gemfile-4-2-stable
           - Gemfile-5-0-stable
@@ -31,21 +32,43 @@ jobs:
           - Gemfile-6-0-sprockets-4
           - Gemfile-6-1-sprockets-3
           - Gemfile-6-1-sprockets-4
+          - Gemfile-7-0-sprockets-3
+          - Gemfile-7-0-sprockets-4
         exclude:
+        - gemfile: Gemfile-4-2-stable
+          ruby: jruby-9.2
+        - gemfile: Gemfile-4-2-stable
+          ruby: jruby-9.3
         - gemfile: Gemfile-4-2-stable
           ruby: 2.7
         - gemfile: Gemfile-4-2-stable
-          ruby: 3.0
+          ruby: '3.0'
         - gemfile: Gemfile-5-0-stable
-          ruby: 3.0
+          ruby: '3.0'
         - gemfile: Gemfile-5-1-sprockets-3
-          ruby: 3.0
+          ruby: '3.0'
         - gemfile: Gemfile-5-2-sprockets-3
-          ruby: 3.0
+          ruby: '3.0'
         - gemfile: Gemfile-5-1-sprockets-4
-          ruby: 3.0
+          ruby: '3.0'
         - gemfile: Gemfile-5-2-sprockets-4
-          ruby: 3.0
+          ruby: '3.0'
+        - gemfile: Gemfile-7-0-sprockets-3
+          ruby: 2.5
+        - gemfile: Gemfile-7-0-sprockets-3
+          ruby: 2.6
+        - gemfile: Gemfile-7-0-sprockets-3
+          ruby: jruby-9.2
+        - gemfile: Gemfile-7-0-sprockets-3
+          ruby: jruby-9.3
+        - gemfile: Gemfile-7-0-sprockets-4
+          ruby: 2.5
+        - gemfile: Gemfile-7-0-sprockets-4
+          ruby: 2.6
+        - gemfile: Gemfile-7-0-sprockets-4
+          ruby: jruby-9.2
+        - gemfile: Gemfile-7-0-sprockets-4
+          ruby: jruby-9.3
 
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}

@@ -7,6 +7,9 @@ require 'rspec/core/rake_task'
 
 # javascript tests
 require 'rails/all'
+if defined?(Rails) && Rails.version >= '7.0.0'
+  require 'sprockets/railtie'
+end
 load 'jasmine/tasks/jasmine.rake'
 
 task default: [ 'spec:rspec', 'spec:javascript' ]
