@@ -22,8 +22,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rspec'
-  s.add_development_dependency 'jquery-rails'
-  s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'jasmine'
   s.add_development_dependency 'jasmine-rails'
   s.add_development_dependency 'guard'
