@@ -20,12 +20,9 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'railties', '>= 5.2', "< 7.1"
   s.add_runtime_dependency 'sprockets', '>= 3.7'
 
-  s.add_development_dependency 'bundler'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'jasmine'
   s.add_development_dependency 'jasmine-rails'
   s.add_development_dependency 'guard'
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'yard'
   s.add_development_dependency 'simplecov'
 end
