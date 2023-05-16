@@ -34,4 +34,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry'
   s.add_development_dependency 'rb-readline'
   s.add_development_dependency 'puma'
+  s.add_development_dependency 'simplecov'
 end

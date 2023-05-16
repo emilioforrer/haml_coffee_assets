@@ -6,11 +6,6 @@ gem "rails", "~> #{ENV['RAILS_VER'] || raise("missing rails version")}"
 gem "sprockets", "~> #{ENV['SPROCKETS_VER'] || raise("missing sprockets version")}"
 
 platform :ruby do
-  #gem 'therubyracer'
   gem 'redcarpet'
 end
 
-platform :jruby do
-  #gem 'therubyrhino'
-  gem 'kramdown'
-end
