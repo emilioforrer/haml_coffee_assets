@@ -4,6 +4,10 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+## 1.22.0 - May 16th, 2023
+- [#186][]: Redo Github Actions, Support for ruby 3.1, 3.2, jruby 9.4, remove support for Rails <5.2
+            Remove a few useless dependencies, add simplecov
+
 ## 1.21.0 - Jul 9th, 2022
 - [#184][]: Support for rails 7.0, and fix tests on CI.
 
