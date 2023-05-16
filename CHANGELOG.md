@@ -4,6 +4,9 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+## 1.23.0 - May 17th, 2023
+- [#187][]: JST support on Sprockets 4
+
 ## 1.22.0 - May 16th, 2023
 - [#186][]: Redo Github Actions, Support for ruby 3.1, 3.2, jruby 9.4, remove support for Rails <5.2
             Remove a few useless dependencies, add simplecov
