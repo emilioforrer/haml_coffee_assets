@@ -10,6 +10,10 @@ doc/*
 .rvmrc
 Gemfile.lock
 gemfiles/*.lock
+coverage
+public/javascripts/jasmine_examples/*.js
+spec/javascripts/helpers/jasmine_examples/*.js
+spec/javascripts/jasmine_examples/*.js
 tmp/
 
 ## MAC OS
