@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'jasmine'
-  s.add_development_dependency 'jasmine-rails'
   s.add_development_dependency 'guard'
   s.add_development_dependency 'simplecov'
 end
