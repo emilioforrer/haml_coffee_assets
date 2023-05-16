@@ -11,13 +11,13 @@ Gem::Specification.new do |s|
   s.description = 'Compile Haml CoffeeScript templates in the Rails asset pipeline.'
   s.license     = 'MIT'
 
-  s.required_ruby_version = '>= 2.5'
+  s.required_ruby_version = '>= 2.5.8'
   s.required_rubygems_version = '>= 2.5.2'
 
   s.files = Dir.glob('{app,lib,vendor}/**/*') + %w[LICENSE README.md]
 
   s.add_runtime_dependency 'coffee-script', '>= 2'
-  s.add_runtime_dependency 'railties', '>= 4.2', "< 7.1"
+  s.add_runtime_dependency 'railties', '>= 5.2', "< 7.1"
   s.add_runtime_dependency 'sprockets', '>= 3.7'
 
   s.add_development_dependency 'bundler'
