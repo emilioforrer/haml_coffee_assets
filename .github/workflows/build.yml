@@ -50,5 +50,6 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
+        cache-version: rails-${{ matrix.rails }}-sprockets-${{ matrix.sprockets }}
         bundler-cache: true
     - run: bundle exec rake
