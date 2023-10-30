@@ -15,11 +15,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        rails: [7.0.4, 6.1.4]
+        rails: [7.0.8, 6.1.7]
         ruby: [3.2, 3.1, 3.0.6, jruby-9.4]
         sprockets: [3, 4]
         include:
-          - rails: 7.1.a
+          - rails: 7.1.1
             ruby: 3.2
             sprockets: 4
           - rails: 6.0.4
