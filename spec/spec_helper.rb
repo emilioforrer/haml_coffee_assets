@@ -3,6 +3,7 @@ require 'rspec'
 require 'simplecov'
 SimpleCov.minimum_coverage 86 if RUBY_VERSION > '3.0' && RUBY_ENGINE == 'ruby'
 SimpleCov.start 'rails'
+puts [Rails.version, RUBY_VERSION, RUBY_ENGINE, RUBY_DESCRIPTION].inspect
 
 require 'haml_coffee_assets'
 
