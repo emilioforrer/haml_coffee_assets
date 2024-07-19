@@ -4,6 +4,12 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+## 1.25.0 - Jul 20th, 2024
+- [#191][]: Support chaining of ERB for Sprockets 4
+
+## 1.24.0 - Oct 30th, 2023
+- [#188][]: Support for Rails 7.1
+
 ## 1.23.0 - May 17th, 2023
 - [#187][]: JST support on Sprockets 4
 
