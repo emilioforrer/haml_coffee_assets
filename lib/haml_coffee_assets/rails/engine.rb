@@ -38,12 +38,11 @@ module HamlCoffeeAssets
             env.register_mime_type 'text/hamlc', extensions: ['.hamlc']
             env.register_mime_type 'text/jst+hamlc', extensions: ['.jst.hamlc']
             env.register_transformer 'text/hamlc', 'application/javascript', ::HamlCoffeeAssets::Transformer
-            # delete? env.register_transformer 'text/hamlc', 'application/javascript+function', ::HamlCoffeeAssets::Transformer
+            env.register_transformer 'text/jst+hamlc', 'application/javascript+function', ::HamlCoffeeAssets::Transformer
 
             # support for chaining via ERB, documented via https://github.com/rails/sprockets/pull/807
             env.register_mime_type 'text/hamlc+ruby', extensions: ['.hamlc.erb', '.jst.hamlc.erb']
             env.register_transformer 'text/hamlc+ruby', 'text/hamlc', ::Sprockets::ERBProcessor
-            env.register_transformer 'text/jst+hamlc', 'application/javascript+function', ::HamlCoffeeAssets::Transformer
           end
 
           if env.respond_to?(:register_engine)
