@@ -4,6 +4,9 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+## 1.25.1 - Jul 22th, 2024
+- [#192][]: Fix .hamlc is processed by jst unexpectedly (#189)
+
 ## 1.25.0 - Jul 20th, 2024
 - [#191][]: Support chaining of ERB for Sprockets 4
 
