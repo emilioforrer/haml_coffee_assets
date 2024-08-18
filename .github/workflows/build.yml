@@ -43,6 +43,9 @@ jobs:
           - rails: 6.1.4
             ruby: jruby-9.3
             sprockets: 4
+        exclude:
+          - rails: 7.2.0
+            ruby: 3.0.6
 
     env:
       RAILS_VER: ${{ matrix.rails }}
