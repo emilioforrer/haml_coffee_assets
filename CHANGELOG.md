@@ -4,6 +4,9 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+## 1.27.0 - Nov 14th, 2024
+- [#193][]: Add support for Rails 8.0.0
+
 ## 1.26.0 - Aug 19th, 2024
 - [#193][]: Add support for Rails 7.2.0
 
