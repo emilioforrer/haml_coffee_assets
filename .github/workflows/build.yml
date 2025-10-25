@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        rails: ['8.0', '7.2', '7.1', '7.0', '6.1']                                      # we add ".0" in the Gemfile so latest patch version used
+        rails: ['8.1', '8.0', '7.2', '7.1', '7.0', '6.1']                               # we add ".0" in the Gemfile so latest patch version used
         ruby: [ruby-3.4, ruby-3.3, ruby-3.2, ruby-3.1, ruby-3.0, jruby-10.0, jruby-9.4] # ruby/setup-ruby will use latest patch version
         sprockets: ['4', '3']
         include:
@@ -34,7 +34,13 @@ jobs:
             ruby: ruby-2.6
             sprockets: '3'
         exclude:
-          # Rails 8.0 doesn't support Ruby 3.0/3.1 and JRuby 9.4
+          # Rails 8.0/8.1 doesn't support Ruby 3.0/3.1 and JRuby 9.4
+          - rails: '8.1'
+            ruby: ruby-3.1
+          - rails: '8.1'
+            ruby: ruby-3.0
+          - rails: '8.1'
+            ruby: jruby-9.4
           - rails: '8.0'
             ruby: ruby-3.1
           - rails: '8.0'

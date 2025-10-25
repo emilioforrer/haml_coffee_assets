@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir.glob('{app,lib,vendor}/**/*') + %w[LICENSE README.md]
 
   s.add_runtime_dependency 'coffee-script', '>= 2'
-  s.add_runtime_dependency 'railties', '>= 5.2', "< 8.1"
+  s.add_runtime_dependency 'railties', '>= 5.2', "< 8.2"
   s.add_runtime_dependency 'sprockets', '>= 3.7'
 
   s.add_development_dependency 'jasmine'
