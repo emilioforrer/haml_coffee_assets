@@ -8,8 +8,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        rails: ['8.0', '7.2', '7.1', '7.0', '6.1']                # we add ".0" in the Gemfile so latest patch version used
-        ruby: [ruby-3.3, ruby-3.2, ruby-3.1, ruby-3.0, jruby-9.4] # ruby/setup-ruby will use latest patch version
+        rails: ['8.0', '7.2', '7.1', '7.0', '6.1']                                      # we add ".0" in the Gemfile so latest patch version used
+        ruby: [ruby-3.4, ruby-3.3, ruby-3.2, ruby-3.1, ruby-3.0, jruby-10.0, jruby-9.4] # ruby/setup-ruby will use latest patch version
         sprockets: ['4', '3']
         include:
           # Rails 6.1 on JRuby 9.3
