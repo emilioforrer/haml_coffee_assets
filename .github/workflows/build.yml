@@ -11,7 +11,7 @@ on: [push, pull_request]
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -40,9 +40,6 @@ jobs:
           - rails: 5.2.6
             ruby: 2.6
             sprockets: 4
-          - rails: 6.0.4
-            ruby: jruby-9.2
-            sprockets: 3
           - rails: 6.1.4
             ruby: jruby-9.3
             sprockets: 4
@@ -61,10 +58,11 @@ jobs:
       RUBY_VER: ${{ matrix.ruby }}
       SPROCKETS_VER: ${{ matrix.sprockets }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v5
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
         cache-version: rails-${{ matrix.rails }}-sprockets-${{ matrix.sprockets }}
         bundler-cache: true
-    - run: bundle exec rake
+    - run: npm install phantomjs-prebuilt@2.1.16 && echo $PWD/node_modules/phantomjs-prebuilt/bin >> $GITHUB_PATH
+    - run: OPENSSL_CONF=/dev/null bundle exec rake
