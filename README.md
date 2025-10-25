@@ -1,4 +1,4 @@
-# Haml Coffee Assets [![Build Status](https://secure.travis-ci.org/emilioforrer/haml_coffee_assets.png)](http://travis-ci.org/emilioforrer/haml_coffee_assets)
+# Haml Coffee Assets [![Build Status](https://github.com/emilioforrer/haml_coffee_assets/actions/workflows/build.yml/badge.svg)](https://github.com/emilioforrer/haml_coffee_assets/actions/workflows/build.yml)
 
 Haml Coffee Assets compiles [Haml Coffee](https://github.com/netzpirat/haml-coffee) templates in the Rails 3.1 asset
 pipeline, so you can use them as JavaScript templates in your JavaScript heavy Rails application. Server-side rendering

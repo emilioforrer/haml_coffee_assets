@@ -1,10 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
-# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
-
 name: build
 
 on: [push, pull_request]
@@ -15,44 +8,43 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        rails: [8.0.0, 7.2.0, 7.1.1, 7.0.8, 6.1.7]
-        ruby: [3.3, 3.2, 3.1, 3.0.6, jruby-9.4]
-        sprockets: [3, 4]
+        rails: ['8.0', '7.2', '7.1', '7.0', '6.1']                # we add ".0" in the Gemfile so latest patch version used
+        ruby: [ruby-3.3, ruby-3.2, ruby-3.1, ruby-3.0, jruby-9.4] # ruby/setup-ruby will use latest patch version
+        sprockets: ['4', '3']
         include:
-          - rails: 8.0.0
-            ruby: 3.3
-            sprockets: 4
-          - rails: 7.2.0
-            ruby: 3.3
-            sprockets: 4
-          - rails: 7.1.1
-            ruby: 3.2
-            sprockets: 4
-          - rails: 6.0.4
-            ruby: 2.7
-            sprockets: 3
-          - rails: 6.0.4
-            ruby: 2.7
-            sprockets: 4
-          - rails: 5.2.6
-            ruby: 2.6
-            sprockets: 3
-          - rails: 5.2.6
-            ruby: 2.6
-            sprockets: 4
-          - rails: 6.1.4
+          # Rails 6.1 on JRuby 9.3
+          - rails: '6.1'
             ruby: jruby-9.3
-            sprockets: 4
+            sprockets: '4'
+          - rails: '6.1'
+            ruby: jruby-9.3
+            sprockets: '3'
+          # Rails 6.0 on Ruby 2.7
+          - rails: '6.0'
+            ruby: ruby-2.7
+            sprockets: '4'
+          - rails: '6.0'
+            ruby: ruby-2.7
+            sprockets: '3'
+          # Rails 5.2 on Ruby 2.6
+          - rails: '5.2'
+            ruby: ruby-2.6
+            sprockets: '4'
+          - rails: '5.2'
+            ruby: ruby-2.6
+            sprockets: '3'
         exclude:
-          - rails: 8.0.0
-            ruby: 3.1
-          - rails: 8.0.0
-            ruby: 3.0.6
-          - rails: 8.0.0
+          # Rails 8.0 doesn't support Ruby 3.0/3.1 and JRuby 9.4
+          - rails: '8.0'
+            ruby: ruby-3.1
+          - rails: '8.0'
+            ruby: ruby-3.0
+          - rails: '8.0'
             ruby: jruby-9.4
-          - rails: 7.2.0
-            ruby: 3.0.6
-
+          # Rails 7.2 doesn't support Ruby 3.0
+          - rails: '7.2'
+            ruby: ruby-3.0
+    name: "Rails ${{ matrix.rails }} with Sprockets ${{ matrix.sprockets }} on ${{ matrix.ruby }}"
     env:
       RAILS_VER: ${{ matrix.rails }}
       RUBY_VER: ${{ matrix.ruby }}
