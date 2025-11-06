@@ -4,6 +4,10 @@ Please have a look at the [Haml Coffee Changelog](https://github.com/netzpirat/h
 
 ## Master
 
+## 1.28.0 - Nov 6th, 2025
+- [#199][]: CI housekeeping + support for Rails 8.1
+- [#193][]: properly support nested ERB for .jst.hamlc with Sprockets 4
+
 ## 1.27.0 - Nov 14th, 2024
 - [#196][]: Add support for Rails 8.0.0
 
